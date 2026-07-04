@@ -31,7 +31,7 @@ export default async function ConsentPage({
           <input type="checkbox" name="agree" required className="mt-1" />
           I understand and agree to this data processing.
         </label>
-        <button type="submit" className="rounded bg-black px-4 py-2 text-white">
+        <button type="submit" className="rounded bg-foreground px-4 py-2 text-white">
           Continue
         </button>
       </form>

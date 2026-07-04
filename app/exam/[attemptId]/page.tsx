@@ -82,7 +82,7 @@ export default async function ExamPage({
                   key={n}
                   href={`/exam/${attempt.id}?q=${n}`}
                   className={`rounded border px-3 py-1 text-sm ${
-                    n === currentQ ? "bg-black text-white" : a?.flagged ? "bg-yellow-200" : a ? "bg-gray-200" : ""
+                    n === currentQ ? "bg-foreground text-white" : a?.flagged ? "bg-yellow-200" : a ? "bg-gray-200" : ""
                   }`}
                 >
                   Q{n}

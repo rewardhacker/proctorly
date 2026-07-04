@@ -31,7 +31,7 @@ export default async function TuteesPage() {
             required
             className="rounded border px-3 py-2"
           />
-          <button type="submit" className="rounded bg-black px-4 py-2 text-white">
+          <button type="submit" className="rounded bg-foreground px-4 py-2 text-white">
             Create tutee
           </button>
         </form>
@@ -59,7 +59,7 @@ export default async function TuteesPage() {
                 </option>
               ))}
             </select>
-            <button type="submit" className="rounded bg-black px-4 py-2 text-white">
+            <button type="submit" className="rounded bg-foreground px-4 py-2 text-white">
               Generate invite link
             </button>
           </form>

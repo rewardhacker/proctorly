@@ -12,7 +12,7 @@ export default function SubmitButton({ attemptId, label }: { attemptId: string; 
         }
       }}
     >
-      <button type="submit" className="rounded bg-black px-4 py-2 text-white">
+      <button type="submit" className="rounded bg-foreground px-4 py-2 text-white">
         {label}
       </button>
     </form>

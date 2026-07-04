@@ -134,7 +134,7 @@ export default async function GradeAttemptPage({
           rows={4}
           className="rounded border p-3"
         />
-        <button type="submit" className="rounded bg-black px-4 py-2 text-white">
+        <button type="submit" className="rounded bg-foreground px-4 py-2 text-white">
           {attempt.grade ? "Update grade" : "Submit grade"}
         </button>
       </form>

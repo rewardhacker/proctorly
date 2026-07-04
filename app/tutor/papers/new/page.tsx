@@ -39,7 +39,7 @@ export default function NewPaperPage() {
           Mark scheme (PDF, max 10MB)
           <input name="markSchemeFile" type="file" accept="application/pdf" required />
         </label>
-        <button type="submit" className="rounded bg-black px-4 py-2 text-white">
+        <button type="submit" className="rounded bg-foreground px-4 py-2 text-white">
           Upload
         </button>
       </form>

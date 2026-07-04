@@ -1,6 +1,5 @@
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
-import { redirect } from "next/navigation";
 import Link from "next/link";
 import Notice from "@/components/Notice";
 
@@ -11,10 +10,9 @@ export default async function PapersPage({
 }) {
   const { error, success } = await searchParams;
   const session = await auth();
-  if (!session?.user) redirect("/login");
 
   const papers = await prisma.paper.findMany({
-    where: { tutorId: session.user.id },
+    where: { tutorId: session!.user.id },
     orderBy: { createdAt: "desc" },
   });
 

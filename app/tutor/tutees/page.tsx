@@ -1,6 +1,5 @@
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
-import { redirect } from "next/navigation";
 import { createTutee, createInvite } from "@/lib/actions";
 import Notice from "@/components/Notice";
 
@@ -11,8 +10,7 @@ export default async function TuteesPage({
 }) {
   const { error, success } = await searchParams;
   const session = await auth();
-  if (!session?.user) redirect("/login");
-  const tutorId = session.user.id;
+  const tutorId = session!.user.id;
 
   const [tutees, papers, invites] = await Promise.all([
     prisma.tutee.findMany({ where: { createdByTutorId: tutorId }, orderBy: { createdAt: "desc" } }),

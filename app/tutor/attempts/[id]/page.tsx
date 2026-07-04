@@ -1,7 +1,7 @@
 import type { JSONContent } from "@tiptap/react";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
-import { redirect, notFound } from "next/navigation";
+import { notFound } from "next/navigation";
 import { gradeAttempt } from "@/lib/actions";
 import { computeFlagStatus } from "@/lib/antiCheat";
 import AnswerView from "./AnswerView";
@@ -17,10 +17,9 @@ export default async function GradeAttemptPage({
   const { id } = await params;
   const { error } = await searchParams;
   const session = await auth();
-  if (!session?.user) redirect("/login");
 
   const attempt = await prisma.attempt.findFirst({
-    where: { id, paper: { tutorId: session.user.id } },
+    where: { id, paper: { tutorId: session!.user.id } },
     include: {
       tutee: true,
       paper: true,

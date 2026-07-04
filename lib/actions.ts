@@ -5,7 +5,7 @@ import { Prisma } from "@prisma/client";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
-import { auth } from "@/lib/auth";
+import { auth, signOut } from "@/lib/auth";
 import { storage } from "@/lib/storage";
 import { assertValidFile } from "@/lib/storage/validate";
 import { getTuteeSession } from "@/lib/tuteeSession";
@@ -54,6 +54,10 @@ async function requireTutorId() {
   const session = await auth();
   if (!session?.user?.id) throw new Error("Not authenticated");
   return session.user.id;
+}
+
+export async function logoutAction() {
+  await signOut({ redirectTo: "/login" });
 }
 
 export async function createPaper(formData: FormData) {

@@ -1,6 +1,5 @@
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
-import { redirect } from "next/navigation";
 import { computeFlagStatus } from "@/lib/antiCheat";
 import Link from "next/link";
 import Notice from "@/components/Notice";
@@ -12,10 +11,9 @@ export default async function AttemptsPage({
 }) {
   const { error, success } = await searchParams;
   const session = await auth();
-  if (!session?.user) redirect("/login");
 
   const attempts = await prisma.attempt.findMany({
-    where: { paper: { tutorId: session.user.id } },
+    where: { paper: { tutorId: session!.user.id } },
     include: { tutee: true, paper: true, grade: true, focusEvents: true },
     orderBy: { createdAt: "desc" },
   });

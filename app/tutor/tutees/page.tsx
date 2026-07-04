@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
-import { createTutee, createInvite } from "@/lib/actions";
+import { createTutee, createInvite, resetTuteePassword } from "@/lib/actions";
 import Notice from "@/components/Notice";
 
 export default async function TuteesPage({
@@ -36,6 +36,13 @@ export default async function TuteesPage({
             required
             className="rounded border px-3 py-2"
           />
+          <input
+            name="password"
+            type="text"
+            placeholder="Login password (share with student)"
+            required
+            className="rounded border px-3 py-2"
+          />
           <button type="submit" className="rounded bg-foreground px-4 py-2 text-white">
             Create Tutee
           </button>
@@ -68,6 +75,44 @@ export default async function TuteesPage({
               Generate Invite Link
             </button>
           </form>
+        )}
+      </section>
+
+      <section>
+        <h2 className="mb-4 text-xl font-semibold">Students</h2>
+        {tutees.length === 0 ? (
+          <p className="text-gray-500">No students yet.</p>
+        ) : (
+          <ul className="flex flex-col gap-3">
+            {tutees.map((t) => (
+              <li key={t.id} className="rounded border p-3">
+                <p className="font-medium">{t.name}</p>
+                <p className="text-sm text-gray-500">{t.email}</p>
+                <details className="mt-2">
+                  <summary className="cursor-pointer text-sm text-gray-500 hover:text-gray-800">
+                    Reset password
+                  </summary>
+                  <form action={resetTuteePassword} className="mt-2 flex gap-2">
+                    <input type="hidden" name="tuteeId" value={t.id} />
+                    <input
+                      name="password"
+                      type="text"
+                      placeholder="New password"
+                      required
+                      minLength={6}
+                      className="flex-1 rounded border px-3 py-1.5 text-sm"
+                    />
+                    <button
+                      type="submit"
+                      className="rounded bg-foreground px-3 py-1.5 text-sm text-white"
+                    >
+                      Set
+                    </button>
+                  </form>
+                </details>
+              </li>
+            ))}
+          </ul>
         )}
       </section>
 

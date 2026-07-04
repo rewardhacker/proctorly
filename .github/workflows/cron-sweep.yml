@@ -1,0 +1,18 @@
+name: Sweep overdue attempts
+
+on:
+  schedule:
+    # GitHub Actions minimum is every 5 minutes.
+    # Attempts past their buffer end will auto-submit within 5 min.
+    - cron: "*/5 * * * *"
+  workflow_dispatch: # allow manual trigger from the Actions tab
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call sweep-attempts
+        run: |
+          curl --fail-with-body -s \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            "${{ secrets.SITE_URL }}/api/cron/sweep-attempts"

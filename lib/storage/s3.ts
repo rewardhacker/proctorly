@@ -1,4 +1,5 @@
 import { S3Client, PutObjectCommand, GetObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { StorageAdapter } from "./types";
 
 // Works against AWS S3 or any S3-compatible provider (Cloudflare R2,
@@ -37,5 +38,13 @@ export const s3Storage: StorageAdapter = {
   },
   async delete(key) {
     await client.send(new DeleteObjectCommand({ Bucket: bucket, Key: key }));
+  },
+  // ponytail: plain presigned PUT, not a createPresignedPost policy — so
+  // there's no server-enforced size cap on this path (only the client-side
+  // check in the upload form). Upgrade to createPresignedPost with a
+  // content-length-range condition if that gap matters later.
+  async getUploadUrl(key, contentType) {
+    const command = new PutObjectCommand({ Bucket: bucket, Key: key, ContentType: contentType });
+    return getSignedUrl(client, command, { expiresIn: 300 });
   },
 };

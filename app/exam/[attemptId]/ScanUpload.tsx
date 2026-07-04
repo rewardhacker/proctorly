@@ -1,21 +1,51 @@
 "use client";
 
 import { useState } from "react";
-import { uploadScans } from "@/lib/actions";
+import { beginScanUpload, finalizeScanUpload } from "@/lib/actions";
+import { MAX_FILE_BYTES } from "@/lib/storage/validate";
 import FileInputButton from "@/components/FileInputButton";
 
 export default function ScanUpload({ attemptId }: { attemptId: string }) {
   const [status, setStatus] = useState<"idle" | "uploading" | "done" | "error">("idle");
+  const [error, setError] = useState<string | null>(null);
 
   async function onChange(e: React.ChangeEvent<HTMLInputElement>) {
-    if (!e.target.files?.length) return;
+    const files = Array.from(e.target.files ?? []);
+    if (!files.length) return;
+
+    for (const file of files) {
+      if (file.size > MAX_FILE_BYTES) {
+        setError(`${file.name} is over the 10MB limit.`);
+        setStatus("error");
+        return;
+      }
+    }
+
+    setError(null);
     setStatus("uploading");
-    const formData = new FormData();
-    for (const file of Array.from(e.target.files)) formData.append("scans", file);
     try {
-      await uploadScans(attemptId, formData);
+      const uploads = await beginScanUpload(
+        attemptId,
+        files.map((f) => ({ name: f.name, contentType: f.type })),
+      );
+
+      await Promise.all(
+        uploads.map(({ uploadUrl }, i) =>
+          fetch(uploadUrl, {
+            method: "PUT",
+            body: files[i],
+            headers: { "Content-Type": files[i].type },
+          }),
+        ),
+      );
+
+      await finalizeScanUpload(
+        attemptId,
+        uploads.map((u) => u.key),
+      );
       setStatus("done");
     } catch {
+      setError("Upload failed — try again");
       setStatus("error");
     }
   }
@@ -35,7 +65,7 @@ export default function ScanUpload({ attemptId }: { attemptId: string }) {
           : status === "done"
             ? "Uploaded"
             : status === "error"
-              ? "Upload failed — try again"
+              ? error
               : ""}
       </p>
     </div>

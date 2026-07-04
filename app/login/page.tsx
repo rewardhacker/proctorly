@@ -2,6 +2,7 @@
 
 import { signIn } from "next-auth/react";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
@@ -48,6 +49,9 @@ export default function LoginPage() {
         >
           Log In
         </button>
+        <Link href="/forgot-password" className="text-center text-sm text-gray-500 underline">
+          Forgot password?
+        </Link>
       </form>
     </main>
   );

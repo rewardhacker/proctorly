@@ -1,16 +1,18 @@
 "use server";
 
 import crypto from "crypto";
+import bcrypt from "bcryptjs";
 import { Prisma } from "@prisma/client";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import { cookies } from "next/headers";
 import { prisma } from "@/lib/prisma";
 import { auth, signOut } from "@/lib/auth";
 import { storage } from "@/lib/storage";
-import { assertValidFile } from "@/lib/storage/validate";
-import { getTuteeSession } from "@/lib/tuteeSession";
+import { getTuteeSession, setTuteeSession } from "@/lib/tuteeSession";
 import { resolveAttemptState } from "@/lib/timer/resolveAttemptState";
 import { notifySubmission, notifyIssueReport } from "@/lib/notifications";
+import { sendEmail } from "@/lib/email";
 import { loadInvite, redeemInvite, CONSENT_VERSION } from "@/lib/redeemInvite";
 import { headers } from "next/headers";
 
@@ -60,58 +62,153 @@ export async function logoutAction() {
   await signOut({ redirectTo: "/login" });
 }
 
-export async function createPaper(formData: FormData) {
+// Netlify's Next.js runtime has a known crash when a server action's
+// request body is a large multipart FormData (it dies deep inside Node's
+// stream cleanup before our own code runs, so no try/catch here can help).
+// File bytes now go browser -> storage directly via a presigned URL; the
+// server actions below only ever see small JSON payloads.
+export async function beginPaperUpload(paperContentType: string, markSchemeContentType: string) {
+  await requireTutorId();
+
+  const paperFileKey = `papers/${crypto.randomUUID()}.pdf`;
+  const markSchemeFileKey = `papers/${crypto.randomUUID()}.pdf`;
+
+  const [paperUploadUrl, markSchemeUploadUrl] = await Promise.all([
+    storage.getUploadUrl(paperFileKey, paperContentType),
+    storage.getUploadUrl(markSchemeFileKey, markSchemeContentType),
+  ]);
+
+  return { paperFileKey, paperUploadUrl, markSchemeFileKey, markSchemeUploadUrl };
+}
+
+export async function finalizeCreatePaper(data: {
+  title: string;
+  subject: string | null;
+  defaultDurationMins: number;
+  numQuestions: number;
+  paperFileKey: string;
+  paperFileSize: number;
+  markSchemeFileKey: string;
+  markSchemeFileSize: number;
+}): Promise<{ error: string } | { ok: true }> {
   const tutorId = await requireTutorId();
-  const title = formData.get("title") as string;
-  const subject = (formData.get("subject") as string) || null;
-  const defaultDurationMins = Number(formData.get("defaultDurationMins"));
-  const numQuestions = Math.max(1, Number(formData.get("numQuestions")) || 1);
-  const paperFile = formData.get("paperFile") as File;
-  const markSchemeFile = formData.get("markSchemeFile") as File;
 
   try {
-    assertValidFile(paperFile);
-    assertValidFile(markSchemeFile);
-
-    const paperKey = `papers/${crypto.randomUUID()}.pdf`;
-    const msKey = `papers/${crypto.randomUUID()}.pdf`;
-    await storage.put(paperKey, Buffer.from(await paperFile.arrayBuffer()), paperFile.type);
-    await storage.put(msKey, Buffer.from(await markSchemeFile.arrayBuffer()), markSchemeFile.type);
-
-    await prisma.paper.create({
-      data: {
-        tutorId,
-        title,
-        subject,
-        defaultDurationMins,
-        numQuestions,
-        paperFileKey: paperKey,
-        paperFileSize: paperFile.size,
-        markSchemeFileKey: msKey,
-        markSchemeFileSize: markSchemeFile.size,
-      },
-    });
+    await prisma.paper.create({ data: { tutorId, ...data } });
   } catch (err) {
-    redirect(`/tutor/papers/new?error=${encodeURIComponent(friendlyMessage(err, "Could not upload paper. Please try again."))}`);
+    return { error: friendlyMessage(err, "Could not save paper. Please try again.") };
   }
 
   revalidatePath("/tutor/papers");
-  redirect(`/tutor/papers?success=${encodeURIComponent(`"${title}" was uploaded.`)}`);
+  return { ok: true };
 }
 
 export async function createTutee(formData: FormData) {
   const tutorId = await requireTutorId();
   const name = formData.get("name") as string;
   const email = formData.get("email") as string;
+  const password = (formData.get("password") as string) || null;
+  const passwordHash = password ? await bcrypt.hash(password, 10) : undefined;
 
   try {
-    await prisma.tutee.create({ data: { name, email, createdByTutorId: tutorId } });
+    await prisma.tutee.create({ data: { name, email, createdByTutorId: tutorId, ...(passwordHash ? { passwordHash } : {}) } });
   } catch (err) {
     redirect(`/tutor/tutees?error=${encodeURIComponent(friendlyMessage(err, "Could not create tutee. Please try again."))}`);
   }
 
   revalidatePath("/tutor/tutees");
   redirect(`/tutor/tutees?success=${encodeURIComponent(`${name} was added.`)}`);
+}
+
+export async function resetTuteePassword(formData: FormData) {
+  const tutorId = await requireTutorId();
+  const tuteeId = formData.get("tuteeId") as string;
+  const password = formData.get("password") as string;
+
+  if (!password || password.length < 6) {
+    redirect(`/tutor/tutees?error=${encodeURIComponent("Password must be at least 6 characters.")}`);
+  }
+
+  const tutee = await prisma.tutee.findFirst({ where: { id: tuteeId, createdByTutorId: tutorId } });
+  if (!tutee) redirect(`/tutor/tutees?error=${encodeURIComponent("Tutee not found.")}`);
+
+  const passwordHash = await bcrypt.hash(password, 10);
+  await prisma.tutee.update({ where: { id: tuteeId }, data: { passwordHash } });
+
+  revalidatePath("/tutor/tutees");
+  redirect(`/tutor/tutees?success=${encodeURIComponent(`Password updated for ${tutee.name}.`)}`);
+}
+
+export async function requestPasswordReset(formData: FormData): Promise<{ error?: string; sent?: true }> {
+  const email = formData.get("email") as string;
+  const tutor = await prisma.tutor.findUnique({ where: { email } });
+
+  // Always return sent=true to avoid leaking whether the email exists
+  if (!tutor) return { sent: true };
+
+  const token = crypto.randomBytes(32).toString("hex");
+  const expiresAt = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
+
+  await prisma.tutor.update({
+    where: { id: tutor.id },
+    data: { resetToken: token, resetTokenExpiresAt: expiresAt },
+  });
+
+  const h = await headers();
+  const host = h.get("host") ?? "localhost:3000";
+  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+  const resetUrl = `${protocol}://${host}/reset-password/${token}`;
+
+  await sendEmail(
+    tutor.email,
+    "Reset your password",
+    `Click the link below to reset your password. It expires in 1 hour.\n\n${resetUrl}\n\nIf you didn't request this, ignore this email.`,
+  );
+
+  return { sent: true };
+}
+
+export async function completePasswordReset(formData: FormData): Promise<{ error?: string }> {
+  const token = formData.get("token") as string;
+  const password = formData.get("password") as string;
+
+  if (!password || password.length < 8) return { error: "Password must be at least 8 characters." };
+
+  const tutor = await prisma.tutor.findFirst({
+    where: {
+      resetToken: token,
+      resetTokenExpiresAt: { gt: new Date() },
+    },
+  });
+
+  if (!tutor) return { error: "This reset link is invalid or has expired." };
+
+  const passwordHash = await bcrypt.hash(password, 10);
+  await prisma.tutor.update({
+    where: { id: tutor.id },
+    data: { passwordHash, resetToken: null, resetTokenExpiresAt: null },
+  });
+
+  redirect("/login?success=Password+updated.+Please+log+in.");
+}
+
+export async function studentLogin(formData: FormData): Promise<{ error: string }> {
+  const email = formData.get("email") as string;
+  const password = formData.get("password") as string;
+
+  const tutee = await prisma.tutee.findUnique({ where: { email } });
+  if (!tutee?.passwordHash) return { error: "Invalid email or password." };
+
+  const valid = await bcrypt.compare(password, tutee.passwordHash);
+  if (!valid) return { error: "Invalid email or password." };
+
+  await setTuteeSession(tutee.id);
+  redirect("/student");
+}
+
+export async function studentLogout() {
+  (await cookies()).delete("tutee_session");
+  redirect("/student/login");
 }
 
 export async function createInvite(formData: FormData) {
@@ -297,18 +394,27 @@ export async function logFocusEvent(
   });
 }
 
-export async function uploadScans(attemptId: string, formData: FormData) {
+// Same reasoning as beginPaperUpload/finalizeCreatePaper: no file bytes
+// through the server action, just presigned URLs.
+export async function beginScanUpload(
+  attemptId: string,
+  files: { name: string; contentType: string }[],
+) {
   const attempt = await getOwnAttempt(attemptId);
   if (attempt.status !== "UPLOAD_BUFFER") throw new Error("Upload window has closed");
 
-  const files = formData.getAll("scans") as File[];
-  const keys: string[] = [];
-  for (const file of files) {
-    assertValidFile(file);
-    const key = `scans/${attemptId}/${crypto.randomUUID()}-${file.name}`;
-    await storage.put(key, Buffer.from(await file.arrayBuffer()), file.type);
-    keys.push(key);
-  }
+  return Promise.all(
+    files.map(async (f) => {
+      const key = `scans/${attemptId}/${crypto.randomUUID()}-${f.name}`;
+      const uploadUrl = await storage.getUploadUrl(key, f.contentType);
+      return { key, uploadUrl };
+    }),
+  );
+}
+
+export async function finalizeScanUpload(attemptId: string, keys: string[]) {
+  const attempt = await getOwnAttempt(attemptId);
+  if (attempt.status !== "UPLOAD_BUFFER") throw new Error("Upload window has closed");
 
   const existing = await prisma.answer.findUnique({
     where: { attemptId_questionKey: { attemptId, questionKey: "scan" } },

@@ -2,8 +2,14 @@ import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { createTutee, createInvite } from "@/lib/actions";
+import Notice from "@/components/Notice";
 
-export default async function TuteesPage() {
+export default async function TuteesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string; success?: string }>;
+}) {
+  const { error, success } = await searchParams;
   const session = await auth();
   if (!session?.user) redirect("/login");
   const tutorId = session.user.id;
@@ -20,6 +26,7 @@ export default async function TuteesPage() {
 
   return (
     <main className="mx-auto flex max-w-2xl flex-col gap-8 p-8">
+      <Notice error={error} success={success} />
       <section>
         <h1 className="mb-4 text-xl font-semibold">Create a tutee</h1>
         <form action={createTutee} className="flex flex-col gap-3">

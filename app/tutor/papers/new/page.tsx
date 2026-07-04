@@ -1,9 +1,16 @@
 import { createPaper } from "@/lib/actions";
+import Notice from "@/components/Notice";
 
-export default function NewPaperPage() {
+export default async function NewPaperPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string }>;
+}) {
+  const { error } = await searchParams;
   return (
     <main className="mx-auto max-w-xl p-8">
       <h1 className="mb-4 text-xl font-semibold">Upload a paper</h1>
+      <Notice error={error} />
       <form action={createPaper} className="flex flex-col gap-3">
         <input
           name="title"

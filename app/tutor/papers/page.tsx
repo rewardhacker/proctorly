@@ -2,8 +2,14 @@ import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import Notice from "@/components/Notice";
 
-export default async function PapersPage() {
+export default async function PapersPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string; success?: string }>;
+}) {
+  const { error, success } = await searchParams;
   const session = await auth();
   if (!session?.user) redirect("/login");
 
@@ -15,6 +21,7 @@ export default async function PapersPage() {
   return (
     <main className="mx-auto max-w-2xl p-8">
       <h1 className="mb-4 text-xl font-semibold">Papers</h1>
+      <Notice error={error} success={success} />
       <Link href="/tutor/papers/new" className="mb-4 inline-block underline">
         Upload a new paper
       </Link>

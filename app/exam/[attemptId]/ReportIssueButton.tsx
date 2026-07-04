@@ -6,6 +6,7 @@ import { reportIssue } from "@/lib/actions";
 export default function ReportIssueButton({ attemptId }: { attemptId: string }) {
   const [open, setOpen] = useState(false);
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   if (sent) {
     return <p className="text-sm text-green-700">Your tutor has been emailed.</p>;
@@ -26,8 +27,12 @@ export default function ReportIssueButton({ attemptId }: { attemptId: string }) 
   return (
     <form
       action={async (formData) => {
-        await reportIssue(attemptId, (formData.get("message") as string) || "");
-        setSent(true);
+        try {
+          await reportIssue(attemptId, (formData.get("message") as string) || "");
+          setSent(true);
+        } catch {
+          setError("Could not send your report. Please try again.");
+        }
       }}
       className="flex flex-col gap-2 rounded border border-red-300 p-3"
     >
@@ -35,6 +40,7 @@ export default function ReportIssueButton({ attemptId }: { attemptId: string }) 
         Use this only for a genuine hardware/system failure. Your tutor is
         emailed immediately.
       </p>
+      {error && <p className="text-sm text-red-700">{error}</p>}
       <textarea
         name="message"
         placeholder="Briefly describe what's wrong"

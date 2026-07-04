@@ -5,13 +5,17 @@ import { redirect, notFound } from "next/navigation";
 import { gradeAttempt } from "@/lib/actions";
 import { computeFlagStatus } from "@/lib/antiCheat";
 import AnswerView from "./AnswerView";
+import Notice from "@/components/Notice";
 
 export default async function GradeAttemptPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{ error?: string }>;
 }) {
   const { id } = await params;
+  const { error } = await searchParams;
   const session = await auth();
   if (!session?.user) redirect("/login");
 
@@ -42,6 +46,7 @@ export default async function GradeAttemptPage({
     <main className="mx-auto max-w-2xl p-8">
       <h1 className="mb-1 text-xl font-semibold">{attempt.paper.title}</h1>
       <p className="mb-4 text-sm text-gray-600">{attempt.tutee.name}</p>
+      <Notice error={error} />
 
       <div
         className={`mb-6 rounded border p-3 text-sm ${flagStatus.flagged ? "border-yellow-400 bg-yellow-50" : "border-gray-200"}`}

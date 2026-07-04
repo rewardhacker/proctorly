@@ -1,17 +1,22 @@
 import { loadInvite } from "@/lib/redeemInvite";
 import { giveConsent } from "@/lib/actions";
+import Notice from "@/components/Notice";
 
 export default async function ConsentPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ token: string }>;
+  searchParams: Promise<{ error?: string }>;
 }) {
   const { token } = await params;
+  const { error } = await searchParams;
   const invite = await loadInvite(token);
 
   return (
     <main className="mx-auto max-w-xl p-8">
       <h1 className="mb-4 text-xl font-semibold">Before you begin</h1>
+      <Notice error={error} />
       <p className="mb-4 text-sm text-gray-700">
         Hi {invite.tutee.name}, this platform records your exam activity to
         support fair marking and to let your tutor investigate any technical

@@ -1,7 +1,7 @@
 "use server";
 
 import crypto from "crypto";
-import type { Prisma } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
@@ -14,20 +14,38 @@ import { notifySubmission, notifyIssueReport } from "@/lib/notifications";
 import { loadInvite, redeemInvite, CONSENT_VERSION } from "@/lib/redeemInvite";
 import { headers } from "next/headers";
 
+// Turns unexpected errors into a friendly, redirect-carried flash message
+// instead of letting them bubble up as an unhandled exception (which
+// Next.js renders as a hard page crash for the user).
+function friendlyMessage(err: unknown, fallback: string): string {
+  if (err instanceof Prisma.PrismaClientKnownRequestError && err.code === "P2002") {
+    const field = (err.meta?.target as string[] | undefined)?.[0];
+    return field ? `That ${field} is already in use.` : "That value is already in use.";
+  }
+  if (err instanceof Error) return err.message;
+  return fallback;
+}
+
 export async function giveConsent(token: string, formData: FormData) {
-  if (!formData.get("agree")) throw new Error("Consent is required");
+  if (!formData.get("agree")) {
+    redirect(`/consent/${token}?error=${encodeURIComponent("Please check the box to continue.")}`);
+  }
 
   const invite = await loadInvite(token);
   const h = await headers();
 
-  await prisma.consentRecord.create({
-    data: {
-      tuteeId: invite.tuteeId,
-      version: CONSENT_VERSION,
-      ipAddress: h.get("x-forwarded-for"),
-      userAgent: h.get("user-agent"),
-    },
-  });
+  try {
+    await prisma.consentRecord.create({
+      data: {
+        tuteeId: invite.tuteeId,
+        version: CONSENT_VERSION,
+        ipAddress: h.get("x-forwarded-for"),
+        userAgent: h.get("user-agent"),
+      },
+    });
+  } catch (err) {
+    redirect(`/consent/${token}?error=${encodeURIComponent(friendlyMessage(err, "Could not record consent. Please try again."))}`);
+  }
 
   await redeemInvite(invite);
 }
@@ -47,30 +65,34 @@ export async function createPaper(formData: FormData) {
   const paperFile = formData.get("paperFile") as File;
   const markSchemeFile = formData.get("markSchemeFile") as File;
 
-  assertValidFile(paperFile);
-  assertValidFile(markSchemeFile);
+  try {
+    assertValidFile(paperFile);
+    assertValidFile(markSchemeFile);
 
-  const paperKey = `papers/${crypto.randomUUID()}.pdf`;
-  const msKey = `papers/${crypto.randomUUID()}.pdf`;
-  await storage.put(paperKey, Buffer.from(await paperFile.arrayBuffer()), paperFile.type);
-  await storage.put(msKey, Buffer.from(await markSchemeFile.arrayBuffer()), markSchemeFile.type);
+    const paperKey = `papers/${crypto.randomUUID()}.pdf`;
+    const msKey = `papers/${crypto.randomUUID()}.pdf`;
+    await storage.put(paperKey, Buffer.from(await paperFile.arrayBuffer()), paperFile.type);
+    await storage.put(msKey, Buffer.from(await markSchemeFile.arrayBuffer()), markSchemeFile.type);
 
-  await prisma.paper.create({
-    data: {
-      tutorId,
-      title,
-      subject,
-      defaultDurationMins,
-      numQuestions,
-      paperFileKey: paperKey,
-      paperFileSize: paperFile.size,
-      markSchemeFileKey: msKey,
-      markSchemeFileSize: markSchemeFile.size,
-    },
-  });
+    await prisma.paper.create({
+      data: {
+        tutorId,
+        title,
+        subject,
+        defaultDurationMins,
+        numQuestions,
+        paperFileKey: paperKey,
+        paperFileSize: paperFile.size,
+        markSchemeFileKey: msKey,
+        markSchemeFileSize: markSchemeFile.size,
+      },
+    });
+  } catch (err) {
+    redirect(`/tutor/papers/new?error=${encodeURIComponent(friendlyMessage(err, "Could not upload paper. Please try again."))}`);
+  }
 
   revalidatePath("/tutor/papers");
-  redirect("/tutor/papers");
+  redirect(`/tutor/papers?success=${encodeURIComponent(`"${title}" was uploaded.`)}`);
 }
 
 export async function createTutee(formData: FormData) {
@@ -78,10 +100,14 @@ export async function createTutee(formData: FormData) {
   const name = formData.get("name") as string;
   const email = formData.get("email") as string;
 
-  await prisma.tutee.create({ data: { name, email, createdByTutorId: tutorId } });
+  try {
+    await prisma.tutee.create({ data: { name, email, createdByTutorId: tutorId } });
+  } catch (err) {
+    redirect(`/tutor/tutees?error=${encodeURIComponent(friendlyMessage(err, "Could not create tutee. Please try again."))}`);
+  }
 
   revalidatePath("/tutor/tutees");
-  redirect("/tutor/tutees");
+  redirect(`/tutor/tutees?success=${encodeURIComponent(`${name} was added.`)}`);
 }
 
 export async function createInvite(formData: FormData) {
@@ -89,20 +115,24 @@ export async function createInvite(formData: FormData) {
   const tuteeId = formData.get("tuteeId") as string;
   const paperId = formData.get("paperId") as string;
 
-  const paper = await prisma.paper.findFirstOrThrow({ where: { id: paperId, tutorId } });
+  try {
+    const paper = await prisma.paper.findFirstOrThrow({ where: { id: paperId, tutorId } });
 
-  await prisma.inviteLink.create({
-    data: {
-      tutorId,
-      tuteeId,
-      paperId,
-      durationMins: paper.defaultDurationMins,
-      bufferSecs: paper.defaultBufferSecs,
-    },
-  });
+    await prisma.inviteLink.create({
+      data: {
+        tutorId,
+        tuteeId,
+        paperId,
+        durationMins: paper.defaultDurationMins,
+        bufferSecs: paper.defaultBufferSecs,
+      },
+    });
+  } catch (err) {
+    redirect(`/tutor/tutees?error=${encodeURIComponent(friendlyMessage(err, "Could not generate invite link. Please try again."))}`);
+  }
 
   revalidatePath("/tutor/tutees");
-  redirect("/tutor/tutees");
+  redirect(`/tutor/tutees?success=${encodeURIComponent("Invite link generated.")}`);
 }
 
 export async function startAttempt(attemptId: string) {
@@ -296,25 +326,29 @@ export async function gradeAttempt(formData: FormData) {
   const maxScore = Number(formData.get("maxScore"));
   const overallComment = (formData.get("overallComment") as string) || null;
 
-  await prisma.attempt.findFirstOrThrow({
-    where: { id: attemptId, paper: { tutorId } },
-  });
+  try {
+    await prisma.attempt.findFirstOrThrow({
+      where: { id: attemptId, paper: { tutorId } },
+    });
 
-  await prisma.grade.upsert({
-    where: { attemptId },
-    update: { score, maxScore, overallComment, gradedAt: new Date(), gradedByTutorId: tutorId },
-    create: { attemptId, score, maxScore, overallComment, gradedAt: new Date(), gradedByTutorId: tutorId },
-  });
+    await prisma.grade.upsert({
+      where: { attemptId },
+      update: { score, maxScore, overallComment, gradedAt: new Date(), gradedByTutorId: tutorId },
+      create: { attemptId, score, maxScore, overallComment, gradedAt: new Date(), gradedByTutorId: tutorId },
+    });
 
-  const retentionDays = Number(process.env.RETENTION_DAYS ?? 90);
-  const gradedAt = new Date();
-  const purgeAfter = new Date(gradedAt.getTime() + retentionDays * 24 * 60 * 60 * 1000);
+    const retentionDays = Number(process.env.RETENTION_DAYS ?? 90);
+    const gradedAt = new Date();
+    const purgeAfter = new Date(gradedAt.getTime() + retentionDays * 24 * 60 * 60 * 1000);
 
-  await prisma.attempt.update({
-    where: { id: attemptId },
-    data: { status: "GRADED", purgeAfter },
-  });
+    await prisma.attempt.update({
+      where: { id: attemptId },
+      data: { status: "GRADED", purgeAfter },
+    });
+  } catch (err) {
+    redirect(`/tutor/attempts/${attemptId}?error=${encodeURIComponent(friendlyMessage(err, "Could not save grade. Please try again."))}`);
+  }
 
   revalidatePath("/tutor/attempts");
-  redirect("/tutor/attempts");
+  redirect(`/tutor/attempts?success=${encodeURIComponent("Grade saved.")}`);
 }

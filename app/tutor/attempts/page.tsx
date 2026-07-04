@@ -35,8 +35,11 @@ export default async function AttemptsPage({
               </p>
               <p className="text-sm text-gray-600">Status: {a.status}</p>
               {(a.status === "SUBMITTED" || a.status === "GRADED") && (
-                <Link href={`/tutor/attempts/${a.id}`} className="underline">
-                  {a.status === "GRADED" ? "View grade" : "Grade this attempt"}
+                <Link
+                  href={`/tutor/attempts/${a.id}`}
+                  className="mt-2 inline-block rounded bg-foreground px-3 py-1 text-sm text-white"
+                >
+                  {a.status === "GRADED" ? "View Grade" : "Grade This Attempt"}
                 </Link>
               )}
             </li>

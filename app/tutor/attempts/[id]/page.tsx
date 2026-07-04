@@ -68,7 +68,7 @@ export default async function GradeAttemptPage({
 
       <details className="mb-6">
         <summary className="cursor-pointer text-sm font-medium text-gray-600">
-          Dispute log ({attempt.activityLogs.length + attempt.focusEvents.length} events)
+          Dispute Log ({attempt.activityLogs.length + attempt.focusEvents.length} events)
         </summary>
         <ul className="mt-2 flex flex-col gap-1 text-xs text-gray-600">
           {[...attempt.activityLogs.map((l) => ({ at: l.serverTimestamp, label: l.event })),
@@ -140,7 +140,7 @@ export default async function GradeAttemptPage({
           className="rounded border p-3"
         />
         <button type="submit" className="rounded bg-foreground px-4 py-2 text-white">
-          {attempt.grade ? "Update grade" : "Submit grade"}
+          {attempt.grade ? "Update Grade" : "Submit Grade"}
         </button>
       </form>
     </main>

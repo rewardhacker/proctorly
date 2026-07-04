@@ -28,7 +28,7 @@ export default async function TuteesPage({
     <main className="mx-auto flex max-w-2xl flex-col gap-8 p-8">
       <Notice error={error} success={success} />
       <section>
-        <h1 className="mb-4 text-xl font-semibold">Create a tutee</h1>
+        <h1 className="mb-4 text-xl font-semibold">Create a Tutee</h1>
         <form action={createTutee} className="flex flex-col gap-3">
           <input name="name" placeholder="Name" required className="rounded border px-3 py-2" />
           <input
@@ -39,13 +39,13 @@ export default async function TuteesPage({
             className="rounded border px-3 py-2"
           />
           <button type="submit" className="rounded bg-foreground px-4 py-2 text-white">
-            Create tutee
+            Create Tutee
           </button>
         </form>
       </section>
 
       <section>
-        <h2 className="mb-4 text-xl font-semibold">Generate an invite link</h2>
+        <h2 className="mb-4 text-xl font-semibold">Generate an Invite Link</h2>
         {tutees.length === 0 || papers.length === 0 ? (
           <p className="text-gray-500">
             Create a tutee and upload a paper before generating an invite link.
@@ -67,14 +67,14 @@ export default async function TuteesPage({
               ))}
             </select>
             <button type="submit" className="rounded bg-foreground px-4 py-2 text-white">
-              Generate invite link
+              Generate Invite Link
             </button>
           </form>
         )}
       </section>
 
       <section>
-        <h2 className="mb-4 text-xl font-semibold">Invite links</h2>
+        <h2 className="mb-4 text-xl font-semibold">Invite Links</h2>
         <ul className="flex flex-col gap-2">
           {invites.map((invite) => (
             <li key={invite.id} className="rounded border p-3 text-sm">

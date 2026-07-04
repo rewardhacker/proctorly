@@ -15,7 +15,7 @@ export default async function ConsentPage({
 
   return (
     <main className="mx-auto max-w-xl p-8">
-      <h1 className="mb-4 text-xl font-semibold">Before you begin</h1>
+      <h1 className="mb-4 text-xl font-semibold">Before You Begin</h1>
       <Notice error={error} />
       <p className="mb-4 text-sm text-gray-700">
         Hi {invite.tutee.name}, this platform records your exam activity to

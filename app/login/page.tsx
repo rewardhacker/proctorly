@@ -26,7 +26,7 @@ export default function LoginPage() {
         action={onSubmit}
         className="flex w-80 flex-col gap-4 rounded-lg border p-6"
       >
-        <h1 className="text-lg font-semibold">Tutor login</h1>
+        <h1 className="text-lg font-semibold">Tutor Login</h1>
         <input
           name="email"
           type="email"
@@ -46,7 +46,7 @@ export default function LoginPage() {
           type="submit"
           className="rounded bg-foreground px-3 py-2 text-white"
         >
-          Log in
+          Log In
         </button>
       </form>
     </main>

@@ -22,8 +22,11 @@ export default async function PapersPage({
     <main className="mx-auto max-w-2xl p-8">
       <h1 className="mb-4 text-xl font-semibold">Papers</h1>
       <Notice error={error} success={success} />
-      <Link href="/tutor/papers/new" className="mb-4 inline-block underline">
-        Upload a new paper
+      <Link
+        href="/tutor/papers/new"
+        className="mb-4 inline-block rounded bg-foreground px-4 py-2 text-white"
+      >
+        Upload a New Paper
       </Link>
       <ul className="flex flex-col gap-2">
         {papers.map((p) => (

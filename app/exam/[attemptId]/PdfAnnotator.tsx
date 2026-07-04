@@ -171,7 +171,7 @@ export default function PdfAnnotator({
           Next
         </button>
         <button type="button" onClick={clearPage} className="rounded border px-2 py-1">
-          Clear page
+          Clear Page
         </button>
         <span className="text-xs text-gray-500">
           {status === "saving" ? "Saving…" : status === "saved" ? "Saved" : ""}

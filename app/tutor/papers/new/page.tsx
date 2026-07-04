@@ -1,5 +1,6 @@
 import { createPaper } from "@/lib/actions";
 import Notice from "@/components/Notice";
+import FileInputButton from "@/components/FileInputButton";
 
 export default async function NewPaperPage({
   searchParams,
@@ -9,7 +10,7 @@ export default async function NewPaperPage({
   const { error } = await searchParams;
   return (
     <main className="mx-auto max-w-xl p-8">
-      <h1 className="mb-4 text-xl font-semibold">Upload a paper</h1>
+      <h1 className="mb-4 text-xl font-semibold">Upload a Paper</h1>
       <Notice error={error} />
       <form action={createPaper} className="flex flex-col gap-3">
         <input
@@ -38,14 +39,18 @@ export default async function NewPaperPage({
           placeholder="Number of questions"
           className="rounded border px-3 py-2"
         />
-        <label className="flex flex-col gap-1 text-sm">
-          Exam paper (PDF, max 10MB)
-          <input name="paperFile" type="file" accept="application/pdf" required />
-        </label>
-        <label className="flex flex-col gap-1 text-sm">
-          Mark scheme (PDF, max 10MB)
-          <input name="markSchemeFile" type="file" accept="application/pdf" required />
-        </label>
+        <FileInputButton
+          name="paperFile"
+          accept="application/pdf"
+          required
+          label="Exam Paper (PDF, max 10MB)"
+        />
+        <FileInputButton
+          name="markSchemeFile"
+          accept="application/pdf"
+          required
+          label="Mark Scheme (PDF, max 10MB)"
+        />
         <button type="submit" className="rounded bg-foreground px-4 py-2 text-white">
           Upload
         </button>

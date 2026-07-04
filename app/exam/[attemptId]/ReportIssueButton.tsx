@@ -19,7 +19,7 @@ export default function ReportIssueButton({ attemptId }: { attemptId: string }) 
         onClick={() => setOpen(true)}
         className="rounded border border-red-400 px-3 py-1 text-sm text-red-700"
       >
-        Report issue
+        Report Issue
       </button>
     );
   }
@@ -49,7 +49,7 @@ export default function ReportIssueButton({ attemptId }: { attemptId: string }) 
       />
       <div className="flex gap-2">
         <button type="submit" className="rounded bg-red-700 px-3 py-1 text-sm text-white">
-          Send now
+          Send Now
         </button>
         <button
           type="button"

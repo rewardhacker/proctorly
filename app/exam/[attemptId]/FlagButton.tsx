@@ -17,7 +17,7 @@ export default function FlagButton({
         type="submit"
         className={`rounded border px-2 py-1 text-xs ${flagged ? "bg-yellow-200" : ""}`}
       >
-        {flagged ? "Flagged" : "Flag for review"}
+        {flagged ? "Flagged" : "Flag for Review"}
       </button>
     </form>
   );

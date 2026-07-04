@@ -13,7 +13,7 @@ export default function PreExamStart({ attemptId }: { attemptId: string }) {
         onClick={() => setConfirming(true)}
         className="rounded bg-foreground px-4 py-2 text-white"
       >
-        Start exam
+        Start Exam
       </button>
     );
   }
@@ -28,7 +28,7 @@ export default function PreExamStart({ attemptId }: { attemptId: string }) {
       <div className="flex gap-3">
         <form action={() => startAttempt(attemptId)}>
           <button type="submit" className="rounded bg-foreground px-4 py-2 text-white">
-            Yes, start now
+            Yes, Start Now
           </button>
         </form>
         <button
@@ -36,7 +36,7 @@ export default function PreExamStart({ attemptId }: { attemptId: string }) {
           onClick={() => setConfirming(false)}
           className="rounded border px-4 py-2"
         >
-          Not yet
+          Not Yet
         </button>
       </div>
     </div>

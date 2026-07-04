@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { uploadScans } from "@/lib/actions";
+import FileInputButton from "@/components/FileInputButton";
 
 export default function ScanUpload({ attemptId }: { attemptId: string }) {
   const [status, setStatus] = useState<"idle" | "uploading" | "done" | "error">("idle");
@@ -21,10 +22,11 @@ export default function ScanUpload({ attemptId }: { attemptId: string }) {
 
   return (
     <div>
-      <input
-        type="file"
+      <FileInputButton
+        name="scans"
         accept="image/jpeg,image/png,application/pdf"
         multiple
+        label="Answer Photos"
         onChange={onChange}
       />
       <p className="mt-1 text-xs text-gray-500">

@@ -10,14 +10,14 @@ export default async function TutorDashboard() {
     <main className="mx-auto flex max-w-xl flex-col gap-4 p-8">
       <h1 className="text-xl font-semibold">Welcome, {session.user.name}</h1>
       <nav className="flex flex-col gap-2">
-        <Link href="/tutor/papers" className="underline">
+        <Link href="/tutor/papers" className="rounded bg-foreground px-4 py-2 text-center text-white">
           Papers
         </Link>
-        <Link href="/tutor/tutees" className="underline">
-          Tutees &amp; invite links
+        <Link href="/tutor/tutees" className="rounded bg-foreground px-4 py-2 text-center text-white">
+          Tutees &amp; Invite Links
         </Link>
-        <Link href="/tutor/attempts" className="underline">
-          Submissions &amp; grading
+        <Link href="/tutor/attempts" className="rounded bg-foreground px-4 py-2 text-center text-white">
+          Submissions &amp; Grading
         </Link>
       </nav>
       <form
@@ -27,7 +27,7 @@ export default async function TutorDashboard() {
         }}
       >
         <button type="submit" className="rounded border px-3 py-2">
-          Log out
+          Log Out
         </button>
       </form>
     </main>

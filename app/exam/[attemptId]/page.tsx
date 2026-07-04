@@ -127,7 +127,7 @@ export default async function ExamPage({
         </p>
         <ScanUpload attemptId={attempt.id} />
         <div className="mt-4 flex items-center justify-between">
-          <SubmitButton attemptId={attempt.id} label="Submit now" />
+          <SubmitButton attemptId={attempt.id} label="Submit Now" />
           <ReportIssueButton attemptId={attempt.id} />
         </div>
       </main>
@@ -144,9 +144,9 @@ export default async function ExamPage({
         <a
           href={`/api/files/${attempt.paper.markSchemeFileKey}`}
           target="_blank"
-          className="mb-4 block underline"
+          className="mb-4 inline-block rounded bg-foreground px-4 py-2 text-white"
         >
-          View mark scheme
+          View Mark Scheme
         </a>
       )}
       {attempt.grade && (

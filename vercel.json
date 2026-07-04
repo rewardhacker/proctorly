@@ -1,0 +1,6 @@
+{
+  "crons": [
+    { "path": "/api/cron/sweep-attempts", "schedule": "* * * * *" },
+    { "path": "/api/cron/purge-expired", "schedule": "0 3 * * *" }
+  ]
+}

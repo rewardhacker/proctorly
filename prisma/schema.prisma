@@ -1,0 +1,213 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum AttemptStatus {
+  PENDING
+  IN_PROGRESS
+  UPLOAD_BUFFER
+  SUBMITTED
+  GRADED
+  VOIDED
+}
+
+enum AnswerModality {
+  RICH_TEXT
+  PDF_ANNOTATION
+  SCANNED_UPLOAD
+}
+
+enum FocusEventType {
+  BLUR
+  FOCUS
+  VISIBILITY_HIDDEN
+  VISIBILITY_VISIBLE
+  COPY_ATTEMPT
+  PASTE_ATTEMPT
+  CONTEXT_MENU_ATTEMPT
+}
+
+enum SyncStatus {
+  SYNCED
+  LOCAL_ONLY
+}
+
+model Tutor {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  createdAt    DateTime @default(now())
+
+  papers      Paper[]
+  tutees      Tutee[]
+  inviteLinks InviteLink[]
+}
+
+model Tutee {
+  id               String   @id @default(cuid())
+  email            String   @unique
+  name             String
+  createdByTutorId String
+  createdByTutor   Tutor    @relation(fields: [createdByTutorId], references: [id])
+  createdAt        DateTime @default(now())
+
+  consentRecords ConsentRecord[]
+  inviteLinks    InviteLink[]
+  attempts       Attempt[]
+}
+
+model ConsentRecord {
+  id          String   @id @default(cuid())
+  tutee       Tutee    @relation(fields: [tuteeId], references: [id])
+  tuteeId     String
+  consentedAt DateTime @default(now())
+  ipAddress   String?
+  userAgent   String?
+  version     String
+}
+
+model Paper {
+  id                    String    @id @default(cuid())
+  tutor                 Tutor     @relation(fields: [tutorId], references: [id])
+  tutorId               String
+  title                 String
+  subject               String?
+  numQuestions          Int       @default(1)
+  paperFileKey          String
+  paperFileSize         Int
+  previewImageKey       String?
+  markSchemeFileKey     String
+  markSchemeFileSize    Int
+  desiredCompletionMins Int?
+  defaultDurationMins   Int
+  defaultBufferSecs     Int       @default(150)
+  createdAt             DateTime  @default(now())
+  archivedAt            DateTime?
+
+  inviteLinks InviteLink[]
+  attempts    Attempt[]
+}
+
+model InviteLink {
+  id                    String    @id @default(cuid())
+  token                 String    @unique @default(cuid())
+  tutor                 Tutor     @relation(fields: [tutorId], references: [id])
+  tutorId               String
+  tutee                 Tutee     @relation(fields: [tuteeId], references: [id])
+  tuteeId               String
+  paper                 Paper     @relation(fields: [paperId], references: [id])
+  paperId               String
+
+  durationMins          Int
+  manualAdjustmentMins  Int       @default(0)
+  bufferSecs            Int       @default(150)
+  desiredCompletionMins Int?
+
+  expiresAt DateTime?
+  usedAt    DateTime?
+  revokedAt DateTime?
+
+  createdAt DateTime @default(now())
+
+  attempt Attempt?
+}
+
+model Attempt {
+  id           String        @id @default(cuid())
+  inviteLink   InviteLink    @relation(fields: [inviteLinkId], references: [id])
+  inviteLinkId String        @unique
+  tutee        Tutee         @relation(fields: [tuteeId], references: [id])
+  tuteeId      String
+  paper        Paper         @relation(fields: [paperId], references: [id])
+  paperId      String
+
+  status AttemptStatus @default(PENDING)
+
+  startedAt             DateTime?
+  totalDurationMins      Int?
+  hardEndAt              DateTime?
+  bufferSecs             Int       @default(150)
+  bufferEndAt            DateTime?
+  desiredCompletionMins  Int?
+
+  submittedAt          DateTime?
+  autoSubmitted        Boolean   @default(false)
+  markSchemeReleasedAt DateTime?
+
+  answers      Answer[]
+  focusEvents  FocusEvent[]
+  activityLogs ActivityLog[]
+  grade        Grade?
+  reportIssues IssueReport[]
+
+  createdAt  DateTime  @default(now())
+  purgeAfter DateTime?
+  purgedAt   DateTime?
+}
+
+model Answer {
+  id          String         @id @default(cuid())
+  attempt     Attempt        @relation(fields: [attemptId], references: [id])
+  attemptId   String
+  questionKey String
+  modality    AnswerModality
+
+  richTextJson   Json?
+  annotationJson Json?
+  scanFileKeys   String[]
+
+  flagged    Boolean    @default(false)
+  syncStatus SyncStatus @default(SYNCED)
+
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+
+  @@unique([attemptId, questionKey])
+}
+
+model FocusEvent {
+  id               String         @id @default(cuid())
+  attempt          Attempt        @relation(fields: [attemptId], references: [id])
+  attemptId        String
+  type             FocusEventType
+  clientTimestamp  DateTime
+  serverReceivedAt DateTime       @default(now())
+  durationMs       Int?
+  meta             Json?
+}
+
+model ActivityLog {
+  id              String   @id @default(cuid())
+  attempt         Attempt  @relation(fields: [attemptId], references: [id])
+  attemptId       String
+  event           String
+  detail          Json?
+  serverTimestamp DateTime @default(now())
+}
+
+model IssueReport {
+  id        String    @id @default(cuid())
+  attempt   Attempt   @relation(fields: [attemptId], references: [id])
+  attemptId String
+  message   String?
+  emailedAt DateTime?
+  createdAt DateTime  @default(now())
+}
+
+model Grade {
+  id              String    @id @default(cuid())
+  attempt         Attempt   @relation(fields: [attemptId], references: [id])
+  attemptId       String    @unique
+  score           Decimal?  @db.Decimal(6, 2)
+  maxScore        Decimal?  @db.Decimal(6, 2)
+  feedbackJson    Json?
+  overallComment  String?
+  gradedAt        DateTime?
+  gradedByTutorId String?
+}

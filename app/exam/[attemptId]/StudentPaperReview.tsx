@@ -64,14 +64,14 @@ export default function StudentPaperReview({
     const ctx = studentCanvasRef.current?.getContext("2d");
     if (!ctx) return;
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    drawStrokes(ctx, studentAnnotationPages[String(page)] ?? [], "#dc2626");
+    drawStrokes(ctx, studentAnnotationPages[String(page)] ?? [], "#2563eb");
   }, [page, studentAnnotationPages, canvasHeight]);
 
   useEffect(() => {
     const ctx = tutorCanvasRef.current?.getContext("2d");
     if (!ctx) return;
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    drawStrokes(ctx, tutorAnnotationPages[String(page)] ?? [], "#2563eb");
+    drawStrokes(ctx, tutorAnnotationPages[String(page)] ?? [], "#dc2626");
   }, [page, tutorAnnotationPages, canvasHeight]);
 
   if (loadError) return <p className="text-sm text-red-600">{loadError}</p>;
@@ -104,8 +104,8 @@ export default function StudentPaperReview({
           className="rounded border px-2 py-1 disabled:opacity-40">Next</button>
         {Object.keys(tutorAnnotationPages).length > 0 && (
           <>
-            <span className="text-xs text-red-600">&#9679; Your annotations</span>
-            <span className="text-xs text-blue-600">&#9679; Tutor marks</span>
+            <span className="text-xs text-blue-600">&#9679; Your annotations</span>
+            <span className="text-xs text-red-600">&#9679; Tutor marks</span>
           </>
         )}
       </div>

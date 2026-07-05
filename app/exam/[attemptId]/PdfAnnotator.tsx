@@ -86,7 +86,7 @@ export default function PdfAnnotator({
     const ctx = canvasRef.current?.getContext("2d");
     if (!ctx) return;
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    ctx.strokeStyle = "#dc2626";
+    ctx.strokeStyle = "#2563eb";
     ctx.lineWidth = 2;
     ctx.lineCap = "round";
     ctx.lineJoin = "round";

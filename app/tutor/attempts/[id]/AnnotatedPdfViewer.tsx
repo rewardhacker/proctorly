@@ -59,14 +59,14 @@ function AnnotatablePdfPane({
     const ctx = studentCanvasRef.current?.getContext("2d");
     if (!ctx) return;
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    drawStrokes(ctx, studentPages?.[String(page)] ?? [], "#dc2626");
+    drawStrokes(ctx, studentPages?.[String(page)] ?? [], "#2563eb");
   }, [page, studentPages, canvasHeight]);
 
   useEffect(() => {
     const ctx = tutorCanvasRef.current?.getContext("2d");
     if (!ctx) return;
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    drawStrokes(ctx, tutorPages[String(page)] ?? [], "#2563eb");
+    drawStrokes(ctx, tutorPages[String(page)] ?? [], "#dc2626");
   }, [page, tutorPages, canvasHeight]);
 
   function point(e: React.PointerEvent<HTMLCanvasElement>): [number, number] {
@@ -85,8 +85,8 @@ function AnnotatablePdfPane({
     const ctx = tutorCanvasRef.current?.getContext("2d");
     if (!ctx) return;
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    drawStrokes(ctx, tutorPages[String(page)] ?? [], "#2563eb");
-    ctx.strokeStyle = "#2563eb";
+    drawStrokes(ctx, tutorPages[String(page)] ?? [], "#dc2626");
+    ctx.strokeStyle = "#dc2626";
     ctx.lineWidth = 2;
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
@@ -154,8 +154,8 @@ function AnnotatablePdfPane({
           className="rounded border px-2 py-1 disabled:opacity-40">Undo</button>
         <button type="button" onClick={clearMyPage} disabled={tutorStrokes.length === 0}
           className="rounded border px-2 py-1 disabled:opacity-40">Clear My Marks</button>
-        <span className="text-xs text-blue-600">&#9679; Your marks</span>
-        <span className="text-xs text-red-600">&#9679; Student</span>
+        <span className="text-xs text-red-600">&#9679; Your marks</span>
+        <span className="text-xs text-blue-600">&#9679; Student</span>
       </div>
     </div>
   );

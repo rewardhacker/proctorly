@@ -150,6 +150,8 @@ model Attempt {
   grade        Grade?
   reportIssues IssueReport[]
 
+  tutorAnnotationJson Json?
+
   createdAt  DateTime  @default(now())
   purgeAfter DateTime?
   purgedAt   DateTime?

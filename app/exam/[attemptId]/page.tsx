@@ -12,7 +12,11 @@ import PdfAnnotator from "./PdfAnnotatorClient";
 import PreExamStart from "./PreExamStart";
 import FocusTracker from "./FocusTracker";
 import ReportIssueButton from "./ReportIssueButton";
+import dynamic from "next/dynamic";
 import Link from "next/link";
+
+const StudentPaperReviewClient = dynamic(() => import("./StudentPaperReview"), { ssr: false });
+const AnswerView = dynamic(() => import("@/components/AnswerView"), { ssr: false });
 
 export default async function ExamPage({
   params,
@@ -134,21 +138,64 @@ export default async function ExamPage({
     );
   }
 
+  const studentAnnotationPages =
+    (attempt.answers.find((a) => a.questionKey === "pdf")?.annotationJson as { pages?: Record<string, number[][][]> } | null)?.pages ?? {};
+  const tutorAnnotationPages =
+    (attempt.tutorAnnotationJson as { pages?: Record<string, number[][][]> } | null)?.pages ?? {};
+  const feedbackQuestions =
+    (attempt.grade?.feedbackJson as { questions?: Record<string, { score: number; maxScore: number }> } | null)?.questions ?? {};
+  const questionKeys = Array.from({ length: attempt.paper.numQuestions }, (_, i) => `q${i + 1}`);
+
   return (
-    <main className="mx-auto max-w-2xl p-8">
-      <h1 className="mb-4 text-xl font-semibold">{attempt.paper.title}</h1>
-      <p className="mb-4">
-        Submitted. {attempt.grade ? "Your paper has been graded." : "Awaiting grading."}
+    <main className="mx-auto max-w-3xl p-8">
+      <h1 className="mb-1 text-xl font-semibold">{attempt.paper.title}</h1>
+      <p className="mb-4 text-sm text-gray-500">
+        {attempt.grade ? "Your paper has been graded." : "Submitted — awaiting grading."}
       </p>
+
       {attempt.grade && (
-        <div className="rounded border p-4">
-          <p className="font-semibold">
-            Score: {attempt.grade.score?.toString()} / {attempt.grade.maxScore?.toString()}
+        <div className="mb-6 rounded border p-4">
+          <p className="mb-2 font-semibold">
+            Total: {attempt.grade.score?.toString()} / {attempt.grade.maxScore?.toString()}
           </p>
+          {questionKeys.length > 1 && Object.keys(feedbackQuestions).length > 0 && (
+            <div className="mb-3 flex flex-col gap-1">
+              {questionKeys.map((k) => feedbackQuestions[k] && (
+                <p key={k} className="text-sm text-gray-600">
+                  {k.toUpperCase()}: {feedbackQuestions[k].score} / {feedbackQuestions[k].maxScore}
+                </p>
+              ))}
+            </div>
+          )}
           {attempt.grade.overallComment && (
-            <p className="mt-2">{attempt.grade.overallComment}</p>
+            <p className="text-sm">{attempt.grade.overallComment}</p>
           )}
         </div>
+      )}
+
+      <h2 className="mb-2 font-medium">Your Paper</h2>
+      <StudentPaperReviewClient
+        fileUrl={`/api/files/${attempt.paper.paperFileKey}`}
+        studentAnnotationPages={studentAnnotationPages as Record<string, [number, number][][]>}
+        tutorAnnotationPages={attempt.grade ? tutorAnnotationPages as Record<string, [number, number][][]> : {}}
+      />
+
+      {questionKeys.length > 0 && (
+        <>
+          <h2 className="mb-2 font-medium">Your Answers</h2>
+          <div className="flex flex-col gap-4">
+            {questionKeys.map((key) => {
+              const answer = attempt.answers.find((a) => a.questionKey === key);
+              const content = answer?.richTextJson as JSONContent | null;
+              return (
+                <div key={key}>
+                  <p className="mb-1 text-xs font-medium text-gray-500">{key.toUpperCase()}</p>
+                  <AnswerView content={content} />
+                </div>
+              );
+            })}
+          </div>
+        </>
       )}
     </main>
   );

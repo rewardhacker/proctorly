@@ -572,12 +572,20 @@ export async function resetAttempt(formData: FormData) {
   redirect(`/tutor/attempts?success=${encodeURIComponent("Submission reset to pending.")}`);
 }
 
+export async function saveTutorAnnotation(attemptId: string, pages: Record<string, number[][][]>) {
+  const tutorId = await requireTutorId();
+  await prisma.attempt.findFirstOrThrow({ where: { id: attemptId, paper: { tutorId } } });
+  await prisma.attempt.update({ where: { id: attemptId }, data: { tutorAnnotationJson: { pages } } });
+}
+
 export async function gradeAttempt(formData: FormData) {
   const tutorId = await requireTutorId();
   const attemptId = formData.get("attemptId") as string;
   const score = Number(formData.get("score"));
   const maxScore = Number(formData.get("maxScore"));
   const overallComment = (formData.get("overallComment") as string) || null;
+  const perQuestionRaw = formData.get("perQuestionJson") as string | null;
+  const feedbackJson = perQuestionRaw ? { questions: JSON.parse(perQuestionRaw) } : undefined;
 
   try {
     await prisma.attempt.findFirstOrThrow({
@@ -586,8 +594,8 @@ export async function gradeAttempt(formData: FormData) {
 
     await prisma.grade.upsert({
       where: { attemptId },
-      update: { score, maxScore, overallComment, gradedAt: new Date(), gradedByTutorId: tutorId },
-      create: { attemptId, score, maxScore, overallComment, gradedAt: new Date(), gradedByTutorId: tutorId },
+      update: { score, maxScore, overallComment, gradedAt: new Date(), gradedByTutorId: tutorId, ...(feedbackJson ? { feedbackJson } : {}) },
+      create: { attemptId, score, maxScore, overallComment, gradedAt: new Date(), gradedByTutorId: tutorId, ...(feedbackJson ? { feedbackJson } : {}) },
     });
 
     const retentionDays = Number(process.env.RETENTION_DAYS ?? 90);

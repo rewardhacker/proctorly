@@ -68,7 +68,7 @@ export default function PdfAnnotator({
         objectUrl = URL.createObjectURL(blob);
         setPdfBlob(objectUrl);
       })
-      .catch(() => setLoadError("Failed to load PDF file."));
+      .catch((err: unknown) => setLoadError(`Failed to load PDF file. (${err instanceof Error ? err.message : String(err)})`));
     return () => {
       if (objectUrl) URL.revokeObjectURL(objectUrl);
     };

@@ -103,12 +103,28 @@ export default async function StudentDashboard() {
                 </p>
               )}
 
+              {attempt.status === "PENDING" && (
+                <Link
+                  href={`/exam/${attempt.id}`}
+                  className="mt-3 inline-block rounded bg-foreground px-3 py-1.5 text-sm text-white"
+                >
+                  Begin Exam
+                </Link>
+              )}
               {isActive && (
                 <Link
                   href={`/exam/${attempt.id}`}
                   className="mt-3 inline-block rounded bg-foreground px-3 py-1.5 text-sm text-white"
                 >
                   Continue Exam
+                </Link>
+              )}
+              {(attempt.status === "SUBMITTED" || attempt.status === "GRADED") && (
+                <Link
+                  href={`/exam/${attempt.id}`}
+                  className="mt-3 inline-block rounded border px-3 py-1.5 text-sm"
+                >
+                  Review Paper
                 </Link>
               )}
             </li>

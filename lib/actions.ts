@@ -429,6 +429,61 @@ export async function finalizeScanUpload(attemptId: string, keys: string[]) {
   revalidatePath(`/exam/${attemptId}`);
 }
 
+export async function deleteInvite(formData: FormData) {
+  const tutorId = await requireTutorId();
+  const inviteId = formData.get("inviteId") as string;
+
+  const invite = await prisma.inviteLink.findFirst({
+    where: { id: inviteId, tutorId },
+    include: { attempt: { select: { id: true } } },
+  });
+  if (!invite) redirect(`/tutor/tutees?error=${encodeURIComponent("Invite not found.")}`);
+
+  if (invite.attempt) {
+    const attemptId = invite.attempt.id;
+    await prisma.$transaction([
+      prisma.grade.deleteMany({ where: { attemptId } }),
+      prisma.issueReport.deleteMany({ where: { attemptId } }),
+      prisma.activityLog.deleteMany({ where: { attemptId } }),
+      prisma.focusEvent.deleteMany({ where: { attemptId } }),
+      prisma.answer.deleteMany({ where: { attemptId } }),
+      prisma.attempt.delete({ where: { id: attemptId } }),
+      prisma.inviteLink.delete({ where: { id: inviteId } }),
+    ]);
+  } else {
+    await prisma.inviteLink.delete({ where: { id: inviteId } });
+  }
+
+  revalidatePath("/tutor/tutees");
+  redirect(`/tutor/tutees?success=${encodeURIComponent("Invite link deleted.")}`);
+}
+
+export async function deleteTutee(formData: FormData) {
+  const tutorId = await requireTutorId();
+  const tuteeId = formData.get("tuteeId") as string;
+
+  const tutee = await prisma.tutee.findFirst({ where: { id: tuteeId, createdByTutorId: tutorId } });
+  if (!tutee) redirect(`/tutor/tutees?error=${encodeURIComponent("Student not found.")}`);
+
+  const attempts = await prisma.attempt.findMany({ where: { tuteeId }, select: { id: true } });
+  const attemptIds = attempts.map((a) => a.id);
+
+  await prisma.$transaction([
+    prisma.grade.deleteMany({ where: { attemptId: { in: attemptIds } } }),
+    prisma.issueReport.deleteMany({ where: { attemptId: { in: attemptIds } } }),
+    prisma.activityLog.deleteMany({ where: { attemptId: { in: attemptIds } } }),
+    prisma.focusEvent.deleteMany({ where: { attemptId: { in: attemptIds } } }),
+    prisma.answer.deleteMany({ where: { attemptId: { in: attemptIds } } }),
+    prisma.attempt.deleteMany({ where: { id: { in: attemptIds } } }),
+    prisma.inviteLink.deleteMany({ where: { tuteeId } }),
+    prisma.consentRecord.deleteMany({ where: { tuteeId } }),
+    prisma.tutee.delete({ where: { id: tuteeId } }),
+  ]);
+
+  revalidatePath("/tutor/tutees");
+  redirect(`/tutor/tutees?success=${encodeURIComponent(`${tutee.name} deleted.`)}`);
+}
+
 export async function deletePaper(formData: FormData) {
   const tutorId = await requireTutorId();
   const paperId = formData.get("paperId") as string;

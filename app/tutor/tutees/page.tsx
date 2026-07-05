@@ -1,7 +1,8 @@
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
-import { createTutee, createInvite, resetTuteePassword } from "@/lib/actions";
+import { createTutee, createInvite, resetTuteePassword, deleteInvite, deleteTutee } from "@/lib/actions";
 import Notice from "@/components/Notice";
+import ConfirmButton from "@/components/ConfirmButton";
 
 export default async function TuteesPage({
   searchParams,
@@ -17,7 +18,7 @@ export default async function TuteesPage({
     prisma.paper.findMany({ where: { tutorId }, orderBy: { createdAt: "desc" } }),
     prisma.inviteLink.findMany({
       where: { tutorId },
-      include: { tutee: true, paper: true },
+      include: { tutee: true, paper: true, attempt: { select: { id: true } } },
       orderBy: { createdAt: "desc" },
     }),
   ]);
@@ -86,8 +87,21 @@ export default async function TuteesPage({
           <ul className="flex flex-col gap-3">
             {tutees.map((t) => (
               <li key={t.id} className="rounded border p-3">
-                <p className="font-medium">{t.name}</p>
-                <p className="text-sm text-gray-500">{t.email}</p>
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <p className="font-medium">{t.name}</p>
+                    <p className="text-sm text-gray-500">{t.email}</p>
+                  </div>
+                  <form action={deleteTutee}>
+                    <input type="hidden" name="tuteeId" value={t.id} />
+                    <ConfirmButton
+                      message={`Delete ${t.name} and all their submissions? This cannot be undone.`}
+                      className="rounded border px-2 py-1 text-sm text-red-600 hover:bg-red-50"
+                    >
+                      Delete
+                    </ConfirmButton>
+                  </form>
+                </div>
                 <details className="mt-2">
                   <summary className="cursor-pointer text-sm text-gray-500 hover:text-gray-800">
                     Reset password
@@ -120,14 +134,29 @@ export default async function TuteesPage({
         <h2 className="mb-4 text-xl font-semibold">Invite Links</h2>
         <ul className="flex flex-col gap-2">
           {invites.map((invite) => (
-            <li key={invite.id} className="rounded border p-3 text-sm">
-              <p>
-                <span className="font-medium">{invite.tutee.name}</span> &rarr; {invite.paper.title}
-              </p>
-              <p className="break-all text-gray-600">
-                {`/invite/${invite.token}`}
-                {invite.usedAt ? " (redeemed)" : ""}
-              </p>
+            <li key={invite.id} className="flex items-start justify-between gap-2 rounded border p-3 text-sm">
+              <div>
+                <p>
+                  <span className="font-medium">{invite.tutee.name}</span> &rarr; {invite.paper.title}
+                </p>
+                <p className="break-all text-gray-600">
+                  {`/invite/${invite.token}`}
+                  {invite.usedAt ? " (redeemed)" : ""}
+                </p>
+              </div>
+              <form action={deleteInvite}>
+                <input type="hidden" name="inviteId" value={invite.id} />
+                <ConfirmButton
+                  message={
+                    invite.attempt
+                      ? "Delete this invite? The linked submission will also be deleted."
+                      : "Delete this invite link?"
+                  }
+                  className="shrink-0 rounded border px-2 py-1 text-sm text-red-600 hover:bg-red-50"
+                >
+                  Delete
+                </ConfirmButton>
+              </form>
             </li>
           ))}
           {invites.length === 0 && <p className="text-gray-500">No invite links yet.</p>}

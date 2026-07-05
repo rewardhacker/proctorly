@@ -12,6 +12,12 @@ function format(ms: number) {
   return `${m}:${s.toString().padStart(2, "0")}`;
 }
 
+const WARNINGS = [
+  { ms: 10 * 60 * 1000, label: "10 minutes remaining!", color: "bg-yellow-50 border-yellow-400 text-yellow-800" },
+  { ms: 5 * 60 * 1000, label: "5 minutes remaining!", color: "bg-orange-50 border-orange-400 text-orange-800" },
+  { ms: 60 * 1000, label: "1 minute remaining!", color: "bg-red-50 border-red-500 text-red-800" },
+];
+
 export default function Countdown({
   attemptId,
   status,
@@ -21,9 +27,11 @@ export default function Countdown({
 }) {
   const router = useRouter();
   const [label, setLabel] = useState("");
-  const offsetRef = useRef(0); // serverNow - Date.now(), ms
+  const [warning, setWarning] = useState<{ label: string; color: string } | null>(null);
+  const offsetRef = useRef(0);
   const targetRef = useRef<number | null>(null);
   const lastStatusRef = useRef(status);
+  const firedWarningsRef = useRef(new Set<number>());
 
   useEffect(() => {
     let stopped = false;
@@ -56,7 +64,19 @@ export default function Countdown({
         return;
       }
       const serverNow = Date.now() + offsetRef.current;
-      setLabel(format(targetRef.current - serverNow));
+      const remaining = targetRef.current - serverNow;
+      setLabel(format(remaining));
+
+      // fire each warning once when we cross below its threshold
+      if (lastStatusRef.current === "IN_PROGRESS") {
+        for (const w of WARNINGS) {
+          if (remaining <= w.ms && !firedWarningsRef.current.has(w.ms)) {
+            firedWarningsRef.current.add(w.ms);
+            setWarning({ label: w.label, color: w.color });
+            setTimeout(() => setWarning(null), 8000);
+          }
+        }
+      }
     }, 1000);
 
     return () => {
@@ -66,12 +86,19 @@ export default function Countdown({
     };
   }, [attemptId, router]);
 
-  if (!label) return null;
-
   return (
-    <p className="mb-4 text-lg font-semibold">
-      {status === "UPLOAD_BUFFER" ? "Upload buffer: " : "Time remaining: "}
-      {label}
-    </p>
+    <>
+      {warning && (
+        <div className={`mb-4 rounded border px-4 py-3 text-sm font-semibold ${warning.color}`}>
+          ⏰ {warning.label}
+        </div>
+      )}
+      {label && (
+        <p className="mb-4 text-lg font-semibold">
+          {status === "UPLOAD_BUFFER" ? "Upload buffer: " : "Time remaining: "}
+          {label}
+        </p>
+      )}
+    </>
   );
 }

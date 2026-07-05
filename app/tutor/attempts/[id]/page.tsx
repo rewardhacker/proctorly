@@ -3,7 +3,6 @@ import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 import { notFound } from "next/navigation";
 import { computeFlagStatus } from "@/lib/antiCheat";
-import AnswerView from "./AnswerView";
 import Notice from "@/components/Notice";
 import GradingForm from "./GradingForm";
 import AnnotatedPdfViewerClient from "./AnnotatedPdfViewerClient";
@@ -50,10 +49,24 @@ export default async function GradeAttemptPage({
   const feedbackQuestions =
     (attempt.grade?.feedbackJson as { questions?: Record<string, { score: number; maxScore: number }> } | null)?.questions ?? {};
 
+  const durationLabel = (() => {
+    if (!attempt.startedAt || !attempt.submittedAt) return null;
+    const ms = attempt.submittedAt.getTime() - attempt.startedAt.getTime();
+    const totalMins = Math.floor(ms / 60000);
+    const secs = Math.floor((ms % 60000) / 1000);
+    return `${totalMins}m ${secs}s`;
+  })();
+
   return (
     <main className="mx-auto max-w-5xl p-8">
       <h1 className="mb-1 text-xl font-semibold">{attempt.paper.title}</h1>
-      <p className="mb-4 text-sm text-gray-600">{attempt.tutee.name}</p>
+      <p className="mb-1 text-sm text-gray-600">{attempt.tutee.name}</p>
+      {durationLabel && (
+        <p className="mb-4 text-sm text-gray-500">
+          Time taken: <span className="font-medium">{durationLabel}</span>
+          {attempt.autoSubmitted && " (auto-submitted)"}
+        </p>
+      )}
       <Notice error={error} />
 
       <div className={`mb-6 rounded border p-3 text-sm ${flagStatus.flagged ? "border-yellow-400 bg-yellow-50" : "border-gray-200"}`}>
@@ -92,34 +105,24 @@ export default async function GradeAttemptPage({
         initialTutorAnnotationPages={tutorAnnotationPages as Record<string, [number, number][][]>}
       />
 
-      <h2 className="mb-2 font-medium">Answers</h2>
-      <div className="mb-6 flex flex-col gap-3">
-        {questionAnswers.map((qa) => (
-          <div key={qa.key}>
-            <p className="mb-1 text-xs font-medium text-gray-500">
-              {qa.key.toUpperCase()} {qa.flagged && "(flagged by student)"}
-            </p>
-            <AnswerView content={qa.content} />
+      {scans.length > 0 && (
+        <div className="mb-6">
+          <p className="mb-1 text-xs font-medium text-gray-500">Uploaded scans</p>
+          <div className="flex flex-col gap-1">
+            {scans.map((key) => (
+              <a key={key} href={`/api/files/${key}`} target="_blank" className="underline">
+                {key.split("/").pop()}
+              </a>
+            ))}
           </div>
-        ))}
-        {scans.length > 0 && (
-          <div>
-            <p className="mb-1 text-xs font-medium text-gray-500">Uploaded scans</p>
-            <div className="flex flex-col gap-1">
-              {scans.map((key) => (
-                <a key={key} href={`/api/files/${key}`} target="_blank" className="underline">
-                  {key.split("/").pop()}
-                </a>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
+        </div>
+      )}
 
-      <h2 className="mb-2 font-medium">Grade</h2>
+      <h2 className="mb-2 font-medium">Answers &amp; Marks</h2>
       <GradingForm
         attemptId={attempt.id}
         questionKeys={questionKeys}
+        questionAnswers={questionAnswers}
         hasGrade={!!attempt.grade}
         existingComment={attempt.grade?.overallComment ?? null}
         existingPerQuestion={Object.fromEntries(

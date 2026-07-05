@@ -1,10 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import dynamic from "next/dynamic";
 import type { Document as DocumentType, Page as PageType } from "react-pdf";
-
-const RENDER_WIDTH = 560;
 
 type ReactPdfModule = { Document: typeof DocumentType; Page: typeof PageType };
 type Stroke = [number, number][];
@@ -14,19 +11,17 @@ function PdfPane({
   blob,
   label,
   annotationPages,
-  page,
-  numPages,
-  onNumPages,
+  renderWidth,
 }: {
   blob: string;
   label: string;
   annotationPages?: Pages;
-  page: number;
-  numPages: number;
-  onNumPages: (n: number) => void;
+  renderWidth: number;
 }) {
   const [reactPdf, setReactPdf] = useState<ReactPdfModule | null>(null);
-  const [canvasHeight, setCanvasHeight] = useState(RENDER_WIDTH * 1.414);
+  const [page, setPage] = useState(1);
+  const [numPages, setNumPages] = useState(0);
+  const [canvasHeight, setCanvasHeight] = useState(renderWidth * 1.414);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -56,18 +51,23 @@ function PdfPane({
     }
   }, [page, annotationPages, canvasHeight]);
 
+  // Re-render page at new width when renderWidth changes
+  useEffect(() => {
+    setCanvasHeight(renderWidth * 1.414);
+  }, [renderWidth]);
+
   if (!reactPdf) return <p className="text-sm text-gray-400">Loading…</p>;
   const { Document, Page } = reactPdf;
 
   return (
-    <div className="flex flex-col gap-2">
-      <p className="text-xs font-medium text-gray-500 uppercase tracking-wide">{label}</p>
-      <div className="relative rounded border" style={{ width: RENDER_WIDTH, height: canvasHeight }}>
-        <Document file={blob} onLoadSuccess={({ numPages: n }) => onNumPages(n)}>
+    <div className="flex min-w-0 flex-1 flex-col gap-2">
+      <p className="text-xs font-medium uppercase tracking-wide text-gray-500">{label}</p>
+      <div className="relative rounded border" style={{ width: renderWidth, height: canvasHeight }}>
+        <Document file={blob} onLoadSuccess={({ numPages: n }) => setNumPages(n)}>
           <Page
             pageNumber={page}
-            width={RENDER_WIDTH}
-            onLoadSuccess={(p) => setCanvasHeight(RENDER_WIDTH * (p.height / p.width))}
+            width={renderWidth}
+            onLoadSuccess={(p) => setCanvasHeight(renderWidth * (p.height / p.width))}
             renderTextLayer={false}
             renderAnnotationLayer={false}
           />
@@ -75,13 +75,31 @@ function PdfPane({
         {annotationPages && (
           <canvas
             ref={canvasRef}
-            width={RENDER_WIDTH}
+            width={renderWidth}
             height={canvasHeight}
             className="pointer-events-none absolute left-0 top-0"
           />
         )}
       </div>
-      <p className="text-xs text-gray-400">Page {page} / {numPages || "?"}</p>
+      <div className="flex items-center gap-2 text-sm">
+        <button
+          type="button"
+          onClick={() => setPage((p) => Math.max(1, p - 1))}
+          disabled={page <= 1}
+          className="rounded border px-2 py-1 disabled:opacity-40"
+        >
+          Prev
+        </button>
+        <span className="text-gray-500">Page {page} / {numPages || "?"}</span>
+        <button
+          type="button"
+          onClick={() => setPage((p) => Math.min(numPages || p, p + 1))}
+          disabled={page >= numPages}
+          className="rounded border px-2 py-1 disabled:opacity-40"
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 }
@@ -99,18 +117,28 @@ export default function AnnotatedPdfViewer({
   const [markBlob, setMarkBlob] = useState<string | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [sideBySide, setSideBySide] = useState(false);
-  const [page, setPage] = useState(1);
-  const [numPages, setNumPages] = useState(0);
-  const [markNumPages, setMarkNumPages] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [containerWidth, setContainerWidth] = useState(600);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new ResizeObserver(([entry]) => {
+      setContainerWidth(entry.contentRect.width);
+    });
+    observer.observe(el);
+    setContainerWidth(el.getBoundingClientRect().width);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     let paperUrl: string, markUrl: string;
     Promise.all([
-      fetch(paperFileUrl).then(r => { if (!r.ok) throw new Error(`paper HTTP ${r.status}`); return r.blob(); }),
-      fetch(markSchemeFileUrl).then(r => { if (!r.ok) throw new Error(`mark scheme HTTP ${r.status}`); return r.blob(); }),
-    ]).then(([paperBlob, markBlob]) => {
-      paperUrl = URL.createObjectURL(paperBlob);
-      markUrl = URL.createObjectURL(markBlob);
+      fetch(paperFileUrl).then((r) => { if (!r.ok) throw new Error(`paper HTTP ${r.status}`); return r.blob(); }),
+      fetch(markSchemeFileUrl).then((r) => { if (!r.ok) throw new Error(`mark scheme HTTP ${r.status}`); return r.blob(); }),
+    ]).then(([pb, mb]) => {
+      paperUrl = URL.createObjectURL(pb);
+      markUrl = URL.createObjectURL(mb);
       setPaperBlob(paperUrl);
       setMarkBlob(markUrl);
     }).catch((err: unknown) => setLoadError(String(err)));
@@ -120,14 +148,16 @@ export default function AnnotatedPdfViewer({
     };
   }, [paperFileUrl, markSchemeFileUrl]);
 
-  if (loadError) return <p className="text-sm text-red-600">{loadError}</p>;
-  if (!paperBlob || !markBlob) return <p className="text-sm text-gray-400">Loading PDFs…</p>;
+  const GAP = 16;
+  const renderWidth = sideBySide
+    ? Math.floor((containerWidth - GAP) / 2)
+    : containerWidth;
 
-  const maxPages = Math.max(numPages, markNumPages);
+  if (loadError) return <p className="text-sm text-red-600">{loadError}</p>;
 
   return (
-    <div className="mb-6">
-      <div className="mb-3 flex items-center gap-3">
+    <div className="mb-6" ref={containerRef}>
+      <div className="mb-3">
         <button
           type="button"
           onClick={() => setSideBySide((s) => !s)}
@@ -135,46 +165,27 @@ export default function AnnotatedPdfViewer({
         >
           {sideBySide ? "Single view" : "Side by side with mark scheme"}
         </button>
-        <div className="flex items-center gap-2 text-sm">
-          <button
-            type="button"
-            onClick={() => setPage((p) => Math.max(1, p - 1))}
-            disabled={page <= 1}
-            className="rounded border px-2 py-1 disabled:opacity-40"
-          >
-            Prev
-          </button>
-          <span className="text-gray-500">Page {page}</span>
-          <button
-            type="button"
-            onClick={() => setPage((p) => Math.min(maxPages || p, p + 1))}
-            disabled={page >= maxPages}
-            className="rounded border px-2 py-1 disabled:opacity-40"
-          >
-            Next
-          </button>
-        </div>
       </div>
 
-      <div className={`flex gap-4 ${sideBySide ? "overflow-x-auto" : ""}`}>
-        <PdfPane
-          blob={paperBlob}
-          label="Student's annotated paper"
-          annotationPages={annotationPages}
-          page={page}
-          numPages={numPages}
-          onNumPages={setNumPages}
-        />
-        {sideBySide && (
+      {!paperBlob || !markBlob ? (
+        <p className="text-sm text-gray-400">Loading PDFs…</p>
+      ) : (
+        <div className="flex gap-4">
           <PdfPane
-            blob={markBlob}
-            label="Mark scheme"
-            page={page}
-            numPages={markNumPages}
-            onNumPages={setMarkNumPages}
+            blob={paperBlob}
+            label="Student's annotated paper"
+            annotationPages={annotationPages}
+            renderWidth={renderWidth}
           />
-        )}
-      </div>
+          {sideBySide && (
+            <PdfPane
+              blob={markBlob}
+              label="Mark scheme"
+              renderWidth={renderWidth}
+            />
+          )}
+        </div>
+      )}
     </div>
   );
 }

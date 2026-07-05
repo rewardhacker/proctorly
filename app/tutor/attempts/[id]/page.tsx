@@ -46,7 +46,7 @@ export default async function GradeAttemptPage({
     (annotationAnswer?.annotationJson as { pages?: Record<string, number[][][]> } | null)?.pages ?? {};
 
   return (
-    <main className="mx-auto max-w-2xl p-8">
+    <main className="mx-auto max-w-5xl p-8">
       <h1 className="mb-1 text-xl font-semibold">{attempt.paper.title}</h1>
       <p className="mb-4 text-sm text-gray-600">{attempt.tutee.name}</p>
       <Notice error={error} />

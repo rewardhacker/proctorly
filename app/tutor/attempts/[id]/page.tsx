@@ -6,6 +6,9 @@ import { gradeAttempt } from "@/lib/actions";
 import { computeFlagStatus } from "@/lib/antiCheat";
 import AnswerView from "./AnswerView";
 import Notice from "@/components/Notice";
+import dynamic from "next/dynamic";
+
+const AnnotatedPdfViewer = dynamic(() => import("./AnnotatedPdfViewer"), { ssr: false });
 
 export default async function GradeAttemptPage({
   params,
@@ -40,6 +43,9 @@ export default async function GradeAttemptPage({
     return { key, content, flagged: answer?.flagged ?? false };
   });
   const scans = attempt.answers.find((a) => a.questionKey === "scan")?.scanFileKeys ?? [];
+  const annotationAnswer = attempt.answers.find((a) => a.questionKey === "pdf");
+  const annotationPages =
+    (annotationAnswer?.annotationJson as { pages?: Record<string, number[][][]> } | null)?.pages ?? {};
 
   return (
     <main className="mx-auto max-w-2xl p-8">
@@ -84,15 +90,12 @@ export default async function GradeAttemptPage({
         </ul>
       </details>
 
-      <div className="mb-6">
-        <a
-          href={`/api/files/${attempt.paper.markSchemeFileKey}`}
-          target="_blank"
-          className="inline-block rounded border px-3 py-1.5 text-sm hover:bg-gray-50"
-        >
-          View Mark Scheme
-        </a>
-      </div>
+      <h2 className="mb-2 font-medium">Annotated Paper</h2>
+      <AnnotatedPdfViewer
+        paperFileUrl={`/api/files/${attempt.paper.paperFileKey}`}
+        markSchemeFileUrl={`/api/files/${attempt.paper.markSchemeFileKey}`}
+        annotationPages={annotationPages as Record<string, [number, number][][]>}
+      />
 
       <h2 className="mb-2 font-medium">Answers</h2>
       <div className="mb-6 flex flex-col gap-3">

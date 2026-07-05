@@ -25,6 +25,8 @@ export default function PdfAnnotator({
   initialPages: Pages;
 }) {
   const [reactPdf, setReactPdf] = useState<ReactPdfModule | null>(null);
+  const [pdfBlob, setPdfBlob] = useState<string | null>(null);
+  const [loadError, setLoadError] = useState<string | null>(null);
   const [numPages, setNumPages] = useState(0);
   const [pageNum, setPageNum] = useState(1);
   const [pages, setPages] = useState<Pages>(initialPages);
@@ -52,6 +54,25 @@ export default function PdfAnnotator({
       cancelled = true;
     };
   }, []);
+
+  // Fetch PDF via normal browser fetch so cookies are sent automatically,
+  // then hand pdfjs a blob URL instead of the authenticated endpoint URL.
+  useEffect(() => {
+    let objectUrl: string;
+    fetch(fileUrl)
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.blob();
+      })
+      .then((blob) => {
+        objectUrl = URL.createObjectURL(blob);
+        setPdfBlob(objectUrl);
+      })
+      .catch(() => setLoadError("Failed to load PDF file."));
+    return () => {
+      if (objectUrl) URL.revokeObjectURL(objectUrl);
+    };
+  }, [fileUrl]);
 
   function drawStroke(ctx: CanvasRenderingContext2D, stroke: Stroke) {
     if (stroke.length < 2) return;
@@ -121,7 +142,8 @@ export default function PdfAnnotator({
     scheduleSave(next);
   }
 
-  if (!reactPdf) {
+  if (!reactPdf || !pdfBlob) {
+    if (loadError) return <p className="mb-4 text-sm text-red-600">{loadError}</p>;
     return <p className="mb-4 text-sm text-gray-500">Loading paper…</p>;
   }
   const { Document, Page } = reactPdf;
@@ -132,7 +154,7 @@ export default function PdfAnnotator({
         className="relative mb-2 rounded border"
         style={{ width: RENDER_WIDTH, height: canvasHeight }}
       >
-        <Document file={fileUrl} options={{ withCredentials: true }} onLoadSuccess={({ numPages }) => setNumPages(numPages)}>
+        <Document file={pdfBlob} onLoadSuccess={({ numPages }) => setNumPages(numPages)}>
           <Page
             pageNumber={pageNum}
             width={RENDER_WIDTH}

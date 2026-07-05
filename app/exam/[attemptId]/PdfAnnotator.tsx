@@ -136,6 +136,12 @@ export default function PdfAnnotator({
     currentStroke.current = [];
   }
 
+  function undoStroke() {
+    const next = { ...pages, [String(pageNum)]: pageStrokes.slice(0, -1) };
+    setPages(next);
+    scheduleSave(next);
+  }
+
   function clearPage() {
     const next = { ...pages, [String(pageNum)]: [] };
     setPages(next);
@@ -191,6 +197,14 @@ export default function PdfAnnotator({
           className="rounded border px-2 py-1"
         >
           Next
+        </button>
+        <button
+          type="button"
+          onClick={undoStroke}
+          disabled={pageStrokes.length === 0}
+          className="rounded border px-2 py-1 disabled:opacity-40"
+        >
+          Undo
         </button>
         <button type="button" onClick={clearPage} className="rounded border px-2 py-1">
           Clear Page

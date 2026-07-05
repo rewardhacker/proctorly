@@ -132,7 +132,7 @@ export default function PdfAnnotator({
         className="relative mb-2 rounded border"
         style={{ width: RENDER_WIDTH, height: canvasHeight }}
       >
-        <Document file={fileUrl} onLoadSuccess={({ numPages }) => setNumPages(numPages)}>
+        <Document file={fileUrl} options={{ withCredentials: true }} onLoadSuccess={({ numPages }) => setNumPages(numPages)}>
           <Page
             pageNumber={pageNum}
             width={RENDER_WIDTH}

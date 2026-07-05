@@ -1,4 +1,6 @@
-import type { FocusEvent } from "@prisma/client";
+import type { FocusEventType } from "@prisma/client";
+
+type MinimalFocusEvent = { type: FocusEventType; durationMs: number | null };
 
 // ponytail: fixed default rules, not tutor-configurable yet. Add a
 // per-paper/invite override when a tutor actually asks for different
@@ -6,7 +8,7 @@ import type { FocusEvent } from "@prisma/client";
 const SWITCH_LIMIT = 3;
 const AWAY_MS_LIMIT = 10_000;
 
-export function computeFlagStatus(events: FocusEvent[]) {
+export function computeFlagStatus(events: MinimalFocusEvent[]) {
   const switchCount = events.filter((e) => e.type === "VISIBILITY_HIDDEN").length;
   const totalAwayMs = events
     .filter((e) => e.type === "VISIBILITY_VISIBLE")

@@ -429,6 +429,94 @@ export async function finalizeScanUpload(attemptId: string, keys: string[]) {
   revalidatePath(`/exam/${attemptId}`);
 }
 
+export async function deletePaper(formData: FormData) {
+  const tutorId = await requireTutorId();
+  const paperId = formData.get("paperId") as string;
+
+  const paper = await prisma.paper.findFirst({ where: { id: paperId, tutorId } });
+  if (!paper) redirect(`/tutor/papers?error=${encodeURIComponent("Paper not found.")}`);
+
+  // Cascade delete all related records
+  const attempts = await prisma.attempt.findMany({ where: { paperId }, select: { id: true } });
+  const attemptIds = attempts.map((a) => a.id);
+
+  await prisma.$transaction([
+    prisma.grade.deleteMany({ where: { attemptId: { in: attemptIds } } }),
+    prisma.issueReport.deleteMany({ where: { attemptId: { in: attemptIds } } }),
+    prisma.activityLog.deleteMany({ where: { attemptId: { in: attemptIds } } }),
+    prisma.focusEvent.deleteMany({ where: { attemptId: { in: attemptIds } } }),
+    prisma.answer.deleteMany({ where: { attemptId: { in: attemptIds } } }),
+    prisma.attempt.deleteMany({ where: { id: { in: attemptIds } } }),
+    prisma.inviteLink.deleteMany({ where: { paperId } }),
+    prisma.paper.delete({ where: { id: paperId } }),
+  ]);
+
+  revalidatePath("/tutor/papers");
+  redirect(`/tutor/papers?success=${encodeURIComponent("Paper deleted.")}`);
+}
+
+export async function deleteAttempt(formData: FormData) {
+  const tutorId = await requireTutorId();
+  const attemptId = formData.get("attemptId") as string;
+
+  const attempt = await prisma.attempt.findFirst({
+    where: { id: attemptId, paper: { tutorId } },
+    select: { id: true, inviteLinkId: true },
+  });
+  if (!attempt) redirect(`/tutor/attempts?error=${encodeURIComponent("Submission not found.")}`);
+
+  await prisma.$transaction([
+    prisma.grade.deleteMany({ where: { attemptId } }),
+    prisma.issueReport.deleteMany({ where: { attemptId } }),
+    prisma.activityLog.deleteMany({ where: { attemptId } }),
+    prisma.focusEvent.deleteMany({ where: { attemptId } }),
+    prisma.answer.deleteMany({ where: { attemptId } }),
+    prisma.attempt.delete({ where: { id: attemptId } }),
+    prisma.inviteLink.update({ where: { id: attempt.inviteLinkId }, data: { usedAt: null } }),
+  ]);
+
+  revalidatePath("/tutor/attempts");
+  redirect(`/tutor/attempts?success=${encodeURIComponent("Submission deleted.")}`);
+}
+
+export async function resetAttempt(formData: FormData) {
+  const tutorId = await requireTutorId();
+  const attemptId = formData.get("attemptId") as string;
+
+  const attempt = await prisma.attempt.findFirst({
+    where: { id: attemptId, paper: { tutorId } },
+    select: { id: true, inviteLinkId: true },
+  });
+  if (!attempt) redirect(`/tutor/attempts?error=${encodeURIComponent("Submission not found.")}`);
+
+  await prisma.$transaction([
+    prisma.grade.deleteMany({ where: { attemptId } }),
+    prisma.issueReport.deleteMany({ where: { attemptId } }),
+    prisma.activityLog.deleteMany({ where: { attemptId } }),
+    prisma.focusEvent.deleteMany({ where: { attemptId } }),
+    prisma.answer.deleteMany({ where: { attemptId } }),
+    prisma.attempt.update({
+      where: { id: attemptId },
+      data: {
+        status: "PENDING",
+        startedAt: null,
+        totalDurationMins: null,
+        hardEndAt: null,
+        bufferEndAt: null,
+        submittedAt: null,
+        autoSubmitted: false,
+        markSchemeReleasedAt: null,
+        purgeAfter: null,
+        purgedAt: null,
+      },
+    }),
+    prisma.inviteLink.update({ where: { id: attempt.inviteLinkId }, data: { usedAt: null } }),
+  ]);
+
+  revalidatePath("/tutor/attempts");
+  redirect(`/tutor/attempts?success=${encodeURIComponent("Submission reset to pending.")}`);
+}
+
 export async function gradeAttempt(formData: FormData) {
   const tutorId = await requireTutorId();
   const attemptId = formData.get("attemptId") as string;

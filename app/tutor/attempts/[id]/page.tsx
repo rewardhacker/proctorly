@@ -6,9 +6,7 @@ import { gradeAttempt } from "@/lib/actions";
 import { computeFlagStatus } from "@/lib/antiCheat";
 import AnswerView from "./AnswerView";
 import Notice from "@/components/Notice";
-import dynamic from "next/dynamic";
-
-const AnnotatedPdfViewer = dynamic(() => import("./AnnotatedPdfViewer"), { ssr: false });
+import AnnotatedPdfViewer from "./AnnotatedPdfViewerClient";
 
 export default async function GradeAttemptPage({
   params,

@@ -12,11 +12,9 @@ import PdfAnnotator from "./PdfAnnotatorClient";
 import PreExamStart from "./PreExamStart";
 import FocusTracker from "./FocusTracker";
 import ReportIssueButton from "./ReportIssueButton";
-import dynamic from "next/dynamic";
 import Link from "next/link";
-
-const StudentPaperReviewClient = dynamic(() => import("./StudentPaperReview"), { ssr: false });
-const AnswerView = dynamic(() => import("@/components/AnswerView"), { ssr: false });
+import StudentPaperReviewClient from "./StudentPaperReviewClient";
+import AnswerView from "./AnswerViewClient";
 
 export default async function ExamPage({
   params,

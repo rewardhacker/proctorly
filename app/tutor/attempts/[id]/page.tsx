@@ -84,6 +84,16 @@ export default async function GradeAttemptPage({
         </ul>
       </details>
 
+      <div className="mb-6">
+        <a
+          href={`/api/files/${attempt.paper.markSchemeFileKey}`}
+          target="_blank"
+          className="inline-block rounded border px-3 py-1.5 text-sm hover:bg-gray-50"
+        >
+          View Mark Scheme
+        </a>
+      </div>
+
       <h2 className="mb-2 font-medium">Answers</h2>
       <div className="mb-6 flex flex-col gap-3">
         {questionAnswers.map((qa) => (

@@ -140,15 +140,6 @@ export default async function ExamPage({
       <p className="mb-4">
         Submitted. {attempt.grade ? "Your paper has been graded." : "Awaiting grading."}
       </p>
-      {attempt.markSchemeReleasedAt && (
-        <a
-          href={`/api/files/${attempt.paper.markSchemeFileKey}`}
-          target="_blank"
-          className="mb-4 inline-block rounded bg-foreground px-4 py-2 text-white"
-        >
-          View Mark Scheme
-        </a>
-      )}
       {attempt.grade && (
         <div className="rounded border p-4">
           <p className="font-semibold">

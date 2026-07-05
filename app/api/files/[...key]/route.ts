@@ -37,10 +37,8 @@ export async function GET(
     const attempt = await prisma.attempt.findFirst({
       where: { tuteeId: tutee.tuteeId, paperId: paper.id },
     });
-    if (attempt) {
-      if (key === paper.paperFileKey && attempt.status !== "PENDING") return serve(key);
-      if (key === paper.markSchemeFileKey && attempt.markSchemeReleasedAt) return serve(key);
-    }
+    if (attempt && key === paper.paperFileKey && attempt.status !== "PENDING") return serve(key);
+    // Mark scheme is tutor-only — never served to tutees
   }
 
   return new Response("Forbidden", { status: 403 });

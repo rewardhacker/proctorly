@@ -60,7 +60,7 @@ export default async function GradeAttemptPage({
           {flagStatus.copyPasteAttempts === 1 ? "" : "s"}
         </p>
         <p className="mt-1 text-xs text-gray-400">
-          Best-effort client-reported signal &mdash; absence of flags does not
+          Best-effort client-reported signal &ndash; absence of flags does not
           prove no tab-switching occurred.
         </p>
       </div>
@@ -78,7 +78,7 @@ export default async function GradeAttemptPage({
             .sort((a, b) => a.at.getTime() - b.at.getTime())
             .map((e, i) => (
               <li key={i}>
-                {e.at.toISOString()} &mdash; {e.label}
+                {e.at.toISOString()} &ndash; {e.label}
               </li>
             ))}
         </ul>

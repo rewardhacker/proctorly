@@ -7,7 +7,7 @@ function statusLabel(status: string) {
     case "PENDING": return "Not started";
     case "IN_PROGRESS": return "In progress";
     case "UPLOAD_BUFFER": return "Uploading";
-    case "SUBMITTED": return "Submitted — awaiting grade";
+    case "SUBMITTED": return "Submitted – awaiting grade";
     case "GRADED": return "Graded";
     default: return status;
   }
@@ -45,7 +45,7 @@ export default async function StudentDashboard() {
       )}
 
       <ul className="flex flex-col gap-3">
-        {/* Unredeemed invite links — show as "not started, click to begin" */}
+        {/* Unredeemed invite links – show as "not started, click to begin" */}
         {pendingInvites.map((invite) => (
           <li key={invite.id} className="rounded border p-4">
             <p className="font-medium">{invite.paper.title}</p>

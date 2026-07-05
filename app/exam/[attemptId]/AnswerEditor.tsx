@@ -78,7 +78,7 @@ export default function AnswerEditor({
       <EditorContent editor={editor} />
       <p className="mt-1 h-4 text-xs text-gray-500">
         {status === "local" && "Saving locally, syncing…"}
-        {status === "offline" && "Offline — saved on this device, will sync when reconnected"}
+        {status === "offline" && "Offline – saved on this device, will sync when reconnected"}
         {status === "synced" && "Saved"}
       </p>
     </div>

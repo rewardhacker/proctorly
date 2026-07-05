@@ -45,7 +45,7 @@ export default function ScanUpload({ attemptId }: { attemptId: string }) {
       );
       setStatus("done");
     } catch {
-      setError("Upload failed — try again");
+      setError("Upload failed – try again");
       setStatus("error");
     }
   }

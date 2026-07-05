@@ -16,7 +16,7 @@ export default function StudentLoginPage() {
       setError(result.error);
       setLoading(false);
     }
-    // on success, studentLogin redirects — no further handling needed
+    // on success, studentLogin redirects – no further handling needed
   }
 
   return (

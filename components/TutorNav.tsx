@@ -35,7 +35,7 @@ export default function TutorNav() {
           })}
         </nav>
         <form action={logoutAction}>
-          <button type="submit" className="rounded bg-red-600 px-3 py-1.5 text-sm text-white hover:bg-red-700">
+          <button type="submit" className="rounded bg-red-900 px-3 py-1.5 text-sm text-white hover:bg-red-800">
             Log Out
           </button>
         </form>

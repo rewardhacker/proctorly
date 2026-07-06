@@ -138,8 +138,10 @@ export default async function ExamPage({
 
   const studentAnnotationPages =
     (attempt.answers.find((a) => a.questionKey === "pdf")?.annotationJson as { pages?: Record<string, number[][][]> } | null)?.pages ?? {};
-  const tutorAnnotationPages =
-    (attempt.tutorAnnotationJson as { pages?: Record<string, number[][][]> } | null)?.pages ?? {};
+  const tutorAnnotationJson = attempt.tutorAnnotationJson as { pages?: Record<string, number[][][]>; scanPages?: Record<string, Record<string, number[][][]>> } | null;
+  const tutorAnnotationPages = tutorAnnotationJson?.pages ?? {};
+  const tutorScanAnnotationPages = tutorAnnotationJson?.scanPages ?? {};
+  const scans = attempt.answers.find((a) => a.questionKey === "scan")?.scanFileKeys ?? [];
   const feedbackQuestions =
     (attempt.grade?.feedbackJson as { questions?: Record<string, { score: number; maxScore: number }> } | null)?.questions ?? {};
   const questionKeys = Array.from({ length: attempt.paper.numQuestions }, (_, i) => `q${i + 1}`);
@@ -177,6 +179,22 @@ export default async function ExamPage({
         studentAnnotationPages={studentAnnotationPages as Record<string, [number, number][][]>}
         tutorAnnotationPages={attempt.grade ? tutorAnnotationPages as Record<string, [number, number][][]> : {}}
       />
+
+      {scans.length > 0 && (
+        <>
+          <h2 className="mb-2 font-medium">Your Uploaded Scans</h2>
+          {scans.map((key) => (
+            <div key={key} className="mb-4">
+              <p className="mb-1 text-xs text-gray-500">{key.split("/").pop()}</p>
+              <StudentPaperReviewClient
+                fileUrl={`/api/files/${key}`}
+                studentAnnotationPages={{}}
+                tutorAnnotationPages={attempt.grade ? (tutorScanAnnotationPages[key] ?? {}) as Record<string, [number, number][][]> : {}}
+              />
+            </div>
+          ))}
+        </>
+      )}
 
       {questionKeys.length > 0 && (
         <>

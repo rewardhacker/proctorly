@@ -1,7 +1,11 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import type { ComponentProps } from "react";
+import type AnnotatedPdfViewer from "./AnnotatedPdfViewer";
 
-const AnnotatedPdfViewer = dynamic(() => import("./AnnotatedPdfViewer"), { ssr: false });
+const AnnotatedPdfViewerDynamic = dynamic(() => import("./AnnotatedPdfViewer"), { ssr: false });
 
-export default AnnotatedPdfViewer;
+export default function AnnotatedPdfViewerClient(props: ComponentProps<typeof AnnotatedPdfViewer>) {
+  return <AnnotatedPdfViewerDynamic {...props} />;
+}

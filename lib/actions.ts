@@ -572,10 +572,46 @@ export async function resetAttempt(formData: FormData) {
   redirect(`/tutor/attempts?success=${encodeURIComponent("Submission reset to pending.")}`);
 }
 
-export async function saveTutorAnnotation(attemptId: string, pages: Record<string, number[][][]>) {
+export async function saveTutorAnnotation(
+  attemptId: string,
+  pages: Record<string, number[][][]>,
+  scanPages: Record<string, Record<string, number[][][]>> = {},
+) {
   const tutorId = await requireTutorId();
   await prisma.attempt.findFirstOrThrow({ where: { id: attemptId, paper: { tutorId } } });
-  await prisma.attempt.update({ where: { id: attemptId }, data: { tutorAnnotationJson: { pages } } });
+  await prisma.attempt.update({ where: { id: attemptId }, data: { tutorAnnotationJson: { pages, scanPages } } });
+}
+
+export async function beginTutorScanUpload(
+  attemptId: string,
+  files: { name: string; contentType: string }[],
+) {
+  const tutorId = await requireTutorId();
+  await prisma.attempt.findFirstOrThrow({ where: { id: attemptId, paper: { tutorId } } });
+  return Promise.all(
+    files.map(async (f) => {
+      const key = `scans/${attemptId}/${crypto.randomUUID()}-${f.name}`;
+      const uploadUrl = await storage.getUploadUrl(key, f.contentType);
+      return { key, uploadUrl };
+    }),
+  );
+}
+
+export async function finalizeTutorScanUpload(attemptId: string, keys: string[]) {
+  const tutorId = await requireTutorId();
+  await prisma.attempt.findFirstOrThrow({ where: { id: attemptId, paper: { tutorId } } });
+
+  const existing = await prisma.answer.findUnique({
+    where: { attemptId_questionKey: { attemptId, questionKey: "scan" } },
+  });
+
+  await prisma.answer.upsert({
+    where: { attemptId_questionKey: { attemptId, questionKey: "scan" } },
+    update: { scanFileKeys: [...(existing?.scanFileKeys ?? []), ...keys] },
+    create: { attemptId, questionKey: "scan", modality: "SCANNED_UPLOAD", scanFileKeys: keys },
+  });
+
+  revalidatePath(`/tutor/attempts/${attemptId}`);
 }
 
 export async function gradeAttempt(formData: FormData) {

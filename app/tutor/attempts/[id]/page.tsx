@@ -6,6 +6,7 @@ import { computeFlagStatus } from "@/lib/antiCheat";
 import Notice from "@/components/Notice";
 import GradingForm from "./GradingForm";
 import AnnotatedPdfViewerClient from "./AnnotatedPdfViewerClient";
+import TutorScanUpload from "./TutorScanUpload";
 
 export default async function GradeAttemptPage({
   params,
@@ -43,8 +44,9 @@ export default async function GradeAttemptPage({
 
   const studentAnnotationPages =
     (attempt.answers.find((a) => a.questionKey === "pdf")?.annotationJson as { pages?: Record<string, number[][][]> } | null)?.pages ?? {};
-  const tutorAnnotationPages =
-    (attempt.tutorAnnotationJson as { pages?: Record<string, number[][][]> } | null)?.pages ?? {};
+  const tutorAnnotationJson = attempt.tutorAnnotationJson as { pages?: Record<string, number[][][]>; scanPages?: Record<string, Record<string, number[][][]>> } | null;
+  const tutorAnnotationPages = tutorAnnotationJson?.pages ?? {};
+  const tutorScanAnnotationPages = tutorAnnotationJson?.scanPages ?? {};
 
   const feedbackQuestions =
     (attempt.grade?.feedbackJson as { questions?: Record<string, { score: number; maxScore: number }> } | null)?.questions ?? {};
@@ -101,22 +103,13 @@ export default async function GradeAttemptPage({
         attemptId={attempt.id}
         paperFileUrl={`/api/files/${attempt.paper.paperFileKey}`}
         markSchemeFileUrl={`/api/files/${attempt.paper.markSchemeFileKey}`}
+        scanFileUrls={scans.map((key) => ({ key, url: `/api/files/${key}` }))}
         studentAnnotationPages={studentAnnotationPages as Record<string, [number, number][][]>}
         initialTutorAnnotationPages={tutorAnnotationPages as Record<string, [number, number][][]>}
+        initialScanAnnotationPages={tutorScanAnnotationPages as Record<string, Record<string, [number, number][][]>>}
       />
 
-      {scans.length > 0 && (
-        <div className="mb-6">
-          <p className="mb-1 text-xs font-medium text-gray-500">Uploaded scans</p>
-          <div className="flex flex-col gap-1">
-            {scans.map((key) => (
-              <a key={key} href={`/api/files/${key}`} target="_blank" className="underline">
-                {key.split("/").pop()}
-              </a>
-            ))}
-          </div>
-        </div>
-      )}
+      <TutorScanUpload attemptId={attempt.id} />
 
       <h2 className="mb-2 font-medium">Answers &amp; Marks</h2>
       <GradingForm

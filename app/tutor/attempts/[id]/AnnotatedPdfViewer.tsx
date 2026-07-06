@@ -202,20 +202,26 @@ export default function AnnotatedPdfViewer({
   attemptId,
   paperFileUrl,
   markSchemeFileUrl,
+  scanFileUrls,
   studentAnnotationPages,
   initialTutorAnnotationPages,
+  initialScanAnnotationPages,
 }: {
   attemptId: string;
   paperFileUrl: string;
   markSchemeFileUrl: string;
+  scanFileUrls: { key: string; url: string }[];
   studentAnnotationPages: Pages;
   initialTutorAnnotationPages: Pages;
+  initialScanAnnotationPages: Record<string, Pages>;
 }) {
   const [paperBlob, setPaperBlob] = useState<string | null>(null);
   const [markBlob, setMarkBlob] = useState<string | null>(null);
+  const [scanBlobs, setScanBlobs] = useState<Record<string, string>>({});
   const [loadError, setLoadError] = useState<string | null>(null);
   const [sideBySide, setSideBySide] = useState(false);
   const [tutorPages, setTutorPages] = useState<Pages>(initialTutorAnnotationPages);
+  const [scanAnnotations, setScanAnnotations] = useState<Record<string, Pages>>(initialScanAnnotationPages);
   const [saveStatus, setSaveStatus] = useState<"idle" | "saving" | "saved">("idle");
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -247,14 +253,41 @@ export default function AnnotatedPdfViewer({
     };
   }, [paperFileUrl, markSchemeFileUrl]);
 
-  function handleTutorChange(next: Pages) {
-    setTutorPages(next);
+  useEffect(() => {
+    if (!scanFileUrls.length) return;
+    const urls: string[] = [];
+    Promise.all(
+      scanFileUrls.map(({ key, url }) =>
+        fetch(url)
+          .then((r) => { if (!r.ok) throw new Error(`scan HTTP ${r.status}`); return r.blob(); })
+          .then((blob) => ({ key, objectUrl: URL.createObjectURL(blob) }))
+      )
+    ).then((results) => {
+      const map: Record<string, string> = {};
+      for (const { key, objectUrl } of results) { map[key] = objectUrl; urls.push(objectUrl); }
+      setScanBlobs(map);
+    }).catch((err: unknown) => setLoadError(String(err)));
+    return () => { urls.forEach((u) => URL.revokeObjectURL(u)); };
+  }, [scanFileUrls]);
+
+  function triggerSave(pages: Pages, scans: Record<string, Pages>) {
     setSaveStatus("saving");
     if (saveTimer.current) clearTimeout(saveTimer.current);
     saveTimer.current = setTimeout(async () => {
-      await saveTutorAnnotation(attemptId, next);
+      await saveTutorAnnotation(attemptId, pages, scans);
       setSaveStatus("saved");
     }, 800);
+  }
+
+  function handleTutorChange(next: Pages) {
+    setTutorPages(next);
+    triggerSave(next, scanAnnotations);
+  }
+
+  function handleScanChange(scanKey: string, next: Pages) {
+    const nextScans = { ...scanAnnotations, [scanKey]: next };
+    setScanAnnotations(nextScans);
+    triggerSave(tutorPages, nextScans);
   }
 
   const GAP = 16;
@@ -288,6 +321,23 @@ export default function AnnotatedPdfViewer({
           {sideBySide && <ReadOnlyPdfPane blob={markBlob} label="Mark scheme" renderWidth={renderWidth} />}
         </div>
       )}
+      {scanFileUrls.map(({ key }) => {
+        const blob = scanBlobs[key];
+        const filename = key.split("/").pop() ?? key;
+        return blob ? (
+          <div key={key} className="mt-6">
+            <AnnotatablePdfPane
+              blob={blob}
+              label={`Student scan: ${filename}`}
+              tutorPages={scanAnnotations[key] ?? {}}
+              onTutorChange={(next) => handleScanChange(key, next)}
+              renderWidth={renderWidth}
+            />
+          </div>
+        ) : (
+          <p key={key} className="mt-4 text-sm text-gray-400">Loading scan…</p>
+        );
+      })}
     </div>
   );
 }

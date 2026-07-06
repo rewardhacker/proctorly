@@ -103,9 +103,9 @@ export default async function GradeAttemptPage({
         <a
           href={`/api/attempts/${attempt.id}/marked-pdf`}
           download
-          className="rounded border px-3 py-1.5 text-sm hover:bg-gray-50"
+          className="rounded bg-foreground px-3 py-1.5 text-sm text-white hover:opacity-90"
         >
-          Download marked PDF
+          Download PDF
         </a>
       </div>
       <AnnotatedPdfViewerClient

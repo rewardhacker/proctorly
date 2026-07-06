@@ -299,8 +299,8 @@ export default function AnnotatedPdfViewer({
     <div className="mb-6" ref={containerRef}>
       <div className="mb-3 flex items-center gap-3">
         <button type="button" onClick={() => setSideBySide((s) => !s)}
-          className="rounded border px-3 py-1.5 text-sm hover:bg-gray-50">
-          {sideBySide ? "Single view" : "Side by side with mark scheme"}
+          className={`rounded px-3 py-1.5 text-sm text-white hover:opacity-90 ${sideBySide ? "bg-foreground ring-2 ring-offset-1 ring-foreground" : "bg-foreground"}`}>
+          Mark Scheme
         </button>
         <span className="text-xs text-gray-400">
           {saveStatus === "saving" ? "Saving…" : saveStatus === "saved" ? "Saved" : ""}

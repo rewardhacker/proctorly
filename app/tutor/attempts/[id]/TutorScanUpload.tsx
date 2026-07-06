@@ -50,8 +50,7 @@ export default function TutorScanUpload({ attemptId }: { attemptId: string }) {
 
   return (
     <div className="mb-6">
-      <p className="mb-1 text-sm font-medium text-gray-700">Upload student scan</p>
-      <label className="inline-flex cursor-pointer items-center gap-2 rounded border px-3 py-1.5 text-sm hover:bg-gray-50">
+      <label className="inline-flex cursor-pointer items-center gap-2 rounded bg-foreground px-3 py-1.5 text-sm text-white hover:opacity-90">
         <input
           ref={inputRef}
           type="file"
@@ -60,7 +59,7 @@ export default function TutorScanUpload({ attemptId }: { attemptId: string }) {
           className="hidden"
           onChange={onChange}
         />
-        Choose file(s)
+        Upload Scan
       </label>
       <p className="mt-1 text-xs text-gray-500">
         {status === "uploading"
@@ -69,7 +68,7 @@ export default function TutorScanUpload({ attemptId }: { attemptId: string }) {
             ? "Uploaded — refresh to see it in the viewer"
             : status === "error"
               ? error
-              : "PDF or image, max 10MB"}
+              : ""}
       </p>
     </div>
   );

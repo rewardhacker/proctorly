@@ -90,7 +90,7 @@ model Paper {
   markSchemeFileSize    Int
   desiredCompletionMins Int?
   defaultDurationMins   Int
-  defaultBufferSecs     Int       @default(150)
+  defaultBufferSecs     Int       @default(300)
   createdAt             DateTime  @default(now())
   archivedAt            DateTime?
 
@@ -110,7 +110,7 @@ model InviteLink {
 
   durationMins          Int
   manualAdjustmentMins  Int       @default(0)
-  bufferSecs            Int       @default(150)
+  bufferSecs            Int       @default(300)
   desiredCompletionMins Int?
 
   expiresAt DateTime?
@@ -136,7 +136,7 @@ model Attempt {
   startedAt             DateTime?
   totalDurationMins      Int?
   hardEndAt              DateTime?
-  bufferSecs             Int       @default(150)
+  bufferSecs             Int       @default(300)
   bufferEndAt            DateTime?
   desiredCompletionMins  Int?
 

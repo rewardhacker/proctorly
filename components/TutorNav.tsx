@@ -25,8 +25,8 @@ export default function TutorNav() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`rounded px-3 py-1.5 text-sm ${
-                  active ? "bg-foreground text-white" : "hover:bg-highlight/20"
+                className={`rounded border px-3 py-1.5 text-sm ${
+                  active ? "border-foreground bg-foreground text-white" : "border-gray-300 hover:bg-highlight/20"
                 }`}
               >
                 {link.label}

@@ -98,7 +98,16 @@ export default async function GradeAttemptPage({
         </ul>
       </details>
 
-      <h2 className="mb-2 font-medium">Annotated Paper</h2>
+      <div className="mb-2 flex items-center justify-between">
+        <h2 className="font-medium">Annotated Paper</h2>
+        <a
+          href={`/api/attempts/${attempt.id}/marked-pdf`}
+          download
+          className="rounded border px-3 py-1.5 text-sm hover:bg-gray-50"
+        >
+          Download marked PDF
+        </a>
+      </div>
       <AnnotatedPdfViewerClient
         attemptId={attempt.id}
         paperFileUrl={`/api/files/${attempt.paper.paperFileKey}`}

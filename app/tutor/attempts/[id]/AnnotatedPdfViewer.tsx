@@ -274,7 +274,7 @@ export default function AnnotatedPdfViewer({
     setSaveStatus("saving");
     if (saveTimer.current) clearTimeout(saveTimer.current);
     saveTimer.current = setTimeout(async () => {
-      await saveTutorAnnotation(attemptId, pages, scans);
+      await saveTutorAnnotation(attemptId, pages, scans, renderWidth);
       setSaveStatus("saved");
     }, 800);
   }

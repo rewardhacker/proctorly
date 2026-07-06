@@ -576,10 +576,11 @@ export async function saveTutorAnnotation(
   attemptId: string,
   pages: Record<string, number[][][]>,
   scanPages: Record<string, Record<string, number[][][]>> = {},
+  renderWidth = 600,
 ) {
   const tutorId = await requireTutorId();
   await prisma.attempt.findFirstOrThrow({ where: { id: attemptId, paper: { tutorId } } });
-  await prisma.attempt.update({ where: { id: attemptId }, data: { tutorAnnotationJson: { pages, scanPages } } });
+  await prisma.attempt.update({ where: { id: attemptId }, data: { tutorAnnotationJson: { pages, scanPages, renderWidth } } });
 }
 
 export async function beginTutorScanUpload(

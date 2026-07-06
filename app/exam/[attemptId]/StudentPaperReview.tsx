@@ -8,29 +8,18 @@ type Stroke = [number, number][];
 type Pages = Record<string, Stroke[]>;
 
 const RENDER_WIDTH = 600;
-
-function drawStrokes(ctx: CanvasRenderingContext2D, strokes: Stroke[], color: string) {
-  ctx.strokeStyle = color;
-  ctx.lineWidth = 2;
-  ctx.lineCap = "round";
-  ctx.lineJoin = "round";
-  for (const stroke of strokes) {
-    if (stroke.length < 2) continue;
-    ctx.beginPath();
-    ctx.moveTo(stroke[0][0], stroke[0][1]);
-    for (const [x, y] of stroke.slice(1)) ctx.lineTo(x, y);
-    ctx.stroke();
-  }
-}
+const NAV_BTN = "rounded bg-slate-200 px-2 py-1 text-slate-700 hover:bg-slate-300 disabled:opacity-40 text-sm";
 
 export default function StudentPaperReview({
   fileUrl,
   studentAnnotationPages,
   tutorAnnotationPages,
+  tutorHighlightPages = {},
 }: {
   fileUrl: string;
   studentAnnotationPages: Pages;
   tutorAnnotationPages: Pages;
+  tutorHighlightPages?: Pages;
 }) {
   const [reactPdf, setReactPdf] = useState<ReactPdfModule | null>(null);
   const [pdfBlob, setPdfBlob] = useState<string | null>(null);
@@ -64,20 +53,62 @@ export default function StudentPaperReview({
     const ctx = studentCanvasRef.current?.getContext("2d");
     if (!ctx) return;
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    drawStrokes(ctx, studentAnnotationPages[String(page)] ?? [], "#2563eb");
+    const strokes = studentAnnotationPages[String(page)] ?? [];
+    ctx.strokeStyle = "#2563eb";
+    ctx.lineWidth = 2;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    for (const stroke of strokes) {
+      if (stroke.length < 2) continue;
+      ctx.beginPath();
+      ctx.moveTo(stroke[0][0], stroke[0][1]);
+      for (const [x, y] of stroke.slice(1)) ctx.lineTo(x, y);
+      ctx.stroke();
+    }
   }, [page, studentAnnotationPages, canvasHeight]);
 
   useEffect(() => {
     const ctx = tutorCanvasRef.current?.getContext("2d");
     if (!ctx) return;
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    drawStrokes(ctx, tutorAnnotationPages[String(page)] ?? [], "#dc2626");
-  }, [page, tutorAnnotationPages, canvasHeight]);
+    // Highlights first
+    const highlights = tutorHighlightPages[String(page)] ?? [];
+    if (highlights.length) {
+      ctx.save();
+      ctx.globalAlpha = 0.35;
+      ctx.strokeStyle = "#f59e0b";
+      ctx.lineWidth = 16;
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      for (const stroke of highlights) {
+        if (stroke.length < 2) continue;
+        ctx.beginPath();
+        ctx.moveTo(stroke[0][0], stroke[0][1]);
+        for (const [x, y] of stroke.slice(1)) ctx.lineTo(x, y);
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+    // Strokes on top
+    const strokes = tutorAnnotationPages[String(page)] ?? [];
+    ctx.strokeStyle = "#dc2626";
+    ctx.lineWidth = 2;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    for (const stroke of strokes) {
+      if (stroke.length < 2) continue;
+      ctx.beginPath();
+      ctx.moveTo(stroke[0][0], stroke[0][1]);
+      for (const [x, y] of stroke.slice(1)) ctx.lineTo(x, y);
+      ctx.stroke();
+    }
+  }, [page, tutorAnnotationPages, tutorHighlightPages, canvasHeight]);
 
   if (loadError) return <p className="text-sm text-red-600">{loadError}</p>;
   if (!reactPdf || !pdfBlob) return <p className="text-sm text-gray-500">Loading paper…</p>;
 
   const { Document, Page } = reactPdf;
+  const hasTutorMarks = Object.keys(tutorAnnotationPages).length > 0 || Object.keys(tutorHighlightPages).length > 0;
 
   return (
     <div className="mb-4">
@@ -96,16 +127,17 @@ export default function StudentPaperReview({
         <canvas ref={tutorCanvasRef} width={RENDER_WIDTH} height={canvasHeight}
           className="pointer-events-none absolute left-0 top-0" />
       </div>
-      <div className="flex items-center gap-3 text-sm">
+      <div className="flex items-center gap-3">
         <button type="button" onClick={() => setPage((p) => Math.max(1, p - 1))} disabled={page <= 1}
-          className="rounded border px-2 py-1 disabled:opacity-40">Prev</button>
-        <span>Page {page} / {numPages || "?"}</span>
+          className={NAV_BTN}>Prev</button>
+        <span className="text-sm">Page {page} / {numPages || "?"}</span>
         <button type="button" onClick={() => setPage((p) => Math.min(numPages || p, p + 1))} disabled={page >= numPages}
-          className="rounded border px-2 py-1 disabled:opacity-40">Next</button>
-        {Object.keys(tutorAnnotationPages).length > 0 && (
+          className={NAV_BTN}>Next</button>
+        {hasTutorMarks && (
           <>
             <span className="text-xs text-blue-600">&#9679; Your annotations</span>
             <span className="text-xs text-red-600">&#9679; Tutor marks</span>
+            <span className="text-xs text-amber-500">&#9679; Highlights</span>
           </>
         )}
       </div>

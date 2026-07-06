@@ -575,12 +575,17 @@ export async function resetAttempt(formData: FormData) {
 export async function saveTutorAnnotation(
   attemptId: string,
   pages: Record<string, number[][][]>,
+  highlightPages: Record<string, number[][][]> = {},
   scanPages: Record<string, Record<string, number[][][]>> = {},
+  scanHighlightPages: Record<string, Record<string, number[][][]>> = {},
   renderWidth = 600,
 ) {
   const tutorId = await requireTutorId();
   await prisma.attempt.findFirstOrThrow({ where: { id: attemptId, paper: { tutorId } } });
-  await prisma.attempt.update({ where: { id: attemptId }, data: { tutorAnnotationJson: { pages, scanPages, renderWidth } } });
+  await prisma.attempt.update({
+    where: { id: attemptId },
+    data: { tutorAnnotationJson: { pages, highlightPages, scanPages, scanHighlightPages, renderWidth } },
+  });
 }
 
 export async function beginTutorScanUpload(

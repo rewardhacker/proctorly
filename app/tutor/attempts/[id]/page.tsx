@@ -44,9 +44,16 @@ export default async function GradeAttemptPage({
 
   const studentAnnotationPages =
     (attempt.answers.find((a) => a.questionKey === "pdf")?.annotationJson as { pages?: Record<string, number[][][]> } | null)?.pages ?? {};
-  const tutorAnnotationJson = attempt.tutorAnnotationJson as { pages?: Record<string, number[][][]>; scanPages?: Record<string, Record<string, number[][][]>> } | null;
+  const tutorAnnotationJson = attempt.tutorAnnotationJson as {
+    pages?: Record<string, number[][][]>;
+    highlightPages?: Record<string, number[][][]>;
+    scanPages?: Record<string, Record<string, number[][][]>>;
+    scanHighlightPages?: Record<string, Record<string, number[][][]>>;
+  } | null;
   const tutorAnnotationPages = tutorAnnotationJson?.pages ?? {};
+  const tutorHighlightPages = tutorAnnotationJson?.highlightPages ?? {};
   const tutorScanAnnotationPages = tutorAnnotationJson?.scanPages ?? {};
+  const tutorScanHighlightPages = tutorAnnotationJson?.scanHighlightPages ?? {};
 
   const feedbackQuestions =
     (attempt.grade?.feedbackJson as { questions?: Record<string, { score: number; maxScore: number }> } | null)?.questions ?? {};
@@ -115,7 +122,9 @@ export default async function GradeAttemptPage({
         scanFileUrls={scans.map((key) => ({ key, url: `/api/files/${key}` }))}
         studentAnnotationPages={studentAnnotationPages as Record<string, [number, number][][]>}
         initialTutorAnnotationPages={tutorAnnotationPages as Record<string, [number, number][][]>}
+        initialTutorHighlightPages={tutorHighlightPages as Record<string, [number, number][][]>}
         initialScanAnnotationPages={tutorScanAnnotationPages as Record<string, Record<string, [number, number][][]>>}
+        initialScanHighlightPages={tutorScanHighlightPages as Record<string, Record<string, [number, number][][]>>}
       />
 
       <TutorScanUpload attemptId={attempt.id} />

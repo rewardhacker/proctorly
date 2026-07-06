@@ -8,8 +8,48 @@ type ReactPdfModule = { Document: typeof DocumentType; Page: typeof PageType };
 type Stroke = [number, number][];
 type Pages = Record<string, Stroke[]>;
 
-function drawStrokes(ctx: CanvasRenderingContext2D, strokes: Stroke[], color: string) {
-  ctx.strokeStyle = color;
+const NAV_BTN = "rounded bg-slate-200 px-2 py-1 text-slate-700 hover:bg-slate-300 disabled:opacity-40 text-sm";
+
+function drawAnnotations(
+  ctx: CanvasRenderingContext2D,
+  strokes: Stroke[],
+  highlights: Stroke[],
+) {
+  // Highlights below strokes: thick, amber, semi-transparent
+  if (highlights.length) {
+    ctx.save();
+    ctx.globalAlpha = 0.35;
+    ctx.strokeStyle = "#f59e0b";
+    ctx.lineWidth = 16;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    for (const stroke of highlights) {
+      if (stroke.length < 2) continue;
+      ctx.beginPath();
+      ctx.moveTo(stroke[0][0], stroke[0][1]);
+      for (const [x, y] of stroke.slice(1)) ctx.lineTo(x, y);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+  // Strokes on top: thin, red, opaque
+  if (strokes.length) {
+    ctx.strokeStyle = "#dc2626";
+    ctx.lineWidth = 2;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    for (const stroke of strokes) {
+      if (stroke.length < 2) continue;
+      ctx.beginPath();
+      ctx.moveTo(stroke[0][0], stroke[0][1]);
+      for (const [x, y] of stroke.slice(1)) ctx.lineTo(x, y);
+      ctx.stroke();
+    }
+  }
+}
+
+function drawStudentStrokes(ctx: CanvasRenderingContext2D, strokes: Stroke[]) {
+  ctx.strokeStyle = "#2563eb";
   ctx.lineWidth = 2;
   ctx.lineCap = "round";
   ctx.lineJoin = "round";
@@ -23,19 +63,21 @@ function drawStrokes(ctx: CanvasRenderingContext2D, strokes: Stroke[], color: st
 }
 
 function AnnotatablePdfPane({
-  blob, label, studentPages, tutorPages, onTutorChange, renderWidth,
+  blob, label, studentPages, tutorPages, tutorHighlights, onTutorChange, renderWidth,
 }: {
   blob: string;
   label: string;
   studentPages?: Pages;
   tutorPages: Pages;
-  onTutorChange: (pages: Pages) => void;
+  tutorHighlights: Pages;
+  onTutorChange: (strokes: Pages, highlights: Pages) => void;
   renderWidth: number;
 }) {
   const [reactPdf, setReactPdf] = useState<ReactPdfModule | null>(null);
   const [page, setPage] = useState(1);
   const [numPages, setNumPages] = useState(0);
   const [canvasHeight, setCanvasHeight] = useState(renderWidth * 1.414);
+  const [mode, setMode] = useState<"draw" | "highlight">("draw");
   const studentCanvasRef = useRef<HTMLCanvasElement>(null);
   const tutorCanvasRef = useRef<HTMLCanvasElement>(null);
   const drawing = useRef(false);
@@ -51,23 +93,21 @@ function AnnotatablePdfPane({
     return () => { cancelled = true; };
   }, []);
 
-  useEffect(() => {
-    setCanvasHeight(renderWidth * 1.414);
-  }, [renderWidth]);
+  useEffect(() => { setCanvasHeight(renderWidth * 1.414); }, [renderWidth]);
 
   useEffect(() => {
     const ctx = studentCanvasRef.current?.getContext("2d");
     if (!ctx) return;
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    drawStrokes(ctx, studentPages?.[String(page)] ?? [], "#2563eb");
+    drawStudentStrokes(ctx, studentPages?.[String(page)] ?? []);
   }, [page, studentPages, canvasHeight]);
 
   useEffect(() => {
     const ctx = tutorCanvasRef.current?.getContext("2d");
     if (!ctx) return;
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    drawStrokes(ctx, tutorPages[String(page)] ?? [], "#dc2626");
-  }, [page, tutorPages, canvasHeight]);
+    drawAnnotations(ctx, tutorPages[String(page)] ?? [], tutorHighlights[String(page)] ?? []);
+  }, [page, tutorPages, tutorHighlights, canvasHeight]);
 
   function point(e: React.PointerEvent<HTMLCanvasElement>): [number, number] {
     const rect = tutorCanvasRef.current!.getBoundingClientRect();
@@ -85,16 +125,25 @@ function AnnotatablePdfPane({
     const ctx = tutorCanvasRef.current?.getContext("2d");
     if (!ctx) return;
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    drawStrokes(ctx, tutorPages[String(page)] ?? [], "#dc2626");
-    ctx.strokeStyle = "#dc2626";
-    ctx.lineWidth = 2;
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
+    drawAnnotations(ctx, tutorPages[String(page)] ?? [], tutorHighlights[String(page)] ?? []);
+    // Preview current stroke
     if (currentStroke.current.length >= 2) {
+      if (mode === "highlight") {
+        ctx.save();
+        ctx.globalAlpha = 0.35;
+        ctx.strokeStyle = "#f59e0b";
+        ctx.lineWidth = 16;
+      } else {
+        ctx.strokeStyle = "#dc2626";
+        ctx.lineWidth = 2;
+      }
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
       ctx.beginPath();
       ctx.moveTo(currentStroke.current[0][0], currentStroke.current[0][1]);
       for (const [x, y] of currentStroke.current.slice(1)) ctx.lineTo(x, y);
       ctx.stroke();
+      if (mode === "highlight") ctx.restore();
     }
   }
 
@@ -102,24 +151,34 @@ function AnnotatablePdfPane({
     if (!drawing.current) return;
     drawing.current = false;
     if (currentStroke.current.length > 1) {
-      const next = { ...tutorPages, [String(page)]: [...(tutorPages[String(page)] ?? []), currentStroke.current] };
-      onTutorChange(next);
+      if (mode === "draw") {
+        const next = { ...tutorPages, [String(page)]: [...(tutorPages[String(page)] ?? []), currentStroke.current] };
+        onTutorChange(next, tutorHighlights);
+      } else {
+        const next = { ...tutorHighlights, [String(page)]: [...(tutorHighlights[String(page)] ?? []), currentStroke.current] };
+        onTutorChange(tutorPages, next);
+      }
     }
     currentStroke.current = [];
   }
 
   function undo() {
-    const strokes = tutorPages[String(page)] ?? [];
-    onTutorChange({ ...tutorPages, [String(page)]: strokes.slice(0, -1) });
+    if (mode === "draw") {
+      const strokes = tutorPages[String(page)] ?? [];
+      onTutorChange({ ...tutorPages, [String(page)]: strokes.slice(0, -1) }, tutorHighlights);
+    } else {
+      const highlights = tutorHighlights[String(page)] ?? [];
+      onTutorChange(tutorPages, { ...tutorHighlights, [String(page)]: highlights.slice(0, -1) });
+    }
   }
 
   function clearMyPage() {
-    onTutorChange({ ...tutorPages, [String(page)]: [] });
+    onTutorChange({ ...tutorPages, [String(page)]: [] }, { ...tutorHighlights, [String(page)]: [] });
   }
 
   if (!reactPdf) return <p className="text-sm text-gray-400">Loading…</p>;
   const { Document, Page } = reactPdf;
-  const tutorStrokes = tutorPages[String(page)] ?? [];
+  const hasMarks = (tutorPages[String(page)] ?? []).length + (tutorHighlights[String(page)] ?? []).length > 0;
 
   return (
     <div className="flex min-w-0 flex-1 flex-col gap-2">
@@ -137,24 +196,29 @@ function AnnotatablePdfPane({
         <canvas ref={studentCanvasRef} width={renderWidth} height={canvasHeight}
           className="pointer-events-none absolute left-0 top-0" />
         <canvas ref={tutorCanvasRef} width={renderWidth} height={canvasHeight}
-          className="absolute left-0 top-0 cursor-crosshair touch-none"
+          className={`absolute left-0 top-0 touch-none ${mode === "highlight" ? "cursor-cell" : "cursor-crosshair"}`}
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
           onPointerLeave={onPointerUp}
         />
       </div>
-      <div className="flex flex-wrap items-center gap-2 text-sm">
+      <div className="flex flex-wrap items-center gap-2">
         <button type="button" onClick={() => setPage((p) => Math.max(1, p - 1))} disabled={page <= 1}
-          className="rounded border px-2 py-1 disabled:opacity-40">Prev</button>
-        <span className="text-gray-500">Page {page} / {numPages || "?"}</span>
+          className={NAV_BTN}>Prev</button>
+        <span className="text-sm text-gray-500">Page {page} / {numPages || "?"}</span>
         <button type="button" onClick={() => setPage((p) => Math.min(numPages || p, p + 1))} disabled={page >= numPages}
-          className="rounded border px-2 py-1 disabled:opacity-40">Next</button>
-        <button type="button" onClick={undo} disabled={tutorStrokes.length === 0}
-          className="rounded border px-2 py-1 disabled:opacity-40">Undo</button>
-        <button type="button" onClick={clearMyPage} disabled={tutorStrokes.length === 0}
-          className="rounded border px-2 py-1 disabled:opacity-40">Clear My Marks</button>
-        <span className="text-xs text-red-600">&#9679; Your marks</span>
+          className={NAV_BTN}>Next</button>
+        <button type="button" onClick={() => setMode(mode === "draw" ? "highlight" : "draw")}
+          className={`rounded px-2 py-1 text-sm ${mode === "highlight" ? "bg-amber-400 text-white" : "bg-slate-200 text-slate-700 hover:bg-slate-300"}`}>
+          Highlight
+        </button>
+        <button type="button" onClick={undo} disabled={!hasMarks}
+          className={NAV_BTN}>Undo</button>
+        <button type="button" onClick={clearMyPage} disabled={!hasMarks}
+          className={NAV_BTN}>Clear My Marks</button>
+        <span className="text-xs text-red-600">&#9679; Marks</span>
+        <span className="text-xs text-amber-500">&#9679; Highlights</span>
         <span className="text-xs text-blue-600">&#9679; Student</span>
       </div>
     </div>
@@ -187,12 +251,12 @@ function ReadOnlyPdfPane({ blob, label, renderWidth }: { blob: string; label: st
           <Page pageNumber={page} width={renderWidth} renderTextLayer={false} renderAnnotationLayer={false} />
         </Document>
       </div>
-      <div className="flex items-center gap-2 text-sm">
+      <div className="flex items-center gap-2">
         <button type="button" onClick={() => setPage((p) => Math.max(1, p - 1))} disabled={page <= 1}
-          className="rounded border px-2 py-1 disabled:opacity-40">Prev</button>
-        <span className="text-gray-500">Page {page} / {numPages || "?"}</span>
+          className={NAV_BTN}>Prev</button>
+        <span className="text-sm text-gray-500">Page {page} / {numPages || "?"}</span>
         <button type="button" onClick={() => setPage((p) => Math.min(numPages || p, p + 1))} disabled={page >= numPages}
-          className="rounded border px-2 py-1 disabled:opacity-40">Next</button>
+          className={NAV_BTN}>Next</button>
       </div>
     </div>
   );
@@ -205,7 +269,9 @@ export default function AnnotatedPdfViewer({
   scanFileUrls,
   studentAnnotationPages,
   initialTutorAnnotationPages,
+  initialTutorHighlightPages,
   initialScanAnnotationPages,
+  initialScanHighlightPages,
 }: {
   attemptId: string;
   paperFileUrl: string;
@@ -213,7 +279,9 @@ export default function AnnotatedPdfViewer({
   scanFileUrls: { key: string; url: string }[];
   studentAnnotationPages: Pages;
   initialTutorAnnotationPages: Pages;
+  initialTutorHighlightPages: Pages;
   initialScanAnnotationPages: Record<string, Pages>;
+  initialScanHighlightPages: Record<string, Pages>;
 }) {
   const [paperBlob, setPaperBlob] = useState<string | null>(null);
   const [markBlob, setMarkBlob] = useState<string | null>(null);
@@ -221,7 +289,9 @@ export default function AnnotatedPdfViewer({
   const [loadError, setLoadError] = useState<string | null>(null);
   const [sideBySide, setSideBySide] = useState(false);
   const [tutorPages, setTutorPages] = useState<Pages>(initialTutorAnnotationPages);
+  const [tutorHighlights, setTutorHighlights] = useState<Pages>(initialTutorHighlightPages);
   const [scanAnnotations, setScanAnnotations] = useState<Record<string, Pages>>(initialScanAnnotationPages);
+  const [scanHighlights, setScanHighlights] = useState<Record<string, Pages>>(initialScanHighlightPages);
   const [saveStatus, setSaveStatus] = useState<"idle" | "saving" | "saved">("idle");
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -270,24 +340,30 @@ export default function AnnotatedPdfViewer({
     return () => { urls.forEach((u) => URL.revokeObjectURL(u)); };
   }, [scanFileUrls]);
 
-  function triggerSave(pages: Pages, scans: Record<string, Pages>) {
+  function triggerSave(
+    pages: Pages, highlights: Pages,
+    scans: Record<string, Pages>, scanHls: Record<string, Pages>,
+  ) {
     setSaveStatus("saving");
     if (saveTimer.current) clearTimeout(saveTimer.current);
     saveTimer.current = setTimeout(async () => {
-      await saveTutorAnnotation(attemptId, pages, scans, renderWidth);
+      await saveTutorAnnotation(attemptId, pages, highlights, scans, scanHls, renderWidth);
       setSaveStatus("saved");
     }, 800);
   }
 
-  function handleTutorChange(next: Pages) {
-    setTutorPages(next);
-    triggerSave(next, scanAnnotations);
+  function handleTutorChange(strokes: Pages, highlights: Pages) {
+    setTutorPages(strokes);
+    setTutorHighlights(highlights);
+    triggerSave(strokes, highlights, scanAnnotations, scanHighlights);
   }
 
-  function handleScanChange(scanKey: string, next: Pages) {
-    const nextScans = { ...scanAnnotations, [scanKey]: next };
+  function handleScanChange(scanKey: string, strokes: Pages, highlights: Pages) {
+    const nextScans = { ...scanAnnotations, [scanKey]: strokes };
+    const nextHls = { ...scanHighlights, [scanKey]: highlights };
     setScanAnnotations(nextScans);
-    triggerSave(tutorPages, nextScans);
+    setScanHighlights(nextHls);
+    triggerSave(tutorPages, tutorHighlights, nextScans, nextHls);
   }
 
   const GAP = 16;
@@ -315,6 +391,7 @@ export default function AnnotatedPdfViewer({
             label="Student's annotated paper"
             studentPages={studentAnnotationPages}
             tutorPages={tutorPages}
+            tutorHighlights={tutorHighlights}
             onTutorChange={handleTutorChange}
             renderWidth={renderWidth}
           />
@@ -330,7 +407,8 @@ export default function AnnotatedPdfViewer({
               blob={blob}
               label={`Student scan: ${filename}`}
               tutorPages={scanAnnotations[key] ?? {}}
-              onTutorChange={(next) => handleScanChange(key, next)}
+              tutorHighlights={scanHighlights[key] ?? {}}
+              onTutorChange={(strokes, highlights) => handleScanChange(key, strokes, highlights)}
               renderWidth={renderWidth}
             />
           </div>

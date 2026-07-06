@@ -16,7 +16,7 @@ export default function TutorNav() {
 
   return (
     <header className="border-b bg-emphasis">
-      <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-3 px-8 py-3">
+      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 px-8 py-3">
         <nav className="flex flex-wrap gap-2">
           {LINKS.map((link) => {
             const active =

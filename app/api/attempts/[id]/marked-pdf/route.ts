@@ -1,13 +1,13 @@
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { storage } from "@/lib/storage";
-import { PDFDocument, rgb } from "pdf-lib";
+import { PDFDocument, PDFPage, rgb } from "pdf-lib";
 
 type Stroke = [number, number][];
 type Pages = Record<string, Stroke[]>;
 
 function drawStrokesOnPage(
-  page: { drawLine: (opts: object) => void; getWidth: () => number; getHeight: () => number },
+  page: PDFPage,
   strokes: Stroke[],
   renderWidth: number,
   color: { r: number; g: number; b: number },

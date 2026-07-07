@@ -1,20 +1,27 @@
-import { BrevoClient } from "@getbrevo/brevo";
+import nodemailer from "nodemailer";
 
-const FROM_EMAIL = process.env.EMAIL_FROM ?? "jakaria@live.co.uk";
-const FROM_NAME = process.env.EMAIL_FROM_NAME ?? "Proctorly";
-
-// ponytail: falls back to console logging when BREVO_API_KEY isn't set.
+// Outlook SMTP — set SMTP_USER and SMTP_PASS in env vars.
+// ponytail: falls back to console logging when SMTP_USER isn't set.
 export async function sendEmail(to: string, subject: string, text: string) {
-  if (!process.env.BREVO_API_KEY) {
+  if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
     console.log(`[email stub] to=${to} subject="${subject}"\n${text}`);
     return;
   }
 
-  const client = new BrevoClient({ apiKey: process.env.BREVO_API_KEY });
-  await client.transactionalEmails.sendTransacEmail({
-    sender: { email: FROM_EMAIL, name: FROM_NAME },
-    to: [{ email: to }],
+  const transporter = nodemailer.createTransport({
+    host: "smtp-mail.outlook.com",
+    port: 587,
+    secure: false,
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+  });
+
+  await transporter.sendMail({
+    from: process.env.SMTP_USER,
+    to,
     subject,
-    textContent: text,
+    text,
   });
 }

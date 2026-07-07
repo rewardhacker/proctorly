@@ -38,6 +38,8 @@ fs.promises.readlink = async function readlink(path: fs.PathLike, options?: unkn
 
 const nextConfig: NextConfig = {
   output: "export",
+  // ponytail: GitHub Pages serves from /proctorly/ subpath
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH ?? "",
   webpack(config) {
     config.resolve.symlinks = false;
     return config;

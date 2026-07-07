@@ -61,6 +61,8 @@ model Tutee {
   createdByTutor   Tutor    @relation(fields: [createdByTutorId], references: [id])
   createdAt        DateTime @default(now())
 
+  analyticsSharedWithStudent Boolean @default(false)
+
   consentRecords ConsentRecord[]
   inviteLinks    InviteLink[]
   attempts       Attempt[]
@@ -82,6 +84,7 @@ model Paper {
   tutorId               String
   title                 String
   subject               String?
+  paperVariant          String?
   numQuestions          Int       @default(1)
   paperFileKey          String
   paperFileSize         Int
@@ -150,7 +153,8 @@ model Attempt {
   grade        Grade?
   reportIssues IssueReport[]
 
-  tutorAnnotationJson Json?
+  tutorAnnotationJson  Json?
+  questionTimingJson   Json?
 
   createdAt  DateTime  @default(now())
   purgeAfter DateTime?

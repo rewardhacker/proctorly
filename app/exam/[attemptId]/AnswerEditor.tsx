@@ -19,6 +19,8 @@ export default function AnswerEditor({
 }) {
   const [status, setStatus] = useState<Status>("synced");
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const mountedAt = useRef(Date.now());
+  const firstFocusAt = useRef<string | null>(null);
 
   async function trySync(content: JSONContent) {
     try {
@@ -38,6 +40,7 @@ export default function AnswerEditor({
       attributes: { class: "min-h-[280px] w-full select-text rounded border p-3 focus:outline-none" },
     },
     onUpdate: ({ editor }) => {
+      if (!firstFocusAt.current) firstFocusAt.current = new Date().toISOString();
       const content = editor.getJSON();
       setStatus(navigator.onLine ? "local" : "offline");
       cacheAnswerLocally(attemptId, questionKey, content);
@@ -58,6 +61,26 @@ export default function AnswerEditor({
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editor]);
+
+  // Send timing on unmount (question navigation or page close).
+  // sendBeacon is used so the request survives even if the tab closes.
+  useEffect(() => {
+    return () => {
+      const addMs = Date.now() - mountedAt.current;
+      const payload = JSON.stringify({
+        questionKey,
+        addMs,
+        ...(firstFocusAt.current ? { firstFocusAt: firstFocusAt.current } : {}),
+      });
+      const url = `/api/attempts/${attemptId}/question-timing`;
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(url, new Blob([payload], { type: "application/json" }));
+      } else {
+        fetch(url, { method: "POST", body: payload, headers: { "Content-Type": "application/json" }, keepalive: true });
+      }
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Background retry loop: flush any unsynced entry when connectivity
   // returns, without waiting for the next keystroke.

@@ -18,6 +18,7 @@ export default function NewPaperForm() {
     const formData = new FormData(e.currentTarget);
     const title = formData.get("title") as string;
     const subject = (formData.get("subject") as string) || null;
+    const paperVariant = (formData.get("paperVariant") as string) || null;
     const defaultDurationMins = Number(formData.get("defaultDurationMins"));
     const numQuestions = Math.max(1, Number(formData.get("numQuestions")) || 1);
     const paperFile = formData.get("paperFile") as File;
@@ -59,6 +60,7 @@ export default function NewPaperForm() {
       const result = await finalizeCreatePaper({
         title,
         subject,
+        paperVariant,
         defaultDurationMins,
         numQuestions,
         paperFileKey,
@@ -83,7 +85,8 @@ export default function NewPaperForm() {
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-3">
       <input name="title" placeholder="Title" required className="rounded border px-3 py-2" />
-      <input name="subject" placeholder="Subject (optional)" className="rounded border px-3 py-2" />
+      <input name="subject" placeholder="Subject (optional, e.g. Maths GCSE)" className="rounded border px-3 py-2" />
+      <input name="paperVariant" placeholder="Paper variant (optional, e.g. Calculator / Non-Calculator)" className="rounded border px-3 py-2" />
       <input
         name="defaultDurationMins"
         type="number"

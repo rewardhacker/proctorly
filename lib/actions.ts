@@ -84,6 +84,7 @@ export async function beginPaperUpload(paperContentType: string, markSchemeConte
 export async function finalizeCreatePaper(data: {
   title: string;
   subject: string | null;
+  paperVariant: string | null;
   defaultDurationMins: number;
   numQuestions: number;
   paperFileKey: string;
@@ -101,6 +102,19 @@ export async function finalizeCreatePaper(data: {
 
   revalidatePath("/tutor/papers");
   return { ok: true };
+}
+
+export async function toggleAnalyticsSharing(formData: FormData) {
+  const tutorId = await requireTutorId();
+  const tuteeId = formData.get("tuteeId") as string;
+  const share = formData.get("share") === "true";
+
+  const tutee = await prisma.tutee.findFirst({ where: { id: tuteeId, createdByTutorId: tutorId } });
+  if (!tutee) redirect(`/tutor/tutees?error=${encodeURIComponent("Tutee not found.")}`);
+
+  await prisma.tutee.update({ where: { id: tuteeId }, data: { analyticsSharedWithStudent: share } });
+  revalidatePath(`/tutor/analytics/${tuteeId}`);
+  revalidatePath("/tutor/tutees");
 }
 
 export async function createTutee(formData: FormData) {

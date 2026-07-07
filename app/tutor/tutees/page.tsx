@@ -3,6 +3,7 @@ import { auth } from "@/lib/auth";
 import { createTutee, createInvite, resetTuteePassword, deleteInvite, deleteTutee } from "@/lib/actions";
 import Notice from "@/components/Notice";
 import ConfirmButton from "@/components/ConfirmButton";
+import Link from "next/link";
 
 export default async function TuteesPage({
   searchParams,
@@ -92,6 +93,13 @@ export default async function TuteesPage({
                     <p className="font-medium">{t.name}</p>
                     <p className="text-sm text-gray-500">{t.email}</p>
                   </div>
+                  <div className="flex items-center gap-2">
+                    <Link
+                      href={`/tutor/analytics/${t.id}`}
+                      className="rounded border px-2 py-1 text-sm hover:bg-gray-50"
+                    >
+                      Analytics
+                    </Link>
                   <form action={deleteTutee}>
                     <input type="hidden" name="tuteeId" value={t.id} />
                     <ConfirmButton
@@ -101,6 +109,7 @@ export default async function TuteesPage({
                       Delete
                     </ConfirmButton>
                   </form>
+                  </div>
                 </div>
                 <details className="mt-2">
                   <summary className="cursor-pointer text-sm text-gray-500 hover:text-gray-800">

@@ -1,0 +1,3 @@
+ALTER TABLE "Paper" ADD COLUMN IF NOT EXISTS "paperVariant" TEXT;
+ALTER TABLE "Tutee" ADD COLUMN IF NOT EXISTS "analyticsSharedWithStudent" BOOLEAN NOT NULL DEFAULT false;
+ALTER TABLE "Attempt" ADD COLUMN IF NOT EXISTS "questionTimingJson" JSONB;

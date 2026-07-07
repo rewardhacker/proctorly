@@ -1,7 +1,9 @@
-import NextAuth from "next-auth";
-import { authConfig } from "@/lib/auth.config";
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
-export const { auth: proxy } = NextAuth(authConfig);
+export function proxy(request: NextRequest) {
+  return NextResponse.next();
+}
 
 export const config = {
   matcher: ["/tutor/:path*"],

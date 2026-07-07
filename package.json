@@ -31,7 +31,6 @@
     "react-pdf": "^9.0.0"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^5.15.12",
     "@tailwindcss/postcss": "^4",
     "@types/bcryptjs": "^3.0.0",
     "@types/node": "^20",

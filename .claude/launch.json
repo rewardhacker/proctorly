@@ -6,7 +6,16 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
       "port": 3000,
-    "autoPort": true
+      "autoPort": true,
+      "defaultPath": "/landing"
+    },
+    {
+      "name": "marketing",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "cwd": "marketing",
+      "port": 3001,
+      "autoPort": true
     }
   ]
 }

@@ -1,11 +1,10 @@
-// Update APP_URL to your Netlify app domain once it's set
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "https://proctorly-exams.vercel.app";
 
 const stats = [
-  { value: "94%", label: "of students improved by at least one grade" },
-  { value: "3×", label: "faster feedback than email-based marking" },
-  { value: "12 min", label: "average tutor turnaround per paper" },
-  { value: "4,200+", label: "practice papers marked on the platform" },
+  { value: "94%", label: "of students improved by at least one grade*" },
+  { value: "3×", label: "faster feedback than email-based marking*" },
+  { value: "12 min", label: "average tutor turnaround per paper*" },
+  { value: "4,200+", label: "practice papers marked on the platform*" },
 ];
 
 const steps = [
@@ -144,6 +143,7 @@ export default function LandingPage() {
             </div>
           ))}
         </div>
+        <p className="mx-auto mt-6 max-w-5xl px-6 text-center text-xs opacity-40">* Figures are illustrative projections based on platform data and simulated for demonstration purposes.</p>
       </section>
 
       {/* ── How it works ── */}
@@ -274,10 +274,10 @@ export default function LandingPage() {
         <div className="rounded-3xl border px-8 py-16" style={{ background: "var(--emphasis)" }}>
           <h2 className="text-4xl font-bold">Ready to Run Your First Mock?</h2>
           <p className="mx-auto mt-4 max-w-md opacity-60">
-            Set up your first paper in under five minutes.
+            Get in touch and we'll have you set up in no time.
           </p>
           <a
-            href={`${APP_URL}/login`}
+            href="#contact"
             className="mt-8 inline-block rounded-full px-10 py-3 font-semibold text-[var(--background)] transition-opacity hover:opacity-80"
             style={{ background: "var(--foreground)" }}
           >
@@ -286,9 +286,67 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ── Contact ── */}
+      <section id="contact" className="mx-auto max-w-2xl px-6 pb-24">
+        <h2 className="mb-2 text-center text-3xl font-bold">Get in Touch</h2>
+        <p className="mb-10 text-center text-sm opacity-60">Tell us a bit about yourself and we'll be in touch shortly.</p>
+        <form
+          action="mailto:jakaria@live.co.uk"
+          method="POST"
+          encType="text/plain"
+          className="grid gap-4"
+        >
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide opacity-60">Name</label>
+              <input
+                type="text"
+                name="Name"
+                required
+                placeholder="Your name"
+                className="w-full rounded-xl border px-4 py-3 text-sm outline-none focus:ring-2"
+                style={{ background: "var(--emphasis)" }}
+              />
+            </div>
+            <div>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide opacity-60">Email</label>
+              <input
+                type="email"
+                name="Email"
+                required
+                placeholder="you@example.com"
+                className="w-full rounded-xl border px-4 py-3 text-sm outline-none focus:ring-2"
+                style={{ background: "var(--emphasis)" }}
+              />
+            </div>
+          </div>
+          <div>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide opacity-60">Message</label>
+            <textarea
+              name="Message"
+              required
+              rows={5}
+              placeholder="Tell us about your tutoring practice and what you're looking for…"
+              className="w-full rounded-xl border px-4 py-3 text-sm outline-none focus:ring-2"
+              style={{ background: "var(--emphasis)" }}
+            />
+          </div>
+          <button
+            type="submit"
+            className="rounded-full px-8 py-3 font-semibold text-[var(--background)] transition-opacity hover:opacity-80"
+            style={{ background: "var(--foreground)" }}
+          >
+            Send Enquiry
+          </button>
+        </form>
+      </section>
+
       {/* ── Footer ── */}
       <footer className="border-t py-8 text-center text-xs opacity-40">
-        <p>© {new Date().getFullYear()} Proctorly · Remote Practice Exam Platform</p>
+        <p>© {new Date().getFullYear()} Proctorly · Proctoring Exam Practice Properly</p>
+        <p className="mt-2">
+          <a href="/privacy" className="underline hover:opacity-70">Privacy Policy</a>
+        </p>
       </footer>
     </div>
   );

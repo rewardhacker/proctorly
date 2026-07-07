@@ -29,8 +29,8 @@ export default function PrivacyPage() {
 
         <Section title="Who we are">
           <p>
-            Proctorly is operated by Jakaria Islam. Our contact email is{" "}
-            <a href="mailto:jakaria@live.co.uk" className="underline">jakaria@live.co.uk</a>.
+            Proctorly is operated by Jakaria Uddin. Our contact email is{" "}
+            <a href="mailto:hello@jakadin.com" className="underline">hello@jakadin.com</a>.
             For the purposes of UK data protection law, we are the data controller for the personal data
             collected through this platform.
           </p>
@@ -42,7 +42,7 @@ export default function PrivacyPage() {
             <Li label="Exam papers">PDF files uploaded by tutors. These are stored on our platform and shared only with the students the tutor assigns them to.</Li>
             <Li label="Exam attempts">Your answers, per-question timing data, scan uploads (for handwritten answers), and overall scores.</Li>
             <Li label="Tutor feedback">PDF annotations, per-question marks, and overall comments left by tutors after marking.</Li>
-            <Li label="Subscription information">Your chosen plan and billing status. Payment card details are never seen or stored by us — they are handled directly by Stripe (see "Third parties" below).</Li>
+            <Li label="Subscription information">Your chosen plan and billing status. Payment card details are never seen or stored by us – they are handled directly by Stripe (see "Third parties" below).</Li>
             <Li label="Technical data">Basic logs from our infrastructure providers, including IP address, browser type, and approximate location, used to keep the service running and secure.</Li>
           </ul>
         </Section>
@@ -53,7 +53,7 @@ export default function PrivacyPage() {
             <li>Provide the exam platform you have signed up for.</li>
             <li>Communicate with you about your account, exams, or results.</li>
             <li>Take payments via Stripe and keep records required for tax and accounting.</li>
-            <li>Improve the service — for example, fixing bugs and monitoring uptime. We do not read exam content for this purpose; we may look at aggregate, non-identifying technical metrics.</li>
+            <li>Improve the service – for example, fixing bugs and monitoring uptime. We do not read exam content for this purpose; we may look at aggregate, non-identifying technical metrics.</li>
             <li>Comply with our legal obligations.</li>
           </ul>
           <p className="mt-3 opacity-70">
@@ -66,7 +66,7 @@ export default function PrivacyPage() {
         <Section title="Who can see your data">
           <ul className="space-y-2 list-none">
             <Li label="Your tutor sees">Your name, email, exam attempts, per-question scores, scan uploads, and any feedback they have written.</Li>
-            <Li label="Proctorly admin sees">The same as your tutor, plus subscription status — used only to operate the service.</Li>
+            <Li label="Proctorly admin sees">The same as your tutor, plus subscription status – used only to operate the service.</Li>
             <Li label="You always see">Your own data, and can export or delete it (see "Your rights" below).</Li>
             <Li label="Other students never see">Your data. Tutors only see data for students assigned to them.</Li>
           </ul>
@@ -90,7 +90,7 @@ export default function PrivacyPage() {
           <p className="mb-2"><strong>Active accounts:</strong> as long as you remain a user on the platform.</p>
           <p>
             <strong>Closed accounts:</strong> we retain your data for up to 24 months after you stop using
-            the service, in case you return — after that we delete or anonymise it, except where we are
+            the service, in case you return – after that we delete or anonymise it, except where we are
             legally required to keep records (e.g. tax records for 6 years).
           </p>
         </Section>
@@ -111,7 +111,7 @@ export default function PrivacyPage() {
           </ul>
           <p className="mt-3 opacity-70">
             To exercise any of these rights, email{" "}
-            <a href="mailto:jakaria@live.co.uk" className="underline">jakaria@live.co.uk</a>.
+            <a href="mailto:hello@jakadin.com" className="underline">hello@jakadin.com</a>.
             We will respond within 30 days.
           </p>
         </Section>
@@ -119,7 +119,7 @@ export default function PrivacyPage() {
         <Section title="Security">
           <p>
             Data is encrypted in transit (HTTPS) and at rest. Access to the database is limited to the
-            admin team and protected by row-level security policies. We have no access to your password —
+            admin team and protected by row-level security policies. We have no access to your password –
             we store only a one-way hash.
           </p>
         </Section>
@@ -155,7 +155,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 function Li({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <li>
-      <span className="font-semibold">{label}</span> — {children}
+      <span className="font-semibold">{label}</span> – {children}
     </li>
   );
 }

@@ -28,8 +28,7 @@
     "prisma": "^6.19.3",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "react-pdf": "^9.0.0",
-    "resend": "^6.17.1"
+    "react-pdf": "^9.0.0"
   },
   "devDependencies": {
     "@netlify/plugin-nextjs": "^5.15.12",

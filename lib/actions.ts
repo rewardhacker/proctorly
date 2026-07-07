@@ -64,7 +64,7 @@ async function requireAdmin() {
   return session.user.id;
 }
 
-export const TUTOR_POLICY_VERSION = "v1";
+const TUTOR_POLICY_VERSION = "v1";
 
 export async function inviteTutor(formData: FormData) {
   const adminId = await requireAdmin();

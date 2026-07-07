@@ -59,7 +59,6 @@ fs.promises.readlink = async function readlink(path: fs.PathLike, options?: unkn
 } as typeof fs.promises.readlink;
 
 const nextConfig: NextConfig = {
-  output: "standalone",
   webpack(config) {
     config.resolve.symlinks = false;
     return config;

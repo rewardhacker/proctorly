@@ -303,7 +303,7 @@ export default function LandingPage() {
                 type="text"
                 name="Name"
                 required
-                placeholder="Your name"
+                placeholder="Your Name"
                 className="w-full rounded-xl border px-4 py-3 text-sm outline-none focus:ring-2"
                 style={{ background: "var(--emphasis)" }}
               />

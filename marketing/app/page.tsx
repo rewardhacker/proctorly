@@ -271,27 +271,10 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section className="mx-auto max-w-5xl px-6 pb-24 text-center">
-        <div className="rounded-3xl border px-8 py-16" style={{ background: "var(--emphasis)" }}>
-          <h2 className="text-4xl font-bold">Ready to Run Your First Mock?</h2>
-          <p className="mx-auto mt-4 max-w-md opacity-60">
-            Get in touch and we'll have you set up in no time.
-          </p>
-          <a
-            href="#contact"
-            className="mt-8 inline-block rounded-full px-10 py-3 font-semibold text-[var(--background)] transition-opacity hover:opacity-80"
-            style={{ background: "var(--foreground)" }}
-          >
-            Enquire Now
-          </a>
-        </div>
-      </section>
-
       {/* ── Contact ── */}
       <section id="contact" className="mx-auto max-w-2xl px-6 pb-24">
-        <h2 className="mb-2 text-center text-3xl font-bold">Get in Touch</h2>
-        <p className="mb-10 text-center text-sm opacity-60">Tell us a bit about yourself and we'll be in touch shortly.</p>
+        <h2 className="mb-2 text-center text-3xl font-bold">Ready to Run Your First Mock?</h2>
+        <p className="mb-10 text-center text-sm opacity-60">Get in touch and we'll have you set up in no time.</p>
         <form
           action="mailto:jakaria@live.co.uk"
           method="POST"

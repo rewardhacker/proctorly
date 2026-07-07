@@ -288,21 +288,21 @@ export default function LandingPage() {
         <div className="rounded-3xl border px-8 py-16" style={{ background: "var(--emphasis)" }}>
           <h2 className="text-4xl font-bold">Ready to Run Your First Mock?</h2>
           <p className="mx-auto mt-4 max-w-md opacity-60">
-            Set up your first paper in under five minutes. No credit card, no faff.
+            Set up your first paper in under five minutes.
           </p>
           <Link
             href="/login"
             className="mt-8 inline-block rounded-full px-10 py-3 font-semibold text-[var(--background)] transition-opacity hover:opacity-80"
             style={{ background: "var(--foreground)" }}
           >
-            Get Started Free
+            Enquire Now
           </Link>
         </div>
       </section>
 
       {/* ── Footer ── */}
       <footer className="border-t py-8 text-center text-xs opacity-40">
-        <p>© 2025 Proctorly · Remote Practice Exam Platform</p>
+        <p>© {new Date().getFullYear()} Proctorly · Remote Practice Exam Platform</p>
       </footer>
     </div>
   );

@@ -42,14 +42,31 @@ model Tutor {
   email        String   @unique
   passwordHash String
   name         String
+  isAdmin      Boolean  @default(false)
   createdAt    DateTime @default(now())
 
   resetToken          String?   @unique
   resetTokenExpiresAt DateTime?
 
-  papers      Paper[]
-  tutees      Tutee[]
-  inviteLinks InviteLink[]
+  policyVersion     String?
+  policyConsentedAt DateTime?
+  policyIpAddress   String?
+
+  papers           Paper[]
+  tutees           Tutee[]
+  inviteLinks      InviteLink[]
+  sentTutorInvites TutorInvite[]
+}
+
+model TutorInvite {
+  id          String    @id @default(cuid())
+  token       String    @unique @default(cuid())
+  email       String
+  createdBy   Tutor     @relation(fields: [createdById], references: [id])
+  createdById String
+  expiresAt   DateTime
+  usedAt      DateTime?
+  createdAt   DateTime  @default(now())
 }
 
 model Tutee {

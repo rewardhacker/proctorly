@@ -11,7 +11,7 @@ const LINKS = [
   { href: "/tutor/attempts", label: "Submissions & Grading" },
 ];
 
-export default function TutorNav() {
+export default function TutorNav({ isAdmin = false }: { isAdmin?: boolean }) {
   const pathname = usePathname();
 
   return (
@@ -20,7 +20,7 @@ export default function TutorNav() {
         <div className="flex min-w-0 flex-1 flex-wrap items-center gap-4 lg:gap-24">
           <Link href="/tutor" className="font-[family-name:var(--font-arima-madurai)] text-xl font-bold tracking-tight">Proctorly</Link>
           <nav className="flex flex-wrap gap-2">
-            {LINKS.map((link) => {
+            {[...LINKS, ...(isAdmin ? [{ href: "/admin", label: "Admin" }] : [])].map((link) => {
               const active =
                 link.href === "/tutor" ? pathname === "/tutor" : pathname.startsWith(link.href);
               return (

@@ -58,6 +58,74 @@ async function requireTutorId() {
   return session.user.id;
 }
 
+async function requireAdmin() {
+  const session = await auth();
+  if (!session?.user?.isAdmin) throw new Error("Not authorized");
+  return session.user.id;
+}
+
+export const TUTOR_POLICY_VERSION = "v1";
+
+export async function inviteTutor(formData: FormData) {
+  const adminId = await requireAdmin();
+  const email = (formData.get("email") as string).trim().toLowerCase();
+
+  const existing = await prisma.tutor.findUnique({ where: { email } });
+  if (existing) redirect(`/admin?error=${encodeURIComponent("A tutor with that email already exists.")}`);
+
+  const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+  const invite = await prisma.tutorInvite.create({ data: { email, createdById: adminId, expiresAt } });
+
+  const h = await headers();
+  const host = h.get("host") ?? "localhost:3000";
+  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+  const onboardUrl = `${protocol}://${host}/onboard/${invite.token}`;
+
+  await sendEmail(
+    email,
+    "You've been invited to join Proctorly as a tutor",
+    `You've been invited to set up your tutor account on Proctorly.\n\nClick the link below to get started — it expires in 7 days.\n\n${onboardUrl}\n\nIf you weren't expecting this, you can ignore this email.`,
+  );
+
+  revalidatePath("/admin");
+  redirect(`/admin?success=${encodeURIComponent(`Invite sent to ${email}.`)}`);
+}
+
+export async function completeTutorOnboarding(token: string, formData: FormData): Promise<{ error: string } | void> {
+  const name = (formData.get("name") as string).trim();
+  const password = formData.get("password") as string;
+  const agreed = formData.get("agree");
+
+  if (!name) return { error: "Name is required." };
+  if (!password || password.length < 8) return { error: "Password must be at least 8 characters." };
+  if (!agreed) return { error: "You must accept the policy to continue." };
+
+  const invite = await prisma.tutorInvite.findUnique({ where: { token } });
+  if (!invite || invite.usedAt || invite.expiresAt < new Date()) return { error: "This invite link is invalid or has expired." };
+
+  const existing = await prisma.tutor.findUnique({ where: { email: invite.email } });
+  if (existing) return { error: "An account with this email already exists." };
+
+  const h = await headers();
+  const passwordHash = await bcrypt.hash(password, 10);
+
+  await prisma.$transaction([
+    prisma.tutor.create({
+      data: {
+        email: invite.email,
+        name,
+        passwordHash,
+        policyVersion: TUTOR_POLICY_VERSION,
+        policyConsentedAt: new Date(),
+        policyIpAddress: h.get("x-forwarded-for"),
+      },
+    }),
+    prisma.tutorInvite.update({ where: { token }, data: { usedAt: new Date() } }),
+  ]);
+
+  redirect("/login?success=Account+created.+Please+log+in.");
+}
+
 export async function logoutAction() {
   await signOut({ redirectTo: "/login" });
 }

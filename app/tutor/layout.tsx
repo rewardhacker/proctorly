@@ -12,7 +12,7 @@ export default async function TutorLayout({
 
   return (
     <div className="min-h-full">
-      <TutorNav />
+      <TutorNav isAdmin={session.user.isAdmin} />
       {children}
     </div>
   );

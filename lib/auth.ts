@@ -26,17 +26,17 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         const valid = await bcrypt.compare(password, tutor.passwordHash);
         if (!valid) return null;
 
-        return { id: tutor.id, email: tutor.email, name: tutor.name };
+        return { id: tutor.id, email: tutor.email, name: tutor.name, isAdmin: tutor.isAdmin };
       },
     }),
   ],
   callbacks: {
     jwt: async ({ token, user }) => {
-      if (user) token.tutorId = user.id;
+      if (user) { token.tutorId = user.id; token.isAdmin = user.isAdmin ?? false; }
       return token;
     },
     session: async ({ session, token }) => {
-      if (session.user) session.user.id = token.tutorId as string;
+      if (session.user) { session.user.id = token.tutorId as string; session.user.isAdmin = token.isAdmin ?? false; }
       return session;
     },
   },

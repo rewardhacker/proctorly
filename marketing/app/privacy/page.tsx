@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Privacy Policy – Proctorly",
@@ -9,10 +10,10 @@ export default function PrivacyPage() {
     <div className="min-h-screen flex flex-col font-[family-name:var(--font-mulish)]">
       {/* ── Nav ── */}
       <header className="border-b px-6 py-4 flex items-center justify-between">
-        <a href="/" className="font-[family-name:var(--font-arima-madurai)] text-xl font-bold tracking-tight">
+        <Link href="/" className="font-[family-name:var(--font-arima-madurai)] text-xl font-bold tracking-tight">
           Proctorly
-        </a>
-        <a href="/" className="text-sm underline opacity-60 hover:opacity-100">← Back</a>
+        </Link>
+        <Link href="/" className="text-sm underline opacity-60 hover:opacity-100">← Back</Link>
       </header>
 
       {/* ── Content ── */}
@@ -136,7 +137,7 @@ export default function PrivacyPage() {
       <footer className="border-t py-8 text-center text-xs opacity-40">
         <p>© {new Date().getFullYear()} Proctorly · Proctoring Exam Practice Properly</p>
         <p className="mt-2">
-          <a href="/privacy" className="underline hover:opacity-70">Privacy Policy</a>
+          <Link href="/privacy" className="underline hover:opacity-70">Privacy Policy</Link>
         </p>
       </footer>
     </div>

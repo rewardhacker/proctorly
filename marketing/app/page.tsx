@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "https://proctorly-exams.vercel.app";
 
 const stats = [
@@ -345,7 +347,7 @@ export default function LandingPage() {
       <footer className="border-t py-8 text-center text-xs opacity-40">
         <p>© {new Date().getFullYear()} Proctorly · Proctoring Exam Practice Properly</p>
         <p className="mt-2">
-          <a href="/privacy" className="underline hover:opacity-70">Privacy Policy</a>
+          <Link href="/privacy" className="underline hover:opacity-70">Privacy Policy</Link>
         </p>
       </footer>
     </div>

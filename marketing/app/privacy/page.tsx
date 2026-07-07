@@ -27,7 +27,7 @@ export default function PrivacyPage() {
           </p>
         </div>
 
-        <Section title="Who we are">
+        <Section title="Who We Are">
           <p>
             Proctorly is operated by Jakaria Uddin. Our contact email is{" "}
             <a href="mailto:hello@jakadin.com" className="underline">hello@jakadin.com</a>.
@@ -36,18 +36,18 @@ export default function PrivacyPage() {
           </p>
         </Section>
 
-        <Section title="What we collect">
+        <Section title="What We Collect">
           <ul className="space-y-2 list-none">
-            <Li label="Account information">Your name and email address, provided when you sign up.</Li>
-            <Li label="Exam papers">PDF files uploaded by tutors. These are stored on our platform and shared only with the students the tutor assigns them to.</Li>
-            <Li label="Exam attempts">Your answers, per-question timing data, scan uploads (for handwritten answers), and overall scores.</Li>
-            <Li label="Tutor feedback">PDF annotations, per-question marks, and overall comments left by tutors after marking.</Li>
-            <Li label="Subscription information">Your chosen plan and billing status. Payment card details are never seen or stored by us – they are handled directly by Stripe (see "Third parties" below).</Li>
-            <Li label="Technical data">Basic logs from our infrastructure providers, including IP address, browser type, and approximate location, used to keep the service running and secure.</Li>
+            <Li label="Account Information">Your name and email address, provided when you sign up.</Li>
+            <Li label="Exam Papers">PDF files uploaded by tutors. These are stored on our platform and shared only with the students the tutor assigns them to.</Li>
+            <Li label="Exam Attempts">Your answers, per-question timing data, scan uploads (for handwritten answers), and overall scores.</Li>
+            <Li label="Tutor Feedback">PDF annotations, per-question marks, and overall comments left by tutors after marking.</Li>
+            <Li label="Subscription Information">Your chosen plan and billing status. Payment card details are never seen or stored by us – they are handled directly by Stripe (see "Third parties" below).</Li>
+            <Li label="Technical Data">Basic logs from our infrastructure providers, including IP address, browser type, and approximate location, used to keep the service running and secure.</Li>
           </ul>
         </Section>
 
-        <Section title="Why we use it">
+        <Section title="Why We Use It">
           <p className="mb-3">We use your personal data only to:</p>
           <ul className="list-disc list-inside space-y-1 opacity-80">
             <li>Provide the exam platform you have signed up for.</li>
@@ -63,16 +63,16 @@ export default function PrivacyPage() {
           </p>
         </Section>
 
-        <Section title="Who can see your data">
+        <Section title="Who Can See Your Data">
           <ul className="space-y-2 list-none">
-            <Li label="Your tutor sees">Your name, email, exam attempts, per-question scores, scan uploads, and any feedback they have written.</Li>
-            <Li label="Proctorly admin sees">The same as your tutor, plus subscription status – used only to operate the service.</Li>
-            <Li label="You always see">Your own data, and can export or delete it (see "Your rights" below).</Li>
-            <Li label="Other students never see">Your data. Tutors only see data for students assigned to them.</Li>
+            <Li label="Your Tutor Sees">Your name, email, exam attempts, per-question scores, scan uploads, and any feedback they have written.</Li>
+            <Li label="Proctorly Admin Sees">The same as your tutor, plus subscription status – used only to operate the service.</Li>
+            <Li label="You Always See">Your own data, and can export or delete it (see "Your rights" below).</Li>
+            <Li label="Other Students Never See">Your data. Tutors only see data for students assigned to them.</Li>
           </ul>
         </Section>
 
-        <Section title="Third parties">
+        <Section title="Third Parties">
           <p className="mb-3">
             We share your data only with the following processors, each of which has signed appropriate
             data-processing agreements with us:
@@ -86,7 +86,7 @@ export default function PrivacyPage() {
           <p className="mt-3 font-medium">We do not sell your personal data to anyone, for any reason.</p>
         </Section>
 
-        <Section title="How long we keep it">
+        <Section title="How Long We Keep It">
           <p className="mb-2"><strong>Active accounts:</strong> as long as you remain a user on the platform.</p>
           <p>
             <strong>Closed accounts:</strong> we retain your data for up to 24 months after you stop using
@@ -95,7 +95,7 @@ export default function PrivacyPage() {
           </p>
         </Section>
 
-        <Section title="Your rights">
+        <Section title="Your Rights">
           <p className="mb-3">Under UK GDPR you have the right to:</p>
           <ul className="list-disc list-inside space-y-1 opacity-80">
             <li>Access the personal data we hold about you</li>
@@ -124,7 +124,7 @@ export default function PrivacyPage() {
           </p>
         </Section>
 
-        <Section title="Changes to this policy">
+        <Section title="Changes to This Policy">
           <p>
             If we make material changes, we will email all active accounts at least 14 days before the
             change takes effect. The "last updated" date at the top of this page reflects the most recent revision.

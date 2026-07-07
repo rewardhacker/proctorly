@@ -2,19 +2,13 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
+import { authConfig } from "@/lib/auth.config";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  // Required on any host other than Vercel (Auth.js can't otherwise trust
-  // the incoming request's Host header, which silently breaks auth flows).
-  trustHost: true,
-  session: { strategy: "jwt" },
-  pages: { signIn: "/login" },
+  ...authConfig,
   providers: [
     Credentials({
-      credentials: {
-        email: {},
-        password: {},
-      },
+      credentials: { email: {}, password: {} },
       authorize: async (credentials) => {
         const email = credentials?.email as string | undefined;
         const password = credentials?.password as string | undefined;
@@ -30,14 +24,4 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
     }),
   ],
-  callbacks: {
-    jwt: async ({ token, user }) => {
-      if (user) { token.tutorId = user.id; token.isAdmin = user.isAdmin ?? false; }
-      return token;
-    },
-    session: async ({ session, token }) => {
-      if (session.user) { session.user.id = token.tutorId as string; session.user.isAdmin = token.isAdmin ?? false; }
-      return session;
-    },
-  },
 });

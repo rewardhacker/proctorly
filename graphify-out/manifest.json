@@ -1,0 +1,432 @@
+{
+  "E:\\Projects\\exam-practice\\.claude\\launch.json": {
+    "mtime": 1783208820.0,
+    "ast_hash": "e63008ddf3be0060af6ab453f0aa25cc",
+    "semantic_hash": "e63008ddf3be0060af6ab453f0aa25cc"
+  },
+  "E:\\Projects\\exam-practice\\app\\api\\attempts\\[id]\\status\\route.ts": {
+    "mtime": 1783111624.0,
+    "ast_hash": "1eac8e54a6042a983ee001f1b65f296a",
+    "semantic_hash": "1eac8e54a6042a983ee001f1b65f296a"
+  },
+  "E:\\Projects\\exam-practice\\app\\api\\auth\\[...nextauth]\\route.ts": {
+    "mtime": 1783108930.0,
+    "ast_hash": "9f8c0bd10a4bc6be80ab25e09f6f4bd7",
+    "semantic_hash": "9f8c0bd10a4bc6be80ab25e09f6f4bd7"
+  },
+  "E:\\Projects\\exam-practice\\app\\api\\cron\\purge-expired\\route.ts": {
+    "mtime": 1783131126.0,
+    "ast_hash": "93f91333054989860c1885ac919ff692",
+    "semantic_hash": "93f91333054989860c1885ac919ff692"
+  },
+  "E:\\Projects\\exam-practice\\app\\api\\cron\\sweep-attempts\\route.ts": {
+    "mtime": 1783111630.0,
+    "ast_hash": "52118aeff7f286de41957503cb6e7933",
+    "semantic_hash": "52118aeff7f286de41957503cb6e7933"
+  },
+  "E:\\Projects\\exam-practice\\app\\api\\files\\[...key]\\route.ts": {
+    "mtime": 1783213048.0,
+    "ast_hash": "88b15563c4bb0dacd3a7eccbbd5fa46a",
+    "semantic_hash": "88b15563c4bb0dacd3a7eccbbd5fa46a"
+  },
+  "E:\\Projects\\exam-practice\\app\\api\\local-upload\\route.ts": {
+    "mtime": 1783192202.0,
+    "ast_hash": "1165f04ef6a74cb34331d8b4ac5c821e",
+    "semantic_hash": "1165f04ef6a74cb34331d8b4ac5c821e"
+  },
+  "E:\\Projects\\exam-practice\\app\\consent\\[token]\\page.tsx": {
+    "mtime": 1783175952.0,
+    "ast_hash": "612edaca62a1cda6e0ae23345bb35f58",
+    "semantic_hash": "612edaca62a1cda6e0ae23345bb35f58"
+  },
+  "E:\\Projects\\exam-practice\\app\\exam\\[attemptId]\\AnswerEditor.tsx": {
+    "mtime": 1783372230.0,
+    "ast_hash": "ce492c02b747f410aa0323ca212493a2",
+    "semantic_hash": "ce492c02b747f410aa0323ca212493a2"
+  },
+  "E:\\Projects\\exam-practice\\app\\exam\\[attemptId]\\Countdown.tsx": {
+    "mtime": 1783248928.0,
+    "ast_hash": "fac5f26fd915f6c3903e4b32b27aa050",
+    "semantic_hash": "fac5f26fd915f6c3903e4b32b27aa050"
+  },
+  "E:\\Projects\\exam-practice\\app\\exam\\[attemptId]\\FlagButton.tsx": {
+    "mtime": 1783175838.0,
+    "ast_hash": "2f123b0f94cc4228b05d3e724811e37a",
+    "semantic_hash": "2f123b0f94cc4228b05d3e724811e37a"
+  },
+  "E:\\Projects\\exam-practice\\app\\exam\\[attemptId]\\FocusTracker.tsx": {
+    "mtime": 1783129424.0,
+    "ast_hash": "d2db59603ccd95873031197f8427012c",
+    "semantic_hash": "d2db59603ccd95873031197f8427012c"
+  },
+  "E:\\Projects\\exam-practice\\app\\exam\\[attemptId]\\PdfAnnotator.tsx": {
+    "mtime": 1783236420.0,
+    "ast_hash": "c5d374f9e2198ff802bccfab2f78e5fc",
+    "semantic_hash": "c5d374f9e2198ff802bccfab2f78e5fc"
+  },
+  "E:\\Projects\\exam-practice\\app\\exam\\[attemptId]\\PdfAnnotatorClient.tsx": {
+    "mtime": 1783112888.0,
+    "ast_hash": "42fb7fd13bc6a88b384351a380829cd1",
+    "semantic_hash": "42fb7fd13bc6a88b384351a380829cd1"
+  },
+  "E:\\Projects\\exam-practice\\app\\exam\\[attemptId]\\PreExamStart.tsx": {
+    "mtime": 1783210172.0,
+    "ast_hash": "94a9c120ff652a3d66435d0c0ed6776b",
+    "semantic_hash": "94a9c120ff652a3d66435d0c0ed6776b"
+  },
+  "E:\\Projects\\exam-practice\\app\\exam\\[attemptId]\\ReportIssueButton.tsx": {
+    "mtime": 1783175874.0,
+    "ast_hash": "b0d30354e7e2ee06d0f0f33d46cd5ca2",
+    "semantic_hash": "b0d30354e7e2ee06d0f0f33d46cd5ca2"
+  },
+  "E:\\Projects\\exam-practice\\app\\exam\\[attemptId]\\ScanUpload.tsx": {
+    "mtime": 1783210182.0,
+    "ast_hash": "a71c4b9e014dc8735de88119c050c2e6",
+    "semantic_hash": "a71c4b9e014dc8735de88119c050c2e6"
+  },
+  "E:\\Projects\\exam-practice\\app\\exam\\[attemptId]\\SubmitButton.tsx": {
+    "mtime": 1783172152.0,
+    "ast_hash": "5b9aee65bb2d41989286683e8f5ec57b",
+    "semantic_hash": "5b9aee65bb2d41989286683e8f5ec57b"
+  },
+  "E:\\Projects\\exam-practice\\app\\exam\\[attemptId]\\page.tsx": {
+    "mtime": 1783369118.0,
+    "ast_hash": "67f1c01b4ea9363e170b97f8810d697c",
+    "semantic_hash": "67f1c01b4ea9363e170b97f8810d697c"
+  },
+  "E:\\Projects\\exam-practice\\app\\invite\\[token]\\route.ts": {
+    "mtime": 1783130742.0,
+    "ast_hash": "3b38a85c94d05702ccf429b778b3f60e",
+    "semantic_hash": "3b38a85c94d05702ccf429b778b3f60e"
+  },
+  "E:\\Projects\\exam-practice\\app\\layout.tsx": {
+    "mtime": 1783172308.0,
+    "ast_hash": "cd03ace2e6d15fead7f151534701def8",
+    "semantic_hash": "cd03ace2e6d15fead7f151534701def8"
+  },
+  "E:\\Projects\\exam-practice\\app\\login\\page.tsx": {
+    "mtime": 1783209116.0,
+    "ast_hash": "d025b3c4484aa615143336ccad71e5f5",
+    "semantic_hash": "d025b3c4484aa615143336ccad71e5f5"
+  },
+  "E:\\Projects\\exam-practice\\app\\page.tsx": {
+    "mtime": 1783209968.0,
+    "ast_hash": "363151a3f0a680e2db2706ede69895af",
+    "semantic_hash": "363151a3f0a680e2db2706ede69895af"
+  },
+  "E:\\Projects\\exam-practice\\app\\tutor\\attempts\\[id]\\AnswerView.tsx": {
+    "mtime": 1783236264.0,
+    "ast_hash": "964118110d29b272d361a376690e5f0b",
+    "semantic_hash": "964118110d29b272d361a376690e5f0b"
+  },
+  "E:\\Projects\\exam-practice\\app\\tutor\\attempts\\[id]\\page.tsx": {
+    "mtime": 1783369074.0,
+    "ast_hash": "3013aa8941cbf4fd59da74d245b41e7a",
+    "semantic_hash": "3013aa8941cbf4fd59da74d245b41e7a"
+  },
+  "E:\\Projects\\exam-practice\\app\\tutor\\attempts\\page.tsx": {
+    "mtime": 1783213632.0,
+    "ast_hash": "4a237cc589aa77f45083e41876eac2c7",
+    "semantic_hash": "4a237cc589aa77f45083e41876eac2c7"
+  },
+  "E:\\Projects\\exam-practice\\app\\tutor\\layout.tsx": {
+    "mtime": 1783191234.0,
+    "ast_hash": "a17ca63271d08ccb168047c9ad0ea537",
+    "semantic_hash": "a17ca63271d08ccb168047c9ad0ea537"
+  },
+  "E:\\Projects\\exam-practice\\app\\tutor\\page.tsx": {
+    "mtime": 1783191250.0,
+    "ast_hash": "e025c5eb036c250472d431ccee350b42",
+    "semantic_hash": "e025c5eb036c250472d431ccee350b42"
+  },
+  "E:\\Projects\\exam-practice\\app\\tutor\\papers\\new\\NewPaperForm.tsx": {
+    "mtime": 1783371970.0,
+    "ast_hash": "6992626aaaca5460276666da3717fa8b",
+    "semantic_hash": "6992626aaaca5460276666da3717fa8b"
+  },
+  "E:\\Projects\\exam-practice\\app\\tutor\\papers\\new\\page.tsx": {
+    "mtime": 1783192316.0,
+    "ast_hash": "a6308ea06b81f75450660f25003d9b9b",
+    "semantic_hash": "a6308ea06b81f75450660f25003d9b9b"
+  },
+  "E:\\Projects\\exam-practice\\app\\tutor\\papers\\page.tsx": {
+    "mtime": 1783213618.0,
+    "ast_hash": "552cd09f9e7212b2af70261e7eb2a01d",
+    "semantic_hash": "552cd09f9e7212b2af70261e7eb2a01d"
+  },
+  "E:\\Projects\\exam-practice\\app\\tutor\\tutees\\page.tsx": {
+    "mtime": 1783372046.0,
+    "ast_hash": "5947a59f6161297d76728dca359f7759",
+    "semantic_hash": "5947a59f6161297d76728dca359f7759"
+  },
+  "E:\\Projects\\exam-practice\\components\\FileInputButton.tsx": {
+    "mtime": 1783175914.0,
+    "ast_hash": "8917c392c8e75acd58e7a84fdfb165b9",
+    "semantic_hash": "8917c392c8e75acd58e7a84fdfb165b9"
+  },
+  "E:\\Projects\\exam-practice\\components\\Notice.tsx": {
+    "mtime": 1783173368.0,
+    "ast_hash": "a1d88a516ea98ac36c7748d523f50d51",
+    "semantic_hash": "a1d88a516ea98ac36c7748d523f50d51"
+  },
+  "E:\\Projects\\exam-practice\\components\\TutorNav.tsx": {
+    "mtime": 1783369674.0,
+    "ast_hash": "655795d1f441b0e04cb065ea2412e1ef",
+    "semantic_hash": "655795d1f441b0e04cb065ea2412e1ef"
+  },
+  "E:\\Projects\\exam-practice\\eslint.config.mjs": {
+    "mtime": 1783107824.0,
+    "ast_hash": "dfa1f5f6a7037bf39dc510f30b180002",
+    "semantic_hash": "dfa1f5f6a7037bf39dc510f30b180002"
+  },
+  "E:\\Projects\\exam-practice\\lib\\actions.ts": {
+    "mtime": 1783371960.0,
+    "ast_hash": "29cf55d32d1cbf228e817991a67c5e2d",
+    "semantic_hash": "29cf55d32d1cbf228e817991a67c5e2d"
+  },
+  "E:\\Projects\\exam-practice\\lib\\antiCheat.ts": {
+    "mtime": 1783213662.0,
+    "ast_hash": "5393bdcfdf1d747030d91fa8770cd2a2",
+    "semantic_hash": "5393bdcfdf1d747030d91fa8770cd2a2"
+  },
+  "E:\\Projects\\exam-practice\\lib\\auth.ts": {
+    "mtime": 1783171356.0,
+    "ast_hash": "cddcb386bdde3f03b358f239f01f2a8e",
+    "semantic_hash": "cddcb386bdde3f03b358f239f01f2a8e"
+  },
+  "E:\\Projects\\exam-practice\\lib\\email.ts": {
+    "mtime": 1783211412.0,
+    "ast_hash": "d4f4273d6e4bb6efecc683037862a858",
+    "semantic_hash": "d4f4273d6e4bb6efecc683037862a858"
+  },
+  "E:\\Projects\\exam-practice\\lib\\notifications.ts": {
+    "mtime": 1783129888.0,
+    "ast_hash": "5efc83b77a91e0297f6451047a258481",
+    "semantic_hash": "5efc83b77a91e0297f6451047a258481"
+  },
+  "E:\\Projects\\exam-practice\\lib\\offlineCache.ts": {
+    "mtime": 1783131632.0,
+    "ast_hash": "f88590ab91e6e3bc7364a77ef896d432",
+    "semantic_hash": "f88590ab91e6e3bc7364a77ef896d432"
+  },
+  "E:\\Projects\\exam-practice\\lib\\prisma.ts": {
+    "mtime": 1783108920.0,
+    "ast_hash": "504bfe30fc2d526de4f10fad0b479976",
+    "semantic_hash": "504bfe30fc2d526de4f10fad0b479976"
+  },
+  "E:\\Projects\\exam-practice\\lib\\redeemInvite.ts": {
+    "mtime": 1783130736.0,
+    "ast_hash": "d55d4421b60e9b059ecb728a153dd8ae",
+    "semantic_hash": "d55d4421b60e9b059ecb728a153dd8ae"
+  },
+  "E:\\Projects\\exam-practice\\lib\\storage\\index.ts": {
+    "mtime": 1783130870.0,
+    "ast_hash": "60abbe157a7aad5d50bd8875b6349eb3",
+    "semantic_hash": "60abbe157a7aad5d50bd8875b6349eb3"
+  },
+  "E:\\Projects\\exam-practice\\lib\\storage\\local.ts": {
+    "mtime": 1783192194.0,
+    "ast_hash": "ed5a825edb1eec870ce5ed6049c4e213",
+    "semantic_hash": "ed5a825edb1eec870ce5ed6049c4e213"
+  },
+  "E:\\Projects\\exam-practice\\lib\\storage\\s3.ts": {
+    "mtime": 1783192176.0,
+    "ast_hash": "589ede6b291085fe8d41e2081823c3ec",
+    "semantic_hash": "589ede6b291085fe8d41e2081823c3ec"
+  },
+  "E:\\Projects\\exam-practice\\lib\\storage\\types.ts": {
+    "mtime": 1783192158.0,
+    "ast_hash": "771fb33911e062baff18e90bc012f663",
+    "semantic_hash": "771fb33911e062baff18e90bc012f663"
+  },
+  "E:\\Projects\\exam-practice\\lib\\storage\\validate.ts": {
+    "mtime": 1783111594.0,
+    "ast_hash": "2e3e89bf82de16dd0fdbd69f49b32c0b",
+    "semantic_hash": "2e3e89bf82de16dd0fdbd69f49b32c0b"
+  },
+  "E:\\Projects\\exam-practice\\lib\\timer\\resolveAttemptState.ts": {
+    "mtime": 1783129924.0,
+    "ast_hash": "b1d723e09fc0659278d7a02b3a5b3926",
+    "semantic_hash": "b1d723e09fc0659278d7a02b3a5b3926"
+  },
+  "E:\\Projects\\exam-practice\\lib\\tuteeSession.ts": {
+    "mtime": 1783109624.0,
+    "ast_hash": "c3a209fda64f9097509c2fbbe24f8bb8",
+    "semantic_hash": "c3a209fda64f9097509c2fbbe24f8bb8"
+  },
+  "E:\\Projects\\exam-practice\\next.config.ts": {
+    "mtime": 1783371566.0,
+    "ast_hash": "55ccc275aed6b5be4ec73fe282e34a5b",
+    "semantic_hash": "55ccc275aed6b5be4ec73fe282e34a5b"
+  },
+  "E:\\Projects\\exam-practice\\package.json": {
+    "mtime": 1783371400.0,
+    "ast_hash": "7a63dbecbe7658d7bb82cd905535efdf",
+    "semantic_hash": "7a63dbecbe7658d7bb82cd905535efdf"
+  },
+  "E:\\Projects\\exam-practice\\postcss.config.mjs": {
+    "mtime": 1783107824.0,
+    "ast_hash": "239f3ebf717465dc636818a1a619398d",
+    "semantic_hash": "239f3ebf717465dc636818a1a619398d"
+  },
+  "E:\\Projects\\exam-practice\\prisma\\seed.js": {
+    "mtime": 1783108968.0,
+    "ast_hash": "dae71da22475ce536a0cb9c4e2129be7",
+    "semantic_hash": "dae71da22475ce536a0cb9c4e2129be7"
+  },
+  "E:\\Projects\\exam-practice\\tsconfig.json": {
+    "mtime": 1783107824.0,
+    "ast_hash": "02fc19ad21338c2ab820a70136310db4",
+    "semantic_hash": "02fc19ad21338c2ab820a70136310db4"
+  },
+  "E:\\Projects\\exam-practice\\types\\next-auth.d.ts": {
+    "mtime": 1783108956.0,
+    "ast_hash": "146b9709588aa0dab31c6153e7284b3f",
+    "semantic_hash": "146b9709588aa0dab31c6153e7284b3f"
+  },
+  "E:\\Projects\\exam-practice\\vercel.json": {
+    "mtime": 1783130812.0,
+    "ast_hash": "aa381e393dd59e24b201ce275107bfc3",
+    "semantic_hash": "aa381e393dd59e24b201ce275107bfc3"
+  },
+  "E:\\Projects\\exam-practice\\AGENTS.md": {
+    "mtime": 1783108078.0,
+    "ast_hash": "9e09241799026ac05be315a2f0b50055",
+    "semantic_hash": "9e09241799026ac05be315a2f0b50055"
+  },
+  "E:\\Projects\\exam-practice\\CLAUDE.md": {
+    "mtime": 1783108078.0,
+    "ast_hash": "5c27369b226fcf2be8a6cfe52224e767",
+    "semantic_hash": "5c27369b226fcf2be8a6cfe52224e767"
+  },
+  "E:\\Projects\\exam-practice\\README.md": {
+    "mtime": 1783152528.0,
+    "ast_hash": "49a0ef2e86320a7c30ef4723205fdfe6",
+    "semantic_hash": "49a0ef2e86320a7c30ef4723205fdfe6"
+  },
+  "E:\\Projects\\exam-practice\\public\\file.svg": {
+    "mtime": 1783107824.0,
+    "ast_hash": "d09f95206c3fa0bb9bd9fefabfd0ea71",
+    "semantic_hash": "d09f95206c3fa0bb9bd9fefabfd0ea71"
+  },
+  "E:\\Projects\\exam-practice\\public\\globe.svg": {
+    "mtime": 1783107824.0,
+    "ast_hash": "2aaafa6a49b6563925fe440891e32717",
+    "semantic_hash": "2aaafa6a49b6563925fe440891e32717"
+  },
+  "E:\\Projects\\exam-practice\\public\\next.svg": {
+    "mtime": 1783107824.0,
+    "ast_hash": "8e061864f388b47f33a1c3780831193e",
+    "semantic_hash": "8e061864f388b47f33a1c3780831193e"
+  },
+  "E:\\Projects\\exam-practice\\public\\vercel.svg": {
+    "mtime": 1783107824.0,
+    "ast_hash": "c0af2f507b369b085b35ef4bbe3bcf1e",
+    "semantic_hash": "c0af2f507b369b085b35ef4bbe3bcf1e"
+  },
+  "E:\\Projects\\exam-practice\\public\\window.svg": {
+    "mtime": 1783107824.0,
+    "ast_hash": "a2760511c65806022ad20adf74370ff3",
+    "semantic_hash": "a2760511c65806022ad20adf74370ff3"
+  },
+  "E:\\Projects\\exam-practice\\app\\api\\attempts\\[id]\\marked-pdf\\route.ts": {
+    "mtime": 1783371302.0,
+    "ast_hash": "e06bcdf8bc4d80e09b940125b4658d0b",
+    "semantic_hash": "e06bcdf8bc4d80e09b940125b4658d0b"
+  },
+  "E:\\Projects\\exam-practice\\app\\exam\\[attemptId]\\AnswerViewClient.tsx": {
+    "mtime": 1783240108.0,
+    "ast_hash": "abe977ba9044435e867eabf6fdcafa93",
+    "semantic_hash": "abe977ba9044435e867eabf6fdcafa93"
+  },
+  "E:\\Projects\\exam-practice\\app\\exam\\[attemptId]\\StudentPaperReview.tsx": {
+    "mtime": 1783369102.0,
+    "ast_hash": "c972d90134f3285974e8afc335801156",
+    "semantic_hash": "c972d90134f3285974e8afc335801156"
+  },
+  "E:\\Projects\\exam-practice\\app\\exam\\[attemptId]\\StudentPaperReviewClient.tsx": {
+    "mtime": 1783240104.0,
+    "ast_hash": "95e21147bd93049ff056a3ed867b55f8",
+    "semantic_hash": "95e21147bd93049ff056a3ed867b55f8"
+  },
+  "E:\\Projects\\exam-practice\\app\\forgot-password\\page.tsx": {
+    "mtime": 1783209100.0,
+    "ast_hash": "42c3fa2cae98f1d2d0f5253eda99a8c3",
+    "semantic_hash": "42c3fa2cae98f1d2d0f5253eda99a8c3"
+  },
+  "E:\\Projects\\exam-practice\\app\\landing\\page.tsx": {
+    "mtime": 1783370826.0,
+    "ast_hash": "3c11ed9a1980fba84c2fd51c1c216381",
+    "semantic_hash": "3c11ed9a1980fba84c2fd51c1c216381"
+  },
+  "E:\\Projects\\exam-practice\\app\\reset-password\\[token]\\page.tsx": {
+    "mtime": 1783209108.0,
+    "ast_hash": "b95e188b98c75f370317389e5ac0ce10",
+    "semantic_hash": "b95e188b98c75f370317389e5ac0ce10"
+  },
+  "E:\\Projects\\exam-practice\\app\\student\\(authed)\\layout.tsx": {
+    "mtime": 1783372056.0,
+    "ast_hash": "ae54b819bfa3976e967aaf540032b63a",
+    "semantic_hash": "ae54b819bfa3976e967aaf540032b63a"
+  },
+  "E:\\Projects\\exam-practice\\app\\student\\(authed)\\page.tsx": {
+    "mtime": 1783239798.0,
+    "ast_hash": "222218a501887dc0e5c4a30bb9e726bb",
+    "semantic_hash": "222218a501887dc0e5c4a30bb9e726bb"
+  },
+  "E:\\Projects\\exam-practice\\app\\student\\login\\page.tsx": {
+    "mtime": 1783210186.0,
+    "ast_hash": "895d66bab719843af99fd4ebdd0b4a5c",
+    "semantic_hash": "895d66bab719843af99fd4ebdd0b4a5c"
+  },
+  "E:\\Projects\\exam-practice\\app\\tutor\\attempts\\[id]\\AnnotatedPdfViewer.tsx": {
+    "mtime": 1783369052.0,
+    "ast_hash": "51339a58dab3b8fa3ab5e38ec68221af",
+    "semantic_hash": "51339a58dab3b8fa3ab5e38ec68221af"
+  },
+  "E:\\Projects\\exam-practice\\app\\tutor\\attempts\\[id]\\AnnotatedPdfViewerClient.tsx": {
+    "mtime": 1783367558.0,
+    "ast_hash": "6879370f513753ed5c7e478d58bee9d9",
+    "semantic_hash": "6879370f513753ed5c7e478d58bee9d9"
+  },
+  "E:\\Projects\\exam-practice\\app\\tutor\\attempts\\[id]\\GradingForm.tsx": {
+    "mtime": 1783248950.0,
+    "ast_hash": "a54e7ef29809959ae1f938fad564fb79",
+    "semantic_hash": "a54e7ef29809959ae1f938fad564fb79"
+  },
+  "E:\\Projects\\exam-practice\\app\\tutor\\attempts\\[id]\\TutorScanUpload.tsx": {
+    "mtime": 1783368664.0,
+    "ast_hash": "110fd5c74cc9d3e0951c8fe5d7a8b7a2",
+    "semantic_hash": "110fd5c74cc9d3e0951c8fe5d7a8b7a2"
+  },
+  "E:\\Projects\\exam-practice\\app\\tutor\\attempts\\loading.tsx": {
+    "mtime": 1783213592.0,
+    "ast_hash": "80f9dcb226574e09df1dd2a5c505f59a",
+    "semantic_hash": "80f9dcb226574e09df1dd2a5c505f59a"
+  },
+  "E:\\Projects\\exam-practice\\app\\tutor\\papers\\loading.tsx": {
+    "mtime": 1783213588.0,
+    "ast_hash": "115850f862cfa7e4000d996360fc52aa",
+    "semantic_hash": "115850f862cfa7e4000d996360fc52aa"
+  },
+  "E:\\Projects\\exam-practice\\components\\AnswerView.tsx": {
+    "mtime": 1783236258.0,
+    "ast_hash": "98138d1f632ad75fe86ef9c8eaec51aa",
+    "semantic_hash": "98138d1f632ad75fe86ef9c8eaec51aa"
+  },
+  "E:\\Projects\\exam-practice\\components\\ConfirmButton.tsx": {
+    "mtime": 1783213600.0,
+    "ast_hash": "837db3a9fbf61a1d52aba586cc5864ea",
+    "semantic_hash": "837db3a9fbf61a1d52aba586cc5864ea"
+  },
+  "E:\\Projects\\exam-practice\\proxy.ts": {
+    "mtime": 1783371110.0,
+    "ast_hash": "48311ed0baa838adabc47bd0f29a9417",
+    "semantic_hash": "48311ed0baa838adabc47bd0f29a9417"
+  },
+  "E:\\Projects\\exam-practice\\.github\\workflows\\cron-sweep.yml": {
+    "mtime": 1783209126.0,
+    "ast_hash": "9ab1a7f9aa706d15012d824314f7510f",
+    "semantic_hash": "9ab1a7f9aa706d15012d824314f7510f"
+  }
+}

@@ -1,0 +1,676 @@
+{
+  "communities": {
+    "0": [
+      "app_student_login_page_tsx_login_page",
+      "attemptid_flagbutton",
+      "attemptid_flagbutton_flagbutton",
+      "attemptid_focustracker",
+      "attemptid_focustracker_focustracker",
+      "attemptid_reportissuebutton",
+      "attemptid_reportissuebutton_reportissuebutton",
+      "attemptid_scanupload",
+      "attemptid_submitbutton",
+      "attemptid_submitbutton_submitbutton",
+      "attempts_page",
+      "forgot_password_page",
+      "forgot_password_page_forgotpasswordpage",
+      "id_tutorscanupload",
+      "lib_actions",
+      "lib_actions_beginscanupload",
+      "lib_actions_begintutorscanupload",
+      "lib_actions_createinvite",
+      "lib_actions_createtutee",
+      "lib_actions_deleteattempt",
+      "lib_actions_deleteinvite",
+      "lib_actions_deletetutee",
+      "lib_actions_finalizecreatepaper",
+      "lib_actions_finalizescanupload",
+      "lib_actions_finalizetutorscanupload",
+      "lib_actions_focus_event_types",
+      "lib_actions_focuseventtype",
+      "lib_actions_friendlymessage",
+      "lib_actions_getownattempt",
+      "lib_actions_giveconsent",
+      "lib_actions_logfocusevent",
+      "lib_actions_reportissue",
+      "lib_actions_requestpasswordreset",
+      "lib_actions_requiretutorid",
+      "lib_actions_resetattempt",
+      "lib_actions_resettuteepassword",
+      "lib_actions_saveanswer",
+      "lib_actions_studentlogin",
+      "lib_actions_submitattempt",
+      "lib_actions_toggleflag",
+      "login_page_studentloginpage",
+      "tutees_page"
+    ],
+    "1": [
+      "components_notice",
+      "components_notice_notice",
+      "key_route",
+      "key_route_contenttypefor",
+      "key_route_get",
+      "key_route_serve",
+      "lib_actions_completepasswordreset",
+      "lib_email",
+      "lib_email_sendemail",
+      "lib_notifications",
+      "lib_notifications_notifyissuereport",
+      "lib_notifications_notifysubmission",
+      "lib_prisma",
+      "lib_prisma_globalforprisma",
+      "lib_redeeminvite",
+      "lib_redeeminvite_loadinvite",
+      "lib_redeeminvite_redeeminvite",
+      "lib_tuteesession",
+      "lib_tuteesession_gettuteesession",
+      "lib_tuteesession_settuteesession",
+      "lib_tuteesession_sign",
+      "status_route",
+      "status_route_get",
+      "sweep_attempts_route",
+      "sweep_attempts_route_get",
+      "timer_resolveattemptstate",
+      "timer_resolveattemptstate_resolveattemptstate",
+      "token_page",
+      "token_page_consentpage",
+      "token_page_resetpasswordpage",
+      "token_route",
+      "token_route_get"
+    ],
+    "2": [
+      "attemptid_answereditor",
+      "attemptid_answereditor_answereditor",
+      "attemptid_answereditor_status",
+      "attemptid_answereditor_trysync",
+      "attemptid_answerviewclient",
+      "attemptid_answerviewclient_answerview",
+      "attemptid_countdown",
+      "attemptid_countdown_countdown",
+      "attemptid_countdown_format",
+      "attemptid_countdown_status",
+      "attemptid_countdown_warnings",
+      "attemptid_page",
+      "attemptid_page_exampage",
+      "attemptid_preexamstart",
+      "attemptid_preexamstart_preexamstart",
+      "attemptid_scanupload_scanupload",
+      "attemptid_studentpaperreviewclient",
+      "attemptid_studentpaperreviewclient_studentpaperreview",
+      "concept_attempt_status_flow",
+      "concept_offline_sync",
+      "lib_actions_startattempt",
+      "lib_offlinecache",
+      "lib_offlinecache_cacheanswerlocally",
+      "lib_offlinecache_cachedanswer",
+      "lib_offlinecache_getcachedanswer",
+      "lib_offlinecache_getdb",
+      "lib_offlinecache_getunsyncedanswers",
+      "lib_offlinecache_key",
+      "lib_offlinecache_markanswersynced"
+    ],
+    "3": [
+      "actions_beginpaperupload",
+      "actions_beginscanupload",
+      "actions_begintutorscanupload",
+      "actions_finalizescanupload",
+      "actions_finalizetutorscanupload",
+      "actions_gradeattempt",
+      "anticheat_computeflagstatus",
+      "components_answerview",
+      "components_answerview_answerview",
+      "concept_anticheat_signal",
+      "concept_presigned_url_upload",
+      "concept_retention_purge",
+      "cron_sweep_yml_sweep",
+      "id_annotatedpdfviewerclient",
+      "id_annotatedpdfviewerclient_annotatedpdfviewerclient",
+      "id_annotatedpdfviewerclient_annotatedpdfviewerdynamic",
+      "id_answerview",
+      "id_answerview_answerview_reexport",
+      "id_gradingform",
+      "id_gradingform_gradingform",
+      "id_gradingform_perq",
+      "id_page",
+      "id_page_gradeattemptpage",
+      "id_tutorscanupload_tutorscanupload",
+      "lib_actions_gradeattempt",
+      "lib_anticheat",
+      "lib_anticheat_computeflagstatus",
+      "lib_anticheat_minimalfocusevent"
+    ],
+    "4": [
+      "annotatedpdfviewer",
+      "annotatedpdfviewer_annotatablepdfpane",
+      "annotatedpdfviewer_drawannotations",
+      "annotatedpdfviewer_drawstudentstrokes",
+      "annotatedpdfviewer_readonlypdfpane",
+      "attemptid_pdfannotator",
+      "attemptid_pdfannotator_pages",
+      "attemptid_pdfannotator_pdfannotator",
+      "attemptid_pdfannotator_reactpdfmodule",
+      "attemptid_pdfannotator_schedulesave",
+      "attemptid_pdfannotator_stroke",
+      "attemptid_studentpaperreview",
+      "attemptid_studentpaperreview_pages",
+      "attemptid_studentpaperreview_reactpdfmodule",
+      "attemptid_studentpaperreview_stroke",
+      "attemptid_studentpaperreview_studentpaperreview",
+      "concept_pdf_annotation",
+      "lib_actions_saveannotation",
+      "marked_pdf_applyannotations",
+      "marked_pdf_drawstrokesonpage",
+      "marked_pdf_route",
+      "marked_pdf_route_applyannotations",
+      "marked_pdf_route_drawstrokesonpage",
+      "marked_pdf_route_get",
+      "marked_pdf_route_pages",
+      "marked_pdf_route_stroke"
+    ],
+    "5": [
+      "package",
+      "package_devdependencies",
+      "package_devdependencies_eslint",
+      "package_devdependencies_eslint_config_next",
+      "package_devdependencies_netlify_plugin_nextjs",
+      "package_devdependencies_tailwindcss",
+      "package_devdependencies_tailwindcss_postcss",
+      "package_devdependencies_types_bcryptjs",
+      "package_devdependencies_types_node",
+      "package_devdependencies_types_react",
+      "package_devdependencies_types_react_dom",
+      "package_devdependencies_typescript",
+      "package_engines",
+      "package_engines_node",
+      "package_name",
+      "package_private",
+      "package_scripts",
+      "package_scripts_build",
+      "package_scripts_dev",
+      "package_scripts_lint",
+      "package_scripts_postinstall",
+      "package_scripts_seed",
+      "package_scripts_start",
+      "package_version"
+    ],
+    "6": [
+      "agents_nextjs_docs_guide",
+      "agents_nextjs_version_constraint",
+      "claude_md_agents_include",
+      "public_next_svg",
+      "public_vercel_svg",
+      "readme_auth_secret",
+      "readme_cron_purge_expired",
+      "readme_cron_secret",
+      "readme_cron_sweep_attempts",
+      "readme_local_dev_setup",
+      "readme_netlify_deployment",
+      "readme_netlify_plugin_nextjs",
+      "readme_nextjs_app",
+      "readme_postgres_database",
+      "readme_remote_practice_exam_platform",
+      "readme_resend_email",
+      "readme_retention_days",
+      "readme_s3_storage",
+      "readme_storage_driver",
+      "readme_student_role",
+      "readme_tutor_role",
+      "readme_webpack_turbopack_note"
+    ],
+    "7": [
+      "tsconfig",
+      "tsconfig_compileroptions",
+      "tsconfig_compileroptions_allowjs",
+      "tsconfig_compileroptions_esmoduleinterop",
+      "tsconfig_compileroptions_incremental",
+      "tsconfig_compileroptions_isolatedmodules",
+      "tsconfig_compileroptions_jsx",
+      "tsconfig_compileroptions_lib",
+      "tsconfig_compileroptions_module",
+      "tsconfig_compileroptions_moduleresolution",
+      "tsconfig_compileroptions_noemit",
+      "tsconfig_compileroptions_paths",
+      "tsconfig_compileroptions_plugins",
+      "tsconfig_compileroptions_resolvejsonmodule",
+      "tsconfig_compileroptions_skiplibcheck",
+      "tsconfig_compileroptions_strict",
+      "tsconfig_compileroptions_target",
+      "tsconfig_exclude",
+      "tsconfig_include",
+      "tsconfig_paths"
+    ],
+    "8": [
+      "actions_createinvite",
+      "actions_createtutee",
+      "actions_deleteattempt",
+      "actions_deleteinvite",
+      "actions_deletepaper",
+      "actions_deletetutee",
+      "actions_resetattempt",
+      "actions_resetattempt_action",
+      "attempts_page_attemptspage",
+      "components_confirmbutton",
+      "components_confirmbutton_confirmbutton",
+      "concept_cascade_delete",
+      "lib_actions_deletepaper",
+      "papers_page",
+      "papers_page_paperspage",
+      "tutees_page_tuteespage"
+    ],
+    "9": [
+      "local_upload_route",
+      "local_upload_route_put",
+      "purge_expired_route",
+      "purge_expired_route_get",
+      "storage_index",
+      "storage_local",
+      "storage_local_localstorage",
+      "storage_local_root",
+      "storage_local_sign",
+      "storage_local_verifylocaluploadtoken",
+      "storage_s3",
+      "storage_s3_client",
+      "storage_s3_s3storage",
+      "storage_s3_streamtobuffer",
+      "storage_types",
+      "storage_types_storageadapter"
+    ],
+    "10": [
+      "package_dependencies",
+      "package_dependencies_aws_sdk_client_s3",
+      "package_dependencies_aws_sdk_s3_request_presigner",
+      "package_dependencies_bcryptjs",
+      "package_dependencies_idb",
+      "package_dependencies_next",
+      "package_dependencies_next_auth",
+      "package_dependencies_pdf_lib",
+      "package_dependencies_prisma",
+      "package_dependencies_prisma_client",
+      "package_dependencies_react",
+      "package_dependencies_react_dom",
+      "package_dependencies_react_pdf",
+      "package_dependencies_resend",
+      "package_dependencies_tiptap_react",
+      "package_dependencies_tiptap_starter_kit"
+    ],
+    "11": [
+      "authed_layout",
+      "authed_layout_studentlayout",
+      "authed_page",
+      "authed_page_statuslabel",
+      "authed_page_studentdashboard",
+      "concept_dual_auth",
+      "concept_mark_scheme_tutor_only",
+      "files_key_contenttypefor",
+      "files_key_route",
+      "files_key_serve",
+      "forgotpassword_page",
+      "lib_actions_studentlogout",
+      "login_page",
+      "resetpassword_page",
+      "studentlogin_page"
+    ],
+    "12": [
+      "actions_logoutaction",
+      "components_tutornav",
+      "components_tutornav_links",
+      "components_tutornav_tutornav",
+      "lib_actions_logoutaction",
+      "lib_auth",
+      "lib_auth_handlers_auth_signin_signout",
+      "nextauth_route",
+      "tutor_layout",
+      "tutor_layout_tutorlayout",
+      "tutor_page",
+      "tutor_page_tutordashboard"
+    ],
+    "13": [
+      "components_fileinputbutton",
+      "components_fileinputbutton_fileinputbutton",
+      "lib_actions_beginpaperupload",
+      "new_newpaperform",
+      "new_newpaperform_newpaperform",
+      "new_page",
+      "new_page_newpaperpage",
+      "storage_validate",
+      "storage_validate_allowed_mime",
+      "storage_validate_assertvalidfile"
+    ],
+    "14": [
+      "id_annotatedpdfviewer",
+      "id_annotatedpdfviewer_annotatablepdfpane",
+      "id_annotatedpdfviewer_annotatedpdfviewer",
+      "id_annotatedpdfviewer_drawannotations",
+      "id_annotatedpdfviewer_drawstudentstrokes",
+      "id_annotatedpdfviewer_pages",
+      "id_annotatedpdfviewer_reactpdfmodule",
+      "id_annotatedpdfviewer_readonlypdfpane",
+      "id_annotatedpdfviewer_stroke",
+      "lib_actions_savetutorannotation"
+    ],
+    "15": [
+      "landing_page",
+      "landing_page_improvementdata",
+      "landing_page_landingpage",
+      "landing_page_questiontimings",
+      "landing_page_stats",
+      "landing_page_steps",
+      "landing_page_testimonials"
+    ],
+    "16": [
+      "concept_exfat_readlink_patch",
+      "next_config",
+      "next_config_nextconfig",
+      "next_config_readlink",
+      "next_config_readlinkpromise",
+      "next_config_readlinksync"
+    ],
+    "17": [
+      "app_layout",
+      "app_layout_arimamadurai",
+      "app_layout_metadata",
+      "app_layout_mulish",
+      "app_layout_rootlayout"
+    ],
+    "18": [
+      "prisma_seed",
+      "prisma_seed_bcrypt",
+      "prisma_seed_main",
+      "prisma_seed_prisma",
+      "prisma_seed_prismaclient"
+    ],
+    "19": [
+      "attempts_loading",
+      "attempts_loading_loading",
+      "papers_loading",
+      "papers_loading_loading"
+    ],
+    "20": [
+      "actions_requestpasswordreset",
+      "concept_email_dev_fallback",
+      "email_sendemail"
+    ],
+    "21": [
+      "types_next_auth_d",
+      "types_next_auth_d_jwt",
+      "types_next_auth_d_session"
+    ],
+    "22": [
+      "app_login_page_tsx_login_page",
+      "login_page_loginpage"
+    ],
+    "23": [
+      "app_page",
+      "app_page_home"
+    ],
+    "24": [
+      "attemptid_pdfannotatorclient",
+      "attemptid_pdfannotatorclient_pdfannotator"
+    ],
+    "25": [
+      "eslint_config",
+      "eslint_config_eslintconfig"
+    ],
+    "26": [
+      "postcss_config",
+      "postcss_config_config"
+    ],
+    "27": [
+      "proxy",
+      "proxy_config"
+    ],
+    "28": [
+      "vercel",
+      "vercel_crons"
+    ],
+    "29": [
+      "actions_completepasswordreset"
+    ],
+    "30": [
+      "actions_finalizecreatepaper"
+    ],
+    "31": [
+      "actions_giveconsent"
+    ],
+    "32": [
+      "actions_logfocusevent"
+    ],
+    "33": [
+      "actions_reportissue"
+    ],
+    "34": [
+      "actions_saveannotation"
+    ],
+    "35": [
+      "actions_saveanswer"
+    ],
+    "36": [
+      "actions_savetutorannotation"
+    ],
+    "37": [
+      "actions_startattempt"
+    ],
+    "38": [
+      "actions_studentlogin"
+    ],
+    "39": [
+      "actions_submitattempt"
+    ],
+    "40": [
+      "claude_launch"
+    ],
+    "41": [
+      "nextauth_route_get_post"
+    ],
+    "42": [
+      "package_json_exampackage"
+    ],
+    "43": [
+      "proxy_ts_proxy"
+    ],
+    "44": [
+      "public_file_svg"
+    ],
+    "45": [
+      "public_globe_svg"
+    ],
+    "46": [
+      "public_window_svg"
+    ]
+  },
+  "cohesion": {
+    "0": 0.08943089430894309,
+    "1": 0.12096774193548387,
+    "2": 0.11083743842364532,
+    "3": 0.10052910052910052,
+    "4": 0.09230769230769231,
+    "5": 0.08333333333333333,
+    "6": 0.1038961038961039,
+    "7": 0.1,
+    "8": 0.16666666666666666,
+    "9": 0.21666666666666667,
+    "10": 0.125,
+    "11": 0.13333333333333333,
+    "12": 0.16666666666666666,
+    "13": 0.2222222222222222,
+    "14": 0.2,
+    "15": 0.2857142857142857,
+    "16": 0.3333333333333333,
+    "17": 0.4,
+    "18": 0.4,
+    "19": 0.5,
+    "20": 0.6666666666666666,
+    "21": 0.6666666666666666,
+    "22": 1.0,
+    "23": 1.0,
+    "24": 1.0,
+    "25": 1.0,
+    "26": 1.0,
+    "27": 1.0,
+    "28": 1.0,
+    "29": 1.0,
+    "30": 1.0,
+    "31": 1.0,
+    "32": 1.0,
+    "33": 1.0,
+    "34": 1.0,
+    "35": 1.0,
+    "36": 1.0,
+    "37": 1.0,
+    "38": 1.0,
+    "39": 1.0,
+    "40": 1.0,
+    "41": 1.0,
+    "42": 1.0,
+    "43": 1.0,
+    "44": 1.0,
+    "45": 1.0,
+    "46": 1.0
+  },
+  "gods": [
+    {
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
+      "degree": 16
+    },
+    {
+      "id": "lib_actions_requiretutorid",
+      "label": "requireTutorId()",
+      "degree": 15
+    },
+    {
+      "id": "lib_tuteesession_gettuteesession",
+      "label": "getTuteeSession()",
+      "degree": 9
+    },
+    {
+      "id": "readme_local_dev_setup",
+      "label": "Local Development Setup",
+      "degree": 9
+    },
+    {
+      "id": "timer_resolveattemptstate_resolveattemptstate",
+      "label": "resolveAttemptState()",
+      "degree": 8
+    },
+    {
+      "id": "id_page_gradeattemptpage",
+      "label": "GradeAttemptPage()",
+      "degree": 7
+    },
+    {
+      "id": "tutees_page_tuteespage",
+      "label": "TuteesPage()",
+      "degree": 7
+    },
+    {
+      "id": "lib_actions_getownattempt",
+      "label": "getOwnAttempt()",
+      "degree": 7
+    },
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "degree": 7
+    },
+    {
+      "id": "lib_redeeminvite_loadinvite",
+      "label": "loadInvite()",
+      "degree": 6
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Vercel Logo SVG (Triangle)",
+      "target": "Netlify Deployment",
+      "source_files": [
+        "public/vercel.svg",
+        "README.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "semantically_similar_to",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc ↔ image); connects across different repos/directories; semantically similar concepts with no structural link; peripheral node `Vercel Logo SVG (Triangle)` unexpectedly reaches hub `Netlify Deployment`"
+    },
+    {
+      "source": "Next.js Logo SVG",
+      "target": "Next.js App",
+      "source_files": [
+        "public/next.svg",
+        "README.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc ↔ image); connects across different repos/directories"
+    },
+    {
+      "source": "cron-sweep GitHub Actions Workflow",
+      "target": "Data Retention & Purge Policy",
+      "source_files": [
+        ".github/workflows/cron-sweep.yml",
+        "lib/actions.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc ↔ code); connects across different repos/directories"
+    },
+    {
+      "source": "GradeAttemptPage()",
+      "target": "Anti-Cheat Client-Reported Signal",
+      "source_files": [
+        "app/tutor/attempts/[id]/page.tsx",
+        "lib/antiCheat.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `Anti-Cheat Client-Reported Signal` unexpectedly reaches hub `GradeAttemptPage()`"
+    },
+    {
+      "source": "GET()",
+      "target": "resolveAttemptState()",
+      "source_files": [
+        "app/api/cron/sweep-attempts/route.ts",
+        "lib/timer/resolveAttemptState.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; peripheral node `GET()` unexpectedly reaches hub `resolveAttemptState()`"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `getTuteeSession()` connect `Community 1` to `Community 0`, `Community 2`, `Community 11`?",
+      "why": "High betweenness centrality (0.041) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `resolveAttemptState()` connect `Community 1` to `Community 0`, `Community 2`?",
+      "why": "High betweenness centrality (0.025) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `PdfAnnotator`, `mulish`, `arimaMadurai` to the rest of the system?",
+      "why": "149 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 0` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.08943089430894309 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 1` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.12096774193548387 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 2` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.11083743842364532 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 3` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.10052910052910052 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

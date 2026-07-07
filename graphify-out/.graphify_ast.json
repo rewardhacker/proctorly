@@ -1,0 +1,5417 @@
+{
+  "nodes": [
+    {
+      "id": "marked_pdf_route",
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/api/attempts/[id]/marked-pdf/route.ts",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "marked_pdf_route_stroke",
+      "label": "Stroke",
+      "file_type": "code",
+      "source_file": "app/api/attempts/[id]/marked-pdf/route.ts",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "marked_pdf_route_pages",
+      "label": "Pages",
+      "file_type": "code",
+      "source_file": "app/api/attempts/[id]/marked-pdf/route.ts",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "marked_pdf_route_drawstrokesonpage",
+      "label": "drawStrokesOnPage()",
+      "file_type": "code",
+      "source_file": "app/api/attempts/[id]/marked-pdf/route.ts",
+      "source_location": "L9",
+      "_origin": "ast"
+    },
+    {
+      "id": "marked_pdf_route_applyannotations",
+      "label": "applyAnnotations()",
+      "file_type": "code",
+      "source_file": "app/api/attempts/[id]/marked-pdf/route.ts",
+      "source_location": "L35",
+      "_origin": "ast"
+    },
+    {
+      "id": "marked_pdf_route_get",
+      "label": "GET()",
+      "file_type": "code",
+      "source_file": "app/api/attempts/[id]/marked-pdf/route.ts",
+      "source_location": "L77",
+      "_origin": "ast"
+    },
+    {
+      "id": "key_route",
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/api/files/[...key]/route.ts",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "key_route_get",
+      "label": "GET()",
+      "file_type": "code",
+      "source_file": "app/api/files/[...key]/route.ts",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "key_route_contenttypefor",
+      "label": "contentTypeFor()",
+      "file_type": "code",
+      "source_file": "app/api/files/[...key]/route.ts",
+      "source_location": "L47",
+      "_origin": "ast"
+    },
+    {
+      "id": "key_route_serve",
+      "label": "serve()",
+      "file_type": "code",
+      "source_file": "app/api/files/[...key]/route.ts",
+      "source_location": "L53",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_answereditor",
+      "label": "AnswerEditor.tsx",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/AnswerEditor.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_answereditor_status",
+      "label": "Status",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/AnswerEditor.tsx",
+      "source_location": "L9",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_answereditor_answereditor",
+      "label": "AnswerEditor()",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/AnswerEditor.tsx",
+      "source_location": "L11",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_answerviewclient",
+      "label": "AnswerViewClient.tsx",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/AnswerViewClient.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_answerviewclient_answerview",
+      "label": "AnswerView",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/AnswerViewClient.tsx",
+      "source_location": "L5",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_countdown",
+      "label": "Countdown.tsx",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/Countdown.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_countdown_status",
+      "label": "Status",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/Countdown.tsx",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_countdown_format",
+      "label": "format()",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/Countdown.tsx",
+      "source_location": "L8",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_countdown_warnings",
+      "label": "WARNINGS",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/Countdown.tsx",
+      "source_location": "L15",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_countdown_countdown",
+      "label": "Countdown()",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/Countdown.tsx",
+      "source_location": "L21",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_pdfannotator",
+      "label": "PdfAnnotator.tsx",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/PdfAnnotator.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_pdfannotator_reactpdfmodule",
+      "label": "ReactPdfModule",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/PdfAnnotator.tsx",
+      "source_location": "L13",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_pdfannotator_stroke",
+      "label": "Stroke",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/PdfAnnotator.tsx",
+      "source_location": "L15",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_pdfannotator_pages",
+      "label": "Pages",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/PdfAnnotator.tsx",
+      "source_location": "L16",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_pdfannotator_pdfannotator",
+      "label": "PdfAnnotator()",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/PdfAnnotator.tsx",
+      "source_location": "L18",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_preexamstart",
+      "label": "PreExamStart.tsx",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/PreExamStart.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_preexamstart_preexamstart",
+      "label": "PreExamStart()",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/PreExamStart.tsx",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_scanupload",
+      "label": "ScanUpload.tsx",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/ScanUpload.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_scanupload_scanupload",
+      "label": "ScanUpload()",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/ScanUpload.tsx",
+      "source_location": "L8",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_studentpaperreview",
+      "label": "StudentPaperReview.tsx",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/StudentPaperReview.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_studentpaperreview_reactpdfmodule",
+      "label": "ReactPdfModule",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/StudentPaperReview.tsx",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_studentpaperreview_stroke",
+      "label": "Stroke",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/StudentPaperReview.tsx",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_studentpaperreview_pages",
+      "label": "Pages",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/StudentPaperReview.tsx",
+      "source_location": "L8",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_studentpaperreview_studentpaperreview",
+      "label": "StudentPaperReview()",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/StudentPaperReview.tsx",
+      "source_location": "L13",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_studentpaperreviewclient",
+      "label": "StudentPaperReviewClient.tsx",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/StudentPaperReviewClient.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_studentpaperreviewclient_studentpaperreview",
+      "label": "StudentPaperReview",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/StudentPaperReviewClient.tsx",
+      "source_location": "L5",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_page",
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "attemptid_page_exampage",
+      "label": "ExamPage()",
+      "file_type": "code",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L19",
+      "_origin": "ast"
+    },
+    {
+      "id": "forgot_password_page",
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/forgot-password/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "forgot_password_page_forgotpasswordpage",
+      "label": "ForgotPasswordPage()",
+      "file_type": "code",
+      "source_file": "app/forgot-password/page.tsx",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "landing_page",
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "landing_page_stats",
+      "label": "stats",
+      "file_type": "code",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "landing_page_steps",
+      "label": "steps",
+      "file_type": "code",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L10",
+      "_origin": "ast"
+    },
+    {
+      "id": "landing_page_testimonials",
+      "label": "testimonials",
+      "file_type": "code",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L37",
+      "_origin": "ast"
+    },
+    {
+      "id": "landing_page_improvementdata",
+      "label": "improvementData",
+      "file_type": "code",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L55",
+      "_origin": "ast"
+    },
+    {
+      "id": "landing_page_questiontimings",
+      "label": "questionTimings",
+      "file_type": "code",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L65",
+      "_origin": "ast"
+    },
+    {
+      "id": "landing_page_landingpage",
+      "label": "LandingPage()",
+      "file_type": "code",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L77",
+      "_origin": "ast"
+    },
+    {
+      "id": "app_login_page_tsx_login_page",
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/login/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "login_page_loginpage",
+      "label": "LoginPage()",
+      "file_type": "code",
+      "source_file": "app/login/page.tsx",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "app_page",
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "app_page_home",
+      "label": "Home()",
+      "file_type": "code",
+      "source_file": "app/page.tsx",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "token_page",
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/reset-password/[token]/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "token_page_resetpasswordpage",
+      "label": "ResetPasswordPage()",
+      "file_type": "code",
+      "source_file": "app/reset-password/[token]/page.tsx",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "authed_layout",
+      "label": "layout.tsx",
+      "file_type": "code",
+      "source_file": "app/student/(authed)/layout.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "authed_layout_studentlayout",
+      "label": "StudentLayout()",
+      "file_type": "code",
+      "source_file": "app/student/(authed)/layout.tsx",
+      "source_location": "L5",
+      "_origin": "ast"
+    },
+    {
+      "id": "authed_page",
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/student/(authed)/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "authed_page_statuslabel",
+      "label": "statusLabel()",
+      "file_type": "code",
+      "source_file": "app/student/(authed)/page.tsx",
+      "source_location": "L5",
+      "_origin": "ast"
+    },
+    {
+      "id": "authed_page_studentdashboard",
+      "label": "StudentDashboard()",
+      "file_type": "code",
+      "source_file": "app/student/(authed)/page.tsx",
+      "source_location": "L16",
+      "_origin": "ast"
+    },
+    {
+      "id": "app_student_login_page_tsx_login_page",
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/student/login/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "login_page_studentloginpage",
+      "label": "StudentLoginPage()",
+      "file_type": "code",
+      "source_file": "app/student/login/page.tsx",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "id_annotatedpdfviewer",
+      "label": "AnnotatedPdfViewer.tsx",
+      "file_type": "code",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewer.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "id_annotatedpdfviewer_reactpdfmodule",
+      "label": "ReactPdfModule",
+      "file_type": "code",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewer.tsx",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "id_annotatedpdfviewer_stroke",
+      "label": "Stroke",
+      "file_type": "code",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewer.tsx",
+      "source_location": "L8",
+      "_origin": "ast"
+    },
+    {
+      "id": "id_annotatedpdfviewer_pages",
+      "label": "Pages",
+      "file_type": "code",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewer.tsx",
+      "source_location": "L9",
+      "_origin": "ast"
+    },
+    {
+      "id": "id_annotatedpdfviewer_drawannotations",
+      "label": "drawAnnotations()",
+      "file_type": "code",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewer.tsx",
+      "source_location": "L13",
+      "_origin": "ast"
+    },
+    {
+      "id": "id_annotatedpdfviewer_drawstudentstrokes",
+      "label": "drawStudentStrokes()",
+      "file_type": "code",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewer.tsx",
+      "source_location": "L51",
+      "_origin": "ast"
+    },
+    {
+      "id": "id_annotatedpdfviewer_annotatablepdfpane",
+      "label": "AnnotatablePdfPane()",
+      "file_type": "code",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewer.tsx",
+      "source_location": "L65",
+      "_origin": "ast"
+    },
+    {
+      "id": "id_annotatedpdfviewer_readonlypdfpane",
+      "label": "ReadOnlyPdfPane()",
+      "file_type": "code",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewer.tsx",
+      "source_location": "L228",
+      "_origin": "ast"
+    },
+    {
+      "id": "id_annotatedpdfviewer_annotatedpdfviewer",
+      "label": "AnnotatedPdfViewer()",
+      "file_type": "code",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewer.tsx",
+      "source_location": "L265",
+      "_origin": "ast"
+    },
+    {
+      "id": "id_annotatedpdfviewerclient",
+      "label": "AnnotatedPdfViewerClient.tsx",
+      "file_type": "code",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewerClient.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "id_annotatedpdfviewerclient_annotatedpdfviewerdynamic",
+      "label": "AnnotatedPdfViewerDynamic",
+      "file_type": "code",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewerClient.tsx",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "id_annotatedpdfviewerclient_annotatedpdfviewerclient",
+      "label": "AnnotatedPdfViewerClient()",
+      "file_type": "code",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewerClient.tsx",
+      "source_location": "L9",
+      "_origin": "ast"
+    },
+    {
+      "id": "id_answerview",
+      "label": "AnswerView.tsx",
+      "file_type": "code",
+      "source_file": "app/tutor/attempts/[id]/AnswerView.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "id_gradingform",
+      "label": "GradingForm.tsx",
+      "file_type": "code",
+      "source_file": "app/tutor/attempts/[id]/GradingForm.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "id_gradingform_perq",
+      "label": "PerQ",
+      "file_type": "code",
+      "source_file": "app/tutor/attempts/[id]/GradingForm.tsx",
+      "source_location": "L8",
+      "_origin": "ast"
+    },
+    {
+      "id": "id_gradingform_gradingform",
+      "label": "GradingForm()",
+      "file_type": "code",
+      "source_file": "app/tutor/attempts/[id]/GradingForm.tsx",
+      "source_location": "L10",
+      "_origin": "ast"
+    },
+    {
+      "id": "id_tutorscanupload",
+      "label": "TutorScanUpload.tsx",
+      "file_type": "code",
+      "source_file": "app/tutor/attempts/[id]/TutorScanUpload.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "id_tutorscanupload_tutorscanupload",
+      "label": "TutorScanUpload()",
+      "file_type": "code",
+      "source_file": "app/tutor/attempts/[id]/TutorScanUpload.tsx",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "id_page",
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/tutor/attempts/[id]/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "id_page_gradeattemptpage",
+      "label": "GradeAttemptPage()",
+      "file_type": "code",
+      "source_file": "app/tutor/attempts/[id]/page.tsx",
+      "source_location": "L11",
+      "_origin": "ast"
+    },
+    {
+      "id": "attempts_loading",
+      "label": "loading.tsx",
+      "file_type": "code",
+      "source_file": "app/tutor/attempts/loading.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "attempts_loading_loading",
+      "label": "Loading()",
+      "file_type": "code",
+      "source_file": "app/tutor/attempts/loading.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "attempts_page",
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/tutor/attempts/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "attempts_page_attemptspage",
+      "label": "AttemptsPage()",
+      "file_type": "code",
+      "source_file": "app/tutor/attempts/page.tsx",
+      "source_location": "L9",
+      "_origin": "ast"
+    },
+    {
+      "id": "papers_loading",
+      "label": "loading.tsx",
+      "file_type": "code",
+      "source_file": "app/tutor/papers/loading.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "papers_loading_loading",
+      "label": "Loading()",
+      "file_type": "code",
+      "source_file": "app/tutor/papers/loading.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "papers_page",
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/tutor/papers/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "papers_page_paperspage",
+      "label": "PapersPage()",
+      "file_type": "code",
+      "source_file": "app/tutor/papers/page.tsx",
+      "source_location": "L8",
+      "_origin": "ast"
+    },
+    {
+      "id": "tutees_page",
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/tutor/tutees/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "tutees_page_tuteespage",
+      "label": "TuteesPage()",
+      "file_type": "code",
+      "source_file": "app/tutor/tutees/page.tsx",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "components_answerview",
+      "label": "AnswerView.tsx",
+      "file_type": "code",
+      "source_file": "components/AnswerView.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "components_answerview_answerview",
+      "label": "AnswerView()",
+      "file_type": "code",
+      "source_file": "components/AnswerView.tsx",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "components_confirmbutton",
+      "label": "ConfirmButton.tsx",
+      "file_type": "code",
+      "source_file": "components/ConfirmButton.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "components_confirmbutton_confirmbutton",
+      "label": "ConfirmButton()",
+      "file_type": "code",
+      "source_file": "components/ConfirmButton.tsx",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "components_tutornav",
+      "label": "TutorNav.tsx",
+      "file_type": "code",
+      "source_file": "components/TutorNav.tsx",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "components_tutornav_links",
+      "label": "LINKS",
+      "file_type": "code",
+      "source_file": "components/TutorNav.tsx",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "components_tutornav_tutornav",
+      "label": "TutorNav()",
+      "file_type": "code",
+      "source_file": "components/TutorNav.tsx",
+      "source_location": "L14",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions",
+      "label": "actions.ts",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_friendlymessage",
+      "label": "friendlyMessage()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L22",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_giveconsent",
+      "label": "giveConsent()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L31",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_requiretutorid",
+      "label": "requireTutorId()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L55",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_logoutaction",
+      "label": "logoutAction()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L61",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_beginpaperupload",
+      "label": "beginPaperUpload()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L70",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_finalizecreatepaper",
+      "label": "finalizeCreatePaper()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L84",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_createtutee",
+      "label": "createTutee()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L106",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_resettuteepassword",
+      "label": "resetTuteePassword()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L123",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_requestpasswordreset",
+      "label": "requestPasswordReset()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L142",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_completepasswordreset",
+      "label": "completePasswordReset()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L171",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_studentlogin",
+      "label": "studentLogin()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L195",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_studentlogout",
+      "label": "studentLogout()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L209",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_createinvite",
+      "label": "createInvite()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L214",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_startattempt",
+      "label": "startAttempt()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L239",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_getownattempt",
+      "label": "getOwnAttempt()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L272",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_saveanswer",
+      "label": "saveAnswer()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L281",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_saveannotation",
+      "label": "saveAnnotation()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L297",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_toggleflag",
+      "label": "toggleFlag()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L308",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_submitattempt",
+      "label": "submitAttempt()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L330",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_reportissue",
+      "label": "reportIssue()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L350",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_focus_event_types",
+      "label": "FOCUS_EVENT_TYPES",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L364",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_focuseventtype",
+      "label": "FocusEventType",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L373",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_logfocusevent",
+      "label": "logFocusEvent()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L378",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_beginscanupload",
+      "label": "beginScanUpload()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L399",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_finalizescanupload",
+      "label": "finalizeScanUpload()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L415",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_deleteinvite",
+      "label": "deleteInvite()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L432",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_deletetutee",
+      "label": "deleteTutee()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L461",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_deletepaper",
+      "label": "deletePaper()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L487",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_deleteattempt",
+      "label": "deleteAttempt()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L513",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_resetattempt",
+      "label": "resetAttempt()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L537",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_savetutorannotation",
+      "label": "saveTutorAnnotation()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L575",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_begintutorscanupload",
+      "label": "beginTutorScanUpload()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L591",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_finalizetutorscanupload",
+      "label": "finalizeTutorScanUpload()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L606",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_actions_gradeattempt",
+      "label": "gradeAttempt()",
+      "file_type": "code",
+      "source_file": "lib/actions.ts",
+      "source_location": "L623",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_anticheat",
+      "label": "antiCheat.ts",
+      "file_type": "code",
+      "source_file": "lib/antiCheat.ts",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_anticheat_minimalfocusevent",
+      "label": "MinimalFocusEvent",
+      "file_type": "code",
+      "source_file": "lib/antiCheat.ts",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_anticheat_computeflagstatus",
+      "label": "computeFlagStatus()",
+      "file_type": "code",
+      "source_file": "lib/antiCheat.ts",
+      "source_location": "L11",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_email",
+      "label": "email.ts",
+      "file_type": "code",
+      "source_file": "lib/email.ts",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_email_sendemail",
+      "label": "sendEmail()",
+      "file_type": "code",
+      "source_file": "lib/email.ts",
+      "source_location": "L14",
+      "_origin": "ast"
+    },
+    {
+      "id": "next_config",
+      "label": "next.config.ts",
+      "file_type": "code",
+      "source_file": "next.config.ts",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "next_config_readlink",
+      "label": "_readlink",
+      "file_type": "code",
+      "source_file": "next.config.ts",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "next_config_readlinksync",
+      "label": "_readlinkSync",
+      "file_type": "code",
+      "source_file": "next.config.ts",
+      "source_location": "L28",
+      "_origin": "ast"
+    },
+    {
+      "id": "next_config_readlinkpromise",
+      "label": "_readlinkPromise",
+      "file_type": "code",
+      "source_file": "next.config.ts",
+      "source_location": "L45",
+      "_origin": "ast"
+    },
+    {
+      "id": "next_config_nextconfig",
+      "label": "nextConfig",
+      "file_type": "code",
+      "source_file": "next.config.ts",
+      "source_location": "L61",
+      "_origin": "ast"
+    },
+    {
+      "id": "package",
+      "label": "package.json",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_name",
+      "label": "name",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_version",
+      "label": "version",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_private",
+      "label": "private",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_scripts_dev",
+      "label": "dev",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_scripts_build",
+      "label": "build",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_scripts_start",
+      "label": "start",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_scripts_lint",
+      "label": "lint",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_scripts_seed",
+      "label": "seed",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_scripts_postinstall",
+      "label": "postinstall",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_engines",
+      "label": "engines",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L13",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_engines_node",
+      "label": "node",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_dependencies",
+      "label": "dependencies",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_dependencies_aws_sdk_client_s3",
+      "label": "@aws-sdk/client-s3",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_dependencies_aws_sdk_s3_request_presigner",
+      "label": "@aws-sdk/s3-request-presigner",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L18",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_dependencies_prisma_client",
+      "label": "@prisma/client",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L19",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_dependencies_tiptap_react",
+      "label": "@tiptap/react",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L20",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_dependencies_tiptap_starter_kit",
+      "label": "@tiptap/starter-kit",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L21",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_dependencies_bcryptjs",
+      "label": "bcryptjs",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L22",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_dependencies_idb",
+      "label": "idb",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L23",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_dependencies_next",
+      "label": "next",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L24",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_dependencies_next_auth",
+      "label": "next-auth",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L25",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_dependencies_pdf_lib",
+      "label": "pdf-lib",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L26",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_dependencies_prisma",
+      "label": "prisma",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L27",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_dependencies_react",
+      "label": "react",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L28",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_dependencies_react_dom",
+      "label": "react-dom",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L29",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_dependencies_react_pdf",
+      "label": "react-pdf",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L30",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_dependencies_resend",
+      "label": "resend",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L31",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_devdependencies",
+      "label": "devDependencies",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L33",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_devdependencies_netlify_plugin_nextjs",
+      "label": "@netlify/plugin-nextjs",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L34",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_devdependencies_tailwindcss_postcss",
+      "label": "@tailwindcss/postcss",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L35",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_devdependencies_types_bcryptjs",
+      "label": "@types/bcryptjs",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L36",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_devdependencies_types_node",
+      "label": "@types/node",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L37",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_devdependencies_types_react",
+      "label": "@types/react",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L38",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_devdependencies_types_react_dom",
+      "label": "@types/react-dom",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L39",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_devdependencies_eslint",
+      "label": "eslint",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L40",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_devdependencies_eslint_config_next",
+      "label": "eslint-config-next",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L41",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_devdependencies_tailwindcss",
+      "label": "tailwindcss",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L42",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_devdependencies_typescript",
+      "label": "typescript",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L43",
+      "_origin": "ast"
+    },
+    {
+      "id": "proxy",
+      "label": "proxy.ts",
+      "file_type": "code",
+      "source_file": "proxy.ts",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "proxy_config",
+      "label": "config",
+      "file_type": "code",
+      "source_file": "proxy.ts",
+      "source_location": "L3",
+      "_origin": "ast"
+    }
+  ],
+  "edges": [
+    {
+      "source": "marked_pdf_route",
+      "target": "e_projects_exam_practice_lib_auth_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/attempts/[id]/marked-pdf/route.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "marked_pdf_route",
+      "target": "lib_auth_auth",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/attempts/[id]/marked-pdf/route.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "marked_pdf_route",
+      "target": "e_projects_exam_practice_lib_prisma_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/attempts/[id]/marked-pdf/route.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "marked_pdf_route",
+      "target": "lib_prisma_prisma",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/attempts/[id]/marked-pdf/route.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "marked_pdf_route",
+      "target": "e_projects_exam_practice_lib_storage_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/attempts/[id]/marked-pdf/route.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "marked_pdf_route",
+      "target": "storage_index_storage",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/attempts/[id]/marked-pdf/route.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "marked_pdf_route",
+      "target": "pdf_lib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/attempts/[id]/marked-pdf/route.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "marked_pdf_route",
+      "target": "marked_pdf_route_stroke",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/attempts/[id]/marked-pdf/route.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "marked_pdf_route",
+      "target": "marked_pdf_route_pages",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/attempts/[id]/marked-pdf/route.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "marked_pdf_route",
+      "target": "marked_pdf_route_drawstrokesonpage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/attempts/[id]/marked-pdf/route.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "marked_pdf_route",
+      "target": "marked_pdf_route_applyannotations",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/attempts/[id]/marked-pdf/route.ts",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "marked_pdf_route",
+      "target": "marked_pdf_route_get",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/attempts/[id]/marked-pdf/route.ts",
+      "source_location": "L77",
+      "weight": 1.0
+    },
+    {
+      "source": "marked_pdf_route_applyannotations",
+      "target": "marked_pdf_route_drawstrokesonpage",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/attempts/[id]/marked-pdf/route.ts",
+      "source_location": "L48",
+      "weight": 1.0
+    },
+    {
+      "source": "marked_pdf_route_get",
+      "target": "marked_pdf_route_applyannotations",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/attempts/[id]/marked-pdf/route.ts",
+      "source_location": "L102",
+      "weight": 1.0
+    },
+    {
+      "source": "key_route",
+      "target": "e_projects_exam_practice_lib_prisma_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/files/[...key]/route.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "key_route",
+      "target": "lib_prisma_prisma",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/files/[...key]/route.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "key_route",
+      "target": "e_projects_exam_practice_lib_storage_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/files/[...key]/route.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "key_route",
+      "target": "storage_index_storage",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/files/[...key]/route.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "key_route",
+      "target": "e_projects_exam_practice_lib_auth_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/files/[...key]/route.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "key_route",
+      "target": "lib_auth_auth",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/files/[...key]/route.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "key_route",
+      "target": "e_projects_exam_practice_lib_tuteesession_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/files/[...key]/route.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "key_route",
+      "target": "lib_tuteesession_gettuteesession",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/files/[...key]/route.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "key_route",
+      "target": "key_route_get",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/files/[...key]/route.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "key_route",
+      "target": "key_route_contenttypefor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/files/[...key]/route.ts",
+      "source_location": "L47",
+      "weight": 1.0
+    },
+    {
+      "source": "key_route",
+      "target": "key_route_serve",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/files/[...key]/route.ts",
+      "source_location": "L53",
+      "weight": 1.0
+    },
+    {
+      "source": "key_route_get",
+      "target": "key_route_serve",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/files/[...key]/route.ts",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "key_route_serve",
+      "target": "key_route_contenttypefor",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/files/[...key]/route.ts",
+      "source_location": "L56",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_answereditor",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/AnswerEditor.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_answereditor",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/AnswerEditor.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_answereditor",
+      "target": "starter_kit",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/AnswerEditor.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_answereditor",
+      "target": "lib_actions",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/AnswerEditor.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_answereditor",
+      "target": "lib_actions_saveanswer",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/AnswerEditor.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_answereditor",
+      "target": "e_projects_exam_practice_lib_offlinecache_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/AnswerEditor.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_answereditor",
+      "target": "lib_offlinecache_cacheanswerlocally",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/AnswerEditor.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_answereditor",
+      "target": "lib_offlinecache_getcachedanswer",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/AnswerEditor.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_answereditor",
+      "target": "lib_offlinecache_getunsyncedanswers",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/AnswerEditor.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_answereditor",
+      "target": "lib_offlinecache_markanswersynced",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/AnswerEditor.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_answereditor",
+      "target": "attemptid_answereditor_status",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/AnswerEditor.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_answereditor",
+      "target": "attemptid_answereditor_answereditor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/AnswerEditor.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_answerviewclient",
+      "target": "dynamic",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/AnswerViewClient.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_answerviewclient",
+      "target": "attemptid_answerviewclient_answerview",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/AnswerViewClient.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_countdown",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/Countdown.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_countdown",
+      "target": "navigation",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/Countdown.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_countdown",
+      "target": "attemptid_countdown_status",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/Countdown.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_countdown",
+      "target": "attemptid_countdown_format",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/Countdown.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_countdown",
+      "target": "attemptid_countdown_warnings",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/Countdown.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_countdown",
+      "target": "attemptid_countdown_countdown",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/Countdown.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_pdfannotator",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/PdfAnnotator.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_pdfannotator",
+      "target": "react_pdf",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/PdfAnnotator.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_pdfannotator",
+      "target": "lib_actions",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/PdfAnnotator.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_pdfannotator",
+      "target": "lib_actions_saveannotation",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/PdfAnnotator.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_pdfannotator",
+      "target": "attemptid_pdfannotator_reactpdfmodule",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/PdfAnnotator.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_pdfannotator",
+      "target": "attemptid_pdfannotator_stroke",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/PdfAnnotator.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_pdfannotator",
+      "target": "attemptid_pdfannotator_pages",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/PdfAnnotator.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_pdfannotator",
+      "target": "attemptid_pdfannotator_pdfannotator",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/PdfAnnotator.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_preexamstart",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/PreExamStart.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_preexamstart",
+      "target": "lib_actions",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/PreExamStart.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_preexamstart",
+      "target": "lib_actions_startattempt",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/PreExamStart.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_preexamstart",
+      "target": "attemptid_preexamstart_preexamstart",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/PreExamStart.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_scanupload",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/ScanUpload.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_scanupload",
+      "target": "lib_actions",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/ScanUpload.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_scanupload",
+      "target": "lib_actions_beginscanupload",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/ScanUpload.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_scanupload",
+      "target": "lib_actions_finalizescanupload",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/ScanUpload.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_scanupload",
+      "target": "e_projects_exam_practice_lib_storage_validate_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/ScanUpload.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_scanupload",
+      "target": "storage_validate_max_file_bytes",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/ScanUpload.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_scanupload",
+      "target": "e_projects_exam_practice_components_fileinputbutton_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/ScanUpload.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_scanupload",
+      "target": "attemptid_scanupload_scanupload",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/ScanUpload.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_studentpaperreview",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/StudentPaperReview.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_studentpaperreview",
+      "target": "react_pdf",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/StudentPaperReview.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_studentpaperreview",
+      "target": "attemptid_studentpaperreview_reactpdfmodule",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/StudentPaperReview.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_studentpaperreview",
+      "target": "attemptid_studentpaperreview_stroke",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/StudentPaperReview.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_studentpaperreview",
+      "target": "attemptid_studentpaperreview_pages",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/StudentPaperReview.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_studentpaperreview",
+      "target": "attemptid_studentpaperreview_studentpaperreview",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/StudentPaperReview.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_studentpaperreviewclient",
+      "target": "dynamic",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/StudentPaperReviewClient.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_studentpaperreviewclient",
+      "target": "attemptid_studentpaperreviewclient_studentpaperreview",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/StudentPaperReviewClient.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "e_projects_exam_practice_lib_prisma_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "lib_prisma_prisma",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "e_projects_exam_practice_lib_tuteesession_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "lib_tuteesession_gettuteesession",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "navigation",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "e_projects_exam_practice_lib_timer_resolveattemptstate_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "timer_resolveattemptstate_resolveattemptstate",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "attemptid_answereditor",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "e_projects_exam_practice_app_exam_attemptid_flagbutton_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "attemptid_countdown",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "attemptid_scanupload",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "e_projects_exam_practice_app_exam_attemptid_submitbutton_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "e_projects_exam_practice_app_exam_attemptid_pdfannotatorclient_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "attemptid_preexamstart",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "e_projects_exam_practice_app_exam_attemptid_focustracker_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "e_projects_exam_practice_app_exam_attemptid_reportissuebutton_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "link",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "attemptid_studentpaperreviewclient",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "attemptid_answerviewclient",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "attemptid_page_exampage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "forgot_password_page",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/forgot-password/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "forgot_password_page",
+      "target": "lib_actions",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/forgot-password/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "forgot_password_page",
+      "target": "lib_actions_requestpasswordreset",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/forgot-password/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "forgot_password_page",
+      "target": "link",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/forgot-password/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "forgot_password_page",
+      "target": "forgot_password_page_forgotpasswordpage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/forgot-password/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "landing_page",
+      "target": "link",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "landing_page",
+      "target": "landing_page_stats",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "landing_page",
+      "target": "landing_page_steps",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "landing_page",
+      "target": "landing_page_testimonials",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "landing_page",
+      "target": "landing_page_improvementdata",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L55",
+      "weight": 1.0
+    },
+    {
+      "source": "landing_page",
+      "target": "landing_page_questiontimings",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "landing_page",
+      "target": "landing_page_landingpage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/landing/page.tsx",
+      "source_location": "L77",
+      "weight": 1.0
+    },
+    {
+      "source": "app_login_page_tsx_login_page",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/login/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "app_login_page_tsx_login_page",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/login/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "app_login_page_tsx_login_page",
+      "target": "link",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/login/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "app_login_page_tsx_login_page",
+      "target": "login_page_loginpage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/login/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "app_page",
+      "target": "link",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "app_page",
+      "target": "app_page_home",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "token_page",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/reset-password/[token]/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "token_page",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/reset-password/[token]/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "token_page",
+      "target": "lib_actions",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/reset-password/[token]/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "token_page",
+      "target": "lib_actions_completepasswordreset",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/reset-password/[token]/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "token_page",
+      "target": "token_page_resetpasswordpage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/reset-password/[token]/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "authed_layout",
+      "target": "e_projects_exam_practice_lib_tuteesession_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/student/(authed)/layout.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "authed_layout",
+      "target": "lib_tuteesession_gettuteesession",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/student/(authed)/layout.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "authed_layout",
+      "target": "navigation",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/student/(authed)/layout.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "authed_layout",
+      "target": "lib_actions",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/student/(authed)/layout.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "authed_layout",
+      "target": "lib_actions_studentlogout",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/student/(authed)/layout.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "authed_layout",
+      "target": "authed_layout_studentlayout",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/student/(authed)/layout.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "authed_page",
+      "target": "e_projects_exam_practice_lib_prisma_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/student/(authed)/page.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "authed_page",
+      "target": "lib_prisma_prisma",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/student/(authed)/page.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "authed_page",
+      "target": "e_projects_exam_practice_lib_tuteesession_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/student/(authed)/page.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "authed_page",
+      "target": "lib_tuteesession_gettuteesession",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/student/(authed)/page.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "authed_page",
+      "target": "link",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/student/(authed)/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "authed_page",
+      "target": "authed_page_statuslabel",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/student/(authed)/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "authed_page",
+      "target": "authed_page_studentdashboard",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/student/(authed)/page.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "app_student_login_page_tsx_login_page",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/student/login/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "app_student_login_page_tsx_login_page",
+      "target": "lib_actions",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/student/login/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "app_student_login_page_tsx_login_page",
+      "target": "lib_actions_studentlogin",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/student/login/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "app_student_login_page_tsx_login_page",
+      "target": "login_page_studentloginpage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/student/login/page.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "id_annotatedpdfviewer",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewer.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "id_annotatedpdfviewer",
+      "target": "react_pdf",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewer.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "id_annotatedpdfviewer",
+      "target": "lib_actions",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewer.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "id_annotatedpdfviewer",
+      "target": "lib_actions_savetutorannotation",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewer.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "id_annotatedpdfviewer",
+      "target": "id_annotatedpdfviewer_reactpdfmodule",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewer.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "id_annotatedpdfviewer",
+      "target": "id_annotatedpdfviewer_stroke",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewer.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "id_annotatedpdfviewer",
+      "target": "id_annotatedpdfviewer_pages",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewer.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "id_annotatedpdfviewer",
+      "target": "id_annotatedpdfviewer_drawannotations",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewer.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "id_annotatedpdfviewer",
+      "target": "id_annotatedpdfviewer_drawstudentstrokes",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewer.tsx",
+      "source_location": "L51",
+      "weight": 1.0
+    },
+    {
+      "source": "id_annotatedpdfviewer",
+      "target": "id_annotatedpdfviewer_annotatablepdfpane",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewer.tsx",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "id_annotatedpdfviewer",
+      "target": "id_annotatedpdfviewer_readonlypdfpane",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewer.tsx",
+      "source_location": "L228",
+      "weight": 1.0
+    },
+    {
+      "source": "id_annotatedpdfviewer",
+      "target": "id_annotatedpdfviewer_annotatedpdfviewer",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewer.tsx",
+      "source_location": "L265",
+      "weight": 1.0
+    },
+    {
+      "source": "id_annotatedpdfviewerclient",
+      "target": "dynamic",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewerClient.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "id_annotatedpdfviewerclient",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewerClient.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "id_annotatedpdfviewerclient",
+      "target": "id_annotatedpdfviewer",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewerClient.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "id_annotatedpdfviewerclient",
+      "target": "id_annotatedpdfviewerclient_annotatedpdfviewerdynamic",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewerClient.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "id_annotatedpdfviewerclient",
+      "target": "id_annotatedpdfviewerclient_annotatedpdfviewerclient",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/AnnotatedPdfViewerClient.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "id_answerview",
+      "target": "components_answerview",
+      "relation": "imports_from",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/AnswerView.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "id_gradingform",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/GradingForm.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "id_gradingform",
+      "target": "lib_actions",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/GradingForm.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "id_gradingform",
+      "target": "lib_actions_gradeattempt",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/GradingForm.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "id_gradingform",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/GradingForm.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "id_gradingform",
+      "target": "components_answerview",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/GradingForm.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "id_gradingform",
+      "target": "id_gradingform_perq",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/GradingForm.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "id_gradingform",
+      "target": "id_gradingform_gradingform",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/GradingForm.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "id_tutorscanupload",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/TutorScanUpload.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "id_tutorscanupload",
+      "target": "lib_actions",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/TutorScanUpload.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "id_tutorscanupload",
+      "target": "lib_actions_begintutorscanupload",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/TutorScanUpload.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "id_tutorscanupload",
+      "target": "lib_actions_finalizetutorscanupload",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/TutorScanUpload.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "id_tutorscanupload",
+      "target": "e_projects_exam_practice_lib_storage_validate_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/TutorScanUpload.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "id_tutorscanupload",
+      "target": "storage_validate_max_file_bytes",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/TutorScanUpload.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "id_tutorscanupload",
+      "target": "id_tutorscanupload_tutorscanupload",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/TutorScanUpload.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "id_page",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/page.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "id_page",
+      "target": "e_projects_exam_practice_lib_prisma_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/page.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "id_page",
+      "target": "lib_prisma_prisma",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/page.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "id_page",
+      "target": "e_projects_exam_practice_lib_auth_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "id_page",
+      "target": "lib_auth_auth",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "id_page",
+      "target": "navigation",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "id_page",
+      "target": "lib_anticheat",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "id_page",
+      "target": "lib_anticheat_computeflagstatus",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "id_page",
+      "target": "e_projects_exam_practice_components_notice_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/page.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "id_page",
+      "target": "id_gradingform",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "id_page",
+      "target": "id_annotatedpdfviewerclient",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "id_page",
+      "target": "id_tutorscanupload",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/page.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "id_page",
+      "target": "id_page_gradeattemptpage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/page.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "attempts_loading",
+      "target": "attempts_loading_loading",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/loading.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "attempts_page",
+      "target": "e_projects_exam_practice_lib_prisma_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/page.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "attempts_page",
+      "target": "lib_prisma_prisma",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/page.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "attempts_page",
+      "target": "e_projects_exam_practice_lib_auth_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/page.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "attempts_page",
+      "target": "lib_auth_auth",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/page.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "attempts_page",
+      "target": "lib_actions",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "attempts_page",
+      "target": "lib_actions_deleteattempt",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "attempts_page",
+      "target": "lib_actions_resetattempt",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "attempts_page",
+      "target": "lib_anticheat",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "attempts_page",
+      "target": "lib_anticheat_computeflagstatus",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "attempts_page",
+      "target": "link",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "attempts_page",
+      "target": "e_projects_exam_practice_components_notice_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/page.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "attempts_page",
+      "target": "components_confirmbutton",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "attempts_page",
+      "target": "attempts_page_attemptspage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/page.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "papers_loading",
+      "target": "papers_loading_loading",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/papers/loading.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "papers_page",
+      "target": "e_projects_exam_practice_lib_prisma_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/papers/page.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "papers_page",
+      "target": "lib_prisma_prisma",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/papers/page.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "papers_page",
+      "target": "e_projects_exam_practice_lib_auth_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/papers/page.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "papers_page",
+      "target": "lib_auth_auth",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/papers/page.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "papers_page",
+      "target": "lib_actions",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/papers/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "papers_page",
+      "target": "lib_actions_deletepaper",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/papers/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "papers_page",
+      "target": "link",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/papers/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "papers_page",
+      "target": "e_projects_exam_practice_components_notice_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/papers/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "papers_page",
+      "target": "components_confirmbutton",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/papers/page.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "papers_page",
+      "target": "papers_page_paperspage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/papers/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "tutees_page",
+      "target": "e_projects_exam_practice_lib_prisma_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/tutees/page.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "tutees_page",
+      "target": "lib_prisma_prisma",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/tutees/page.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "tutees_page",
+      "target": "e_projects_exam_practice_lib_auth_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/tutees/page.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "tutees_page",
+      "target": "lib_auth_auth",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/tutees/page.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "tutees_page",
+      "target": "lib_actions",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/tutees/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tutees_page",
+      "target": "lib_actions_createtutee",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/tutees/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tutees_page",
+      "target": "lib_actions_createinvite",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/tutees/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tutees_page",
+      "target": "lib_actions_resettuteepassword",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/tutees/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tutees_page",
+      "target": "lib_actions_deleteinvite",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/tutees/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tutees_page",
+      "target": "lib_actions_deletetutee",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/tutees/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tutees_page",
+      "target": "e_projects_exam_practice_components_notice_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/tutees/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "tutees_page",
+      "target": "components_confirmbutton",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/tutees/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "tutees_page",
+      "target": "tutees_page_tuteespage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/tutees/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "components_answerview",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/AnswerView.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "components_answerview",
+      "target": "starter_kit",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/AnswerView.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "components_answerview",
+      "target": "components_answerview_answerview",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/AnswerView.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "components_confirmbutton",
+      "target": "components_confirmbutton_confirmbutton",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ConfirmButton.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "components_tutornav",
+      "target": "link",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/TutorNav.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "components_tutornav",
+      "target": "navigation",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/TutorNav.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "components_tutornav",
+      "target": "lib_actions",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/TutorNav.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "components_tutornav",
+      "target": "lib_actions_logoutaction",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/TutorNav.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "components_tutornav",
+      "target": "components_tutornav_links",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/TutorNav.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "components_tutornav",
+      "target": "components_tutornav_tutornav",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/TutorNav.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "crypto",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "bcryptjs",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "client",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "navigation",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "cache",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "headers",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "e_projects_exam_practice_lib_prisma_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_prisma_prisma",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "e_projects_exam_practice_lib_auth_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_auth_auth",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_auth_signout",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "e_projects_exam_practice_lib_storage_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "storage_index_storage",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "e_projects_exam_practice_lib_tuteesession_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_tuteesession_gettuteesession",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_tuteesession_settuteesession",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "e_projects_exam_practice_lib_timer_resolveattemptstate_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "timer_resolveattemptstate_resolveattemptstate",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "e_projects_exam_practice_lib_notifications_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_notifications_notifysubmission",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_notifications_notifyissuereport",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_email",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_email_sendemail",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "e_projects_exam_practice_lib_redeeminvite_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_redeeminvite_loadinvite",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_redeeminvite_redeeminvite",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_redeeminvite_consent_version",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "headers",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_friendlymessage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_giveconsent",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_requiretutorid",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L55",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_logoutaction",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L61",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_beginpaperupload",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L70",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_finalizecreatepaper",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L84",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_createtutee",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L106",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_resettuteepassword",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L123",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_requestpasswordreset",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L142",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_completepasswordreset",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L171",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_studentlogin",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L195",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_studentlogout",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L209",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_createinvite",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L214",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_startattempt",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L239",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_getownattempt",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L272",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_saveanswer",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L281",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_saveannotation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L297",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_toggleflag",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L308",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_submitattempt",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L330",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_reportissue",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L350",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_focus_event_types",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L364",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_focuseventtype",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L373",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_logfocusevent",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L378",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_beginscanupload",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L399",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_finalizescanupload",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L415",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_deleteinvite",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L432",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_deletetutee",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L461",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_deletepaper",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L487",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_deleteattempt",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L513",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_resetattempt",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L537",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_savetutorannotation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L575",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_begintutorscanupload",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L591",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_finalizetutorscanupload",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L606",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions",
+      "target": "lib_actions_gradeattempt",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L623",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_giveconsent",
+      "target": "lib_actions_friendlymessage",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_beginpaperupload",
+      "target": "lib_actions_requiretutorid",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L71",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_finalizecreatepaper",
+      "target": "lib_actions_requiretutorid",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L94",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_finalizecreatepaper",
+      "target": "lib_actions_friendlymessage",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L99",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_createtutee",
+      "target": "lib_actions_requiretutorid",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L107",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_createtutee",
+      "target": "lib_actions_friendlymessage",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L116",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_resettuteepassword",
+      "target": "lib_actions_requiretutorid",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L124",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_createinvite",
+      "target": "lib_actions_requiretutorid",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L215",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_createinvite",
+      "target": "lib_actions_friendlymessage",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L232",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_saveanswer",
+      "target": "lib_actions_getownattempt",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L282",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_saveannotation",
+      "target": "lib_actions_getownattempt",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L298",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_toggleflag",
+      "target": "lib_actions_getownattempt",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L309",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_submitattempt",
+      "target": "lib_actions_getownattempt",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L331",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_beginscanupload",
+      "target": "lib_actions_getownattempt",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L403",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_finalizescanupload",
+      "target": "lib_actions_getownattempt",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L416",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_deleteinvite",
+      "target": "lib_actions_requiretutorid",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L433",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_deletetutee",
+      "target": "lib_actions_requiretutorid",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L462",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_deletepaper",
+      "target": "lib_actions_requiretutorid",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L488",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_deleteattempt",
+      "target": "lib_actions_requiretutorid",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L514",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_resetattempt",
+      "target": "lib_actions_requiretutorid",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L538",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_savetutorannotation",
+      "target": "lib_actions_requiretutorid",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L583",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_begintutorscanupload",
+      "target": "lib_actions_requiretutorid",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L595",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_finalizetutorscanupload",
+      "target": "lib_actions_requiretutorid",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L607",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_gradeattempt",
+      "target": "lib_actions_requiretutorid",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L624",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_gradeattempt",
+      "target": "lib_actions_friendlymessage",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions.ts",
+      "source_location": "L652",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_anticheat",
+      "target": "client",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/antiCheat.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_anticheat",
+      "target": "lib_anticheat_minimalfocusevent",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/antiCheat.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_anticheat",
+      "target": "lib_anticheat_computeflagstatus",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/antiCheat.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_email",
+      "target": "resend",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/email.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_email",
+      "target": "lib_email_sendemail",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/email.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "next_config",
+      "target": "next",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "next.config.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "next_config",
+      "target": "fs",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "next.config.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "next_config",
+      "target": "next_config_readlink",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "next.config.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "next_config",
+      "target": "next_config_readlinksync",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "next.config.ts",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "next_config",
+      "target": "next_config_readlinkpromise",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "next.config.ts",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "next_config",
+      "target": "next_config_nextconfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "next.config.ts",
+      "source_location": "L61",
+      "weight": 1.0
+    },
+    {
+      "source": "package",
+      "target": "package_name",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "package",
+      "target": "package_version",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "package",
+      "target": "package_private",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "package",
+      "target": "package_scripts",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "package_scripts",
+      "target": "package_scripts_dev",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "package_scripts",
+      "target": "package_scripts_build",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "package_scripts",
+      "target": "package_scripts_start",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "package_scripts",
+      "target": "package_scripts_lint",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "package_scripts",
+      "target": "package_scripts_seed",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "package_scripts",
+      "target": "package_scripts_postinstall",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "package",
+      "target": "package_engines",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "package_engines",
+      "target": "package_engines_node",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "package",
+      "target": "package_dependencies",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_aws_sdk_client_s3",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "package_dependencies_aws_sdk_client_s3",
+      "target": "aws_sdk_client_s3",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_aws_sdk_s3_request_presigner",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "package_dependencies_aws_sdk_s3_request_presigner",
+      "target": "aws_sdk_s3_request_presigner",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L18",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_prisma_client",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "package_dependencies_prisma_client",
+      "target": "prisma_client",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L19",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_tiptap_react",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "package_dependencies_tiptap_react",
+      "target": "tiptap_react",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L20",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_tiptap_starter_kit",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "package_dependencies_tiptap_starter_kit",
+      "target": "tiptap_starter_kit",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L21",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_bcryptjs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "package_dependencies_bcryptjs",
+      "target": "bcryptjs",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L22",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_idb",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "package_dependencies_idb",
+      "target": "idb",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L23",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_next",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "package_dependencies_next",
+      "target": "next",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L24",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_next_auth",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "package_dependencies_next_auth",
+      "target": "next_auth",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L25",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_pdf_lib",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "package_dependencies_pdf_lib",
+      "target": "pdf_lib",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L26",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_prisma",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "package_dependencies_prisma",
+      "target": "prisma",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L27",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_react",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "package_dependencies_react",
+      "target": "react",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L28",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_react_dom",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "package_dependencies_react_dom",
+      "target": "react_dom",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L29",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_react_pdf",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "package_dependencies_react_pdf",
+      "target": "react_pdf",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L30",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_resend",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "package_dependencies_resend",
+      "target": "resend",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L31",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "package",
+      "target": "package_devdependencies",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_netlify_plugin_nextjs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "package_devdependencies_netlify_plugin_nextjs",
+      "target": "netlify_plugin_nextjs",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L34",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_tailwindcss_postcss",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "package_devdependencies_tailwindcss_postcss",
+      "target": "tailwindcss_postcss",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L35",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_types_bcryptjs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "package_devdependencies_types_bcryptjs",
+      "target": "types_bcryptjs",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L36",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_types_node",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "package_devdependencies_types_node",
+      "target": "types_node",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L37",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_types_react",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "package_devdependencies_types_react",
+      "target": "types_react",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L38",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_types_react_dom",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "package_devdependencies_types_react_dom",
+      "target": "types_react_dom",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L39",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_eslint",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "package_devdependencies_eslint",
+      "target": "eslint",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L40",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_eslint_config_next",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "package_devdependencies_eslint_config_next",
+      "target": "eslint_config_next",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L41",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_tailwindcss",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L42",
+      "weight": 1.0
+    },
+    {
+      "source": "package_devdependencies_tailwindcss",
+      "target": "tailwindcss",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L42",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_typescript",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "package_devdependencies_typescript",
+      "target": "typescript",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L43",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "proxy",
+      "target": "e_projects_exam_practice_lib_auth_ts",
+      "relation": "imports_from",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "proxy.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "proxy",
+      "target": "lib_auth_auth",
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "proxy.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "proxy",
+      "target": "proxy_config",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "proxy.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "id_answerview",
+      "target": "components_answerview",
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/AnswerView.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "proxy",
+      "target": "e_projects_exam_practice_lib_auth_ts",
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "proxy.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "attemptid_answereditor_answereditor",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "attemptid_countdown_countdown",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "attemptid_scanupload_scanupload",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "attemptid_preexamstart_preexamstart",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "attemptid_studentpaperreviewclient_studentpaperreview",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_page",
+      "target": "attemptid_answerviewclient_answerview",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/page.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "id_gradingform",
+      "target": "components_answerview_answerview",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/GradingForm.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "id_page",
+      "target": "id_annotatedpdfviewerclient_annotatedpdfviewerclient",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "id_page",
+      "target": "id_tutorscanupload_tutorscanupload",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/tutor/attempts/[id]/page.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "attemptid_pdfannotator_schedulesave",
+      "target": "lib_actions_saveannotation",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/exam/[attemptId]/PdfAnnotator.tsx",
+      "source_location": "L105",
+      "weight": 1.0
+    },
+    {
+      "source": "id_page_gradeattemptpage",
+      "target": "lib_anticheat_computeflagstatus",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/tutor/attempts/[id]/page.tsx",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_actions_requestpasswordreset",
+      "target": "lib_email_sendemail",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/actions.ts",
+      "source_location": "L162",
+      "weight": 1.0
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

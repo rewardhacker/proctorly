@@ -20,12 +20,6 @@ const client = new S3Client({
 
 const bucket = process.env.S3_BUCKET ?? "";
 
-async function streamToBuffer(stream: NodeJS.ReadableStream): Promise<Buffer> {
-  const chunks: Buffer[] = [];
-  for await (const chunk of stream) chunks.push(Buffer.from(chunk));
-  return Buffer.concat(chunks);
-}
-
 export const s3Storage: StorageAdapter = {
   async put(key, data, contentType) {
     await client.send(
@@ -34,7 +28,7 @@ export const s3Storage: StorageAdapter = {
   },
   async read(key) {
     const res = await client.send(new GetObjectCommand({ Bucket: bucket, Key: key }));
-    return streamToBuffer(res.Body as NodeJS.ReadableStream);
+    return Buffer.from(await res.Body!.transformToByteArray());
   },
   async delete(key) {
     await client.send(new DeleteObjectCommand({ Bucket: bucket, Key: key }));

@@ -375,6 +375,17 @@ export async function reportIssue(attemptId: string, message: string) {
   await notifyIssueReport(attemptId, message);
 }
 
+function attemptChildDeletes(attemptId: string | string[]) {
+  const where = Array.isArray(attemptId) ? { attemptId: { in: attemptId } } : { attemptId };
+  return [
+    prisma.grade.deleteMany({ where }),
+    prisma.issueReport.deleteMany({ where }),
+    prisma.activityLog.deleteMany({ where }),
+    prisma.focusEvent.deleteMany({ where }),
+    prisma.answer.deleteMany({ where }),
+  ];
+}
+
 const FOCUS_EVENT_TYPES = [
   "BLUR",
   "FOCUS",
@@ -456,11 +467,7 @@ export async function deleteInvite(formData: FormData) {
   if (invite.attempt) {
     const attemptId = invite.attempt.id;
     await prisma.$transaction([
-      prisma.grade.deleteMany({ where: { attemptId } }),
-      prisma.issueReport.deleteMany({ where: { attemptId } }),
-      prisma.activityLog.deleteMany({ where: { attemptId } }),
-      prisma.focusEvent.deleteMany({ where: { attemptId } }),
-      prisma.answer.deleteMany({ where: { attemptId } }),
+      ...attemptChildDeletes(attemptId),
       prisma.attempt.delete({ where: { id: attemptId } }),
       prisma.inviteLink.delete({ where: { id: inviteId } }),
     ]);
@@ -483,11 +490,7 @@ export async function deleteTutee(formData: FormData) {
   const attemptIds = attempts.map((a) => a.id);
 
   await prisma.$transaction([
-    prisma.grade.deleteMany({ where: { attemptId: { in: attemptIds } } }),
-    prisma.issueReport.deleteMany({ where: { attemptId: { in: attemptIds } } }),
-    prisma.activityLog.deleteMany({ where: { attemptId: { in: attemptIds } } }),
-    prisma.focusEvent.deleteMany({ where: { attemptId: { in: attemptIds } } }),
-    prisma.answer.deleteMany({ where: { attemptId: { in: attemptIds } } }),
+    ...attemptChildDeletes(attemptIds),
     prisma.attempt.deleteMany({ where: { id: { in: attemptIds } } }),
     prisma.inviteLink.deleteMany({ where: { tuteeId } }),
     prisma.consentRecord.deleteMany({ where: { tuteeId } }),
@@ -510,11 +513,7 @@ export async function deletePaper(formData: FormData) {
   const attemptIds = attempts.map((a) => a.id);
 
   await prisma.$transaction([
-    prisma.grade.deleteMany({ where: { attemptId: { in: attemptIds } } }),
-    prisma.issueReport.deleteMany({ where: { attemptId: { in: attemptIds } } }),
-    prisma.activityLog.deleteMany({ where: { attemptId: { in: attemptIds } } }),
-    prisma.focusEvent.deleteMany({ where: { attemptId: { in: attemptIds } } }),
-    prisma.answer.deleteMany({ where: { attemptId: { in: attemptIds } } }),
+    ...attemptChildDeletes(attemptIds),
     prisma.attempt.deleteMany({ where: { id: { in: attemptIds } } }),
     prisma.inviteLink.deleteMany({ where: { paperId } }),
     prisma.paper.delete({ where: { id: paperId } }),
@@ -535,11 +534,7 @@ export async function deleteAttempt(formData: FormData) {
   if (!attempt) redirect(`/tutor/attempts?error=${encodeURIComponent("Submission not found.")}`);
 
   await prisma.$transaction([
-    prisma.grade.deleteMany({ where: { attemptId } }),
-    prisma.issueReport.deleteMany({ where: { attemptId } }),
-    prisma.activityLog.deleteMany({ where: { attemptId } }),
-    prisma.focusEvent.deleteMany({ where: { attemptId } }),
-    prisma.answer.deleteMany({ where: { attemptId } }),
+    ...attemptChildDeletes(attemptId),
     prisma.attempt.delete({ where: { id: attemptId } }),
     prisma.inviteLink.update({ where: { id: attempt.inviteLinkId }, data: { usedAt: null } }),
   ]);
@@ -559,11 +554,7 @@ export async function resetAttempt(formData: FormData) {
   if (!attempt) redirect(`/tutor/attempts?error=${encodeURIComponent("Submission not found.")}`);
 
   await prisma.$transaction([
-    prisma.grade.deleteMany({ where: { attemptId } }),
-    prisma.issueReport.deleteMany({ where: { attemptId } }),
-    prisma.activityLog.deleteMany({ where: { attemptId } }),
-    prisma.focusEvent.deleteMany({ where: { attemptId } }),
-    prisma.answer.deleteMany({ where: { attemptId } }),
+    ...attemptChildDeletes(attemptId),
     prisma.attempt.update({
       where: { id: attemptId },
       data: {

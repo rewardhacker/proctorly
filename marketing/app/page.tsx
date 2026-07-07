@@ -1,5 +1,5 @@
 // Update APP_URL to your Netlify app domain once it's set
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "https://your-app.netlify.app";
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "https://exam-practice-livid.vercel.app";
 
 const stats = [
   { value: "94%", label: "of students improved by at least one grade" },

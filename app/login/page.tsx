@@ -3,6 +3,7 @@
 import { signIn } from "next-auth/react";
 import { useState } from "react";
 import Link from "next/link";
+import PasswordInput from "@/app/components/PasswordInput";
 
 export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
@@ -35,13 +36,7 @@ export default function LoginPage() {
           required
           className="rounded border px-3 py-2"
         />
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          required
-          className="rounded border px-3 py-2"
-        />
+        <PasswordInput />
         {error && <p className="text-sm text-red-600">{error}</p>}
         <button
           type="submit"

@@ -1,30 +1,66 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { requestPasswordReset } from "@/lib/actions";
 import Link from "next/link";
 
 export default function ForgotPasswordPage() {
+  const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [countdown, setCountdown] = useState(0);
+
+  useEffect(() => {
+    if (countdown <= 0) return;
+    const t = setTimeout(() => setCountdown((c) => c - 1), 1000);
+    return () => clearTimeout(t);
+  }, [countdown]);
+
+  async function send(emailToSend: string) {
+    setLoading(true);
+    setError(null);
+    const fd = new FormData();
+    fd.append("email", emailToSend);
+    try {
+      await requestPasswordReset(fd);
+      setSent(true);
+      setCountdown(60);
+    } catch {
+      setError("Failed to send reset email. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  }
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setLoading(true);
-    await requestPasswordReset(new FormData(e.currentTarget));
-    setSent(true);
-    setLoading(false);
+    const emailVal = (new FormData(e.currentTarget).get("email") as string);
+    setEmail(emailVal);
+    await send(emailVal);
   }
 
   if (sent) {
     return (
       <main className="flex min-h-screen items-center justify-center">
-        <div className="w-80 rounded-lg border p-6 text-center">
-          <h1 className="mb-2 text-lg font-semibold">Check your email</h1>
+        <div className="w-80 rounded-lg border p-6 text-center flex flex-col gap-4">
+          <h1 className="text-lg font-semibold">Check your email</h1>
           <p className="text-sm text-gray-600">
             If that address is registered, a reset link has been sent. It expires in 1 hour.
           </p>
-          <Link href="/login" className="mt-4 inline-block text-sm underline">
+          {error && <p className="text-sm text-red-600">{error}</p>}
+          {countdown > 0 ? (
+            <p className="text-sm text-gray-400">Resend in {countdown}s</p>
+          ) : (
+            <button
+              onClick={() => send(email)}
+              disabled={loading}
+              className="rounded bg-foreground px-3 py-2 text-sm text-white disabled:opacity-50"
+            >
+              {loading ? "Sending…" : "Resend link"}
+            </button>
+          )}
+          <Link href="/login" className="text-sm text-gray-500 underline">
             Back to login
           </Link>
         </div>
@@ -46,6 +82,7 @@ export default function ForgotPasswordPage() {
           required
           className="rounded border px-3 py-2"
         />
+        {error && <p className="text-sm text-red-600">{error}</p>}
         <button
           type="submit"
           disabled={loading}

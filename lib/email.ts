@@ -16,12 +16,18 @@ export async function sendEmail(to: string, subject: string, text: string) {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
     },
+    connectionTimeout: 10_000,
+    socketTimeout: 10_000,
   });
 
-  await transporter.sendMail({
+  const info = await transporter.sendMail({
     from: process.env.SMTP_USER,
     to,
     subject,
     text,
   });
+
+  if (info.rejected.length > 0) {
+    throw new Error(`Email rejected by SMTP for: ${info.rejected.join(", ")}`);
+  }
 }

@@ -11,8 +11,14 @@ jobs:
   sweep:
     runs-on: ubuntu-latest
     steps:
-      - name: Call sweep-attempts
-        run: |
-          curl --fail-with-body -s \
-            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
-            "${{ secrets.SITE_URL }}/api/tasks/sweep-attempts"
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+      - run: npm ci
+      - run: node scripts/sweep.mjs
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}

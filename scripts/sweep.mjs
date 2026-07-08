@@ -2,22 +2,23 @@
 // database, bypassing Vercel entirely. Mirrors the logic in
 // lib/timer/resolveAttemptState.ts and lib/notifications.ts.
 import { PrismaClient } from "@prisma/client";
-import nodemailer from "nodemailer";
 
 const prisma = new PrismaClient();
 
 async function sendEmail(to, subject, text) {
-  if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+  if (!process.env.RESEND_API_KEY) {
     console.log(`[email stub] to=${to} subject="${subject}"`);
     return;
   }
-  const transporter = nodemailer.createTransport({
-    host: "smtp-mail.outlook.com",
-    port: 587,
-    secure: false,
-    auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+    },
+    body: JSON.stringify({ from: "Proctorly <noreply@proctorly.com>", to, subject, text }),
   });
-  await transporter.sendMail({ from: process.env.SMTP_USER, to, subject, text });
+  if (!res.ok) console.error("Resend error:", await res.text());
 }
 
 async function notifySubmission(attemptId) {

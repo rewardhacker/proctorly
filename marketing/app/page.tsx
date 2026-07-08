@@ -1,12 +1,15 @@
+'use client'
+
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "https://proctorly-exams.vercel.app";
 
 const stats = [
-  { value: "94%", label: "of students improved by at least one grade*" },
-  { value: "3×", label: "faster feedback than email-based marking*" },
-  { value: "12 min", label: "average tutor turnaround per paper*" },
-  { value: "4,200+", label: "practice papers marked on the platform*" },
+  { target: 94, suffix: "%", thousands: false, label: "of students improved by at least one grade*" },
+  { target: 3, suffix: "×", thousands: false, label: "faster feedback than email-based marking*" },
+  { target: 12, suffix: " min", thousands: false, label: "average tutor turnaround per paper*" },
+  { target: 4200, suffix: "+", thousands: true, label: "practice papers marked on the platform*" },
 ];
 
 const steps = [
@@ -64,7 +67,57 @@ const questionTimings = [
 const maxMins = 10;
 const maxScore = 100;
 
+function useInView(threshold = 0.25) {
+  const ref = useRef<HTMLElement>(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setInView(true); obs.disconnect(); } },
+      { threshold }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return [ref, inView] as const;
+}
+
+function useCountUp(target: number, active: boolean) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!active) return;
+    let raf: number;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const t = Math.min((now - start) / 1200, 1);
+      setCount(Math.round((1 - (1 - t) ** 3) * target));
+      if (t < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [active, target]);
+  return count;
+}
+
+function StatItem({ target, suffix, thousands, label, active }: {
+  target: number; suffix: string; thousands: boolean; label: string; active: boolean;
+}) {
+  const count = useCountUp(target, active);
+  return (
+    <div className="text-center">
+      <p className="font-[family-name:var(--font-arima-madurai)] text-4xl font-bold" style={{ color: "var(--highlight)" }}>
+        {thousands ? count.toLocaleString() : count}{suffix}
+      </p>
+      <p className="mt-2 text-sm opacity-70">{label}</p>
+    </div>
+  );
+}
+
 export default function LandingPage() {
+  const [statsRef, statsInView] = useInView();
+  const [chartsRef, chartsInView] = useInView();
+
   return (
     <div className="min-h-screen" style={{ background: "var(--background)", color: "var(--foreground)" }}>
 
@@ -134,15 +187,10 @@ export default function LandingPage() {
       </section>
 
       {/* ── Stats row ── */}
-      <section style={{ background: "var(--foreground)", color: "var(--background)" }} className="py-12">
+      <section ref={statsRef} style={{ background: "var(--foreground)", color: "var(--background)" }} className="py-12">
         <div className="mx-auto grid max-w-5xl grid-cols-2 gap-8 px-6 md:grid-cols-4">
           {stats.map((s) => (
-            <div key={s.value} className="text-center">
-              <p className="font-[family-name:var(--font-arima-madurai)] text-4xl font-bold" style={{ color: "var(--highlight)" }}>
-                {s.value}
-              </p>
-              <p className="mt-2 text-sm opacity-70">{s.label}</p>
-            </div>
+            <StatItem key={s.suffix + s.target} {...s} active={statsInView} />
           ))}
         </div>
         <p className="mx-auto mt-6 max-w-5xl px-6 text-center text-xs opacity-40">* Figures are illustrative projections based on platform data and simulated for demonstration purposes.</p>
@@ -169,7 +217,7 @@ export default function LandingPage() {
 
       {/* ── Analytics dashboard preview ── */}
       <section className="mx-auto max-w-5xl px-6 pb-24">
-        <div className="rounded-2xl border p-8" style={{ background: "var(--emphasis)" }}>
+        <div ref={chartsRef as React.Ref<HTMLDivElement>} className="rounded-2xl border p-8" style={{ background: "var(--emphasis)" }}>
           <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
             <div>
               <h2 className="text-2xl font-bold">Student Analytics Dashboard</h2>
@@ -183,13 +231,20 @@ export default function LandingPage() {
 
           <p className="mb-3 text-xs font-semibold uppercase tracking-wide opacity-50">Score Progression</p>
           <div className="flex items-end gap-3 h-32 mb-8">
-            {improvementData.map((d) => (
+            {improvementData.map((d, i) => (
               <div key={d.label} className="flex flex-1 flex-col items-center gap-2">
-                <span className="text-xs font-semibold opacity-70">{d.score}%</span>
+                <span
+                  className="text-xs font-semibold opacity-70"
+                  style={{ transition: "opacity 0.4s ease-out", transitionDelay: `${i * 80}ms`, opacity: chartsInView ? undefined : 0 }}
+                >
+                  {d.score}%
+                </span>
                 <div
                   className="w-full rounded-t-lg"
                   style={{
-                    height: `${(d.score / maxScore) * 96}px`,
+                    height: chartsInView ? `${(d.score / maxScore) * 96}px` : "0px",
+                    transition: "height 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                    transitionDelay: `${i * 80}ms`,
                     background: `color-mix(in srgb, var(--highlight) ${40 + (d.score / maxScore) * 60}%, var(--foreground))`,
                   }}
                 />
@@ -200,12 +255,14 @@ export default function LandingPage() {
 
           <p className="mb-3 text-xs font-semibold uppercase tracking-wide opacity-50">Time per Question – Paper 6</p>
           <div className="flex items-end gap-3 h-24 mb-8">
-            {questionTimings.map((d) => (
+            {questionTimings.map((d, i) => (
               <div key={d.q} className="flex flex-1 flex-col items-center gap-2">
                 <div
                   className="w-full rounded-t-md"
                   style={{
-                    height: `${(d.mins / maxMins) * 72}px`,
+                    height: chartsInView ? `${(d.mins / maxMins) * 72}px` : "0px",
+                    transition: "height 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                    transitionDelay: `${200 + i * 80}ms`,
                     background: d.mins > 6 ? "var(--highlight)" : "var(--foreground)",
                     opacity: d.mins > 6 ? 1 : 0.4,
                   }}

@@ -15,4 +15,4 @@ jobs:
         run: |
           curl --fail-with-body -s \
             -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
-            "${{ secrets.SITE_URL }}/api/cron/sweep-attempts"
+            "${{ secrets.SITE_URL }}/api/tasks/sweep-attempts"

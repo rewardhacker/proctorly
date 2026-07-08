@@ -494,7 +494,7 @@ export async function beginScanUpload(
   files: { name: string; contentType: string }[],
 ) {
   const attempt = await getOwnAttempt(attemptId);
-  if (attempt.status !== "UPLOAD_BUFFER") throw new Error("Upload window has closed");
+  if (attempt.status !== "UPLOAD_BUFFER" && attempt.status !== "IN_PROGRESS") throw new Error("Upload window has closed");
 
   return Promise.all(
     files.map(async (f) => {
@@ -507,7 +507,7 @@ export async function beginScanUpload(
 
 export async function finalizeScanUpload(attemptId: string, keys: string[]) {
   const attempt = await getOwnAttempt(attemptId);
-  if (attempt.status !== "UPLOAD_BUFFER") throw new Error("Upload window has closed");
+  if (attempt.status !== "UPLOAD_BUFFER" && attempt.status !== "IN_PROGRESS") throw new Error("Upload window has closed");
 
   const existing = await prisma.answer.findUnique({
     where: { attemptId_questionKey: { attemptId, questionKey: "scan" } },

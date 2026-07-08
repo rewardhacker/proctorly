@@ -8,6 +8,7 @@ import FlagButton from "./FlagButton";
 import Countdown from "./Countdown";
 import ScanUpload from "./ScanUpload";
 import SubmitButton from "./SubmitButton";
+import EarlySubmitLink from "./EarlySubmitLink";
 import PdfAnnotator from "./PdfAnnotatorClient";
 import PreExamStart from "./PreExamStart";
 import FocusTracker from "./FocusTracker";
@@ -21,10 +22,10 @@ export default async function ExamPage({
   searchParams,
 }: {
   params: Promise<{ attemptId: string }>;
-  searchParams: Promise<{ q?: string }>;
+  searchParams: Promise<{ q?: string; step?: string }>;
 }) {
   const { attemptId } = await params;
-  const { q } = await searchParams;
+  const { q, step } = await searchParams;
   const tutee = await getTuteeSession();
   if (!tutee) redirect("/");
 
@@ -55,6 +56,25 @@ export default async function ExamPage({
           Once you start, the timer cannot be paused.
         </p>
         <PreExamStart attemptId={attempt.id} />
+      </main>
+    );
+  }
+
+  if (attempt.status === "IN_PROGRESS" && step === "upload") {
+    return (
+      <main className="mx-auto max-w-xl p-8">
+        <h1 className="mb-2 text-xl font-semibold">{attempt.paper.title}</h1>
+        <p className="mb-1 text-sm font-medium">Upload your workings (optional)</p>
+        <p className="mb-4 text-sm text-gray-600">
+          You can upload photos or scans of your written workings. This step is optional — skip it by clicking Confirm below.
+        </p>
+        <ScanUpload attemptId={attempt.id} />
+        <div className="mt-6 flex items-center justify-between">
+          <SubmitButton attemptId={attempt.id} label="Confirm Submission" />
+          <a href={`/exam/${attempt.id}`} className="text-sm text-gray-500 underline">
+            Back to exam
+          </a>
+        </div>
       </main>
     );
   }
@@ -111,7 +131,7 @@ export default async function ExamPage({
         />
 
         <div className="mt-4 flex items-center justify-between">
-          <SubmitButton attemptId={attempt.id} label="Submit" />
+          <EarlySubmitLink attemptId={attempt.id} />
           <ReportIssueButton attemptId={attempt.id} />
         </div>
       </main>

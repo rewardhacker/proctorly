@@ -35,6 +35,8 @@ export default function ScanUpload({ attemptId }: { attemptId: string }) {
             method: "PUT",
             body: files[i],
             headers: { "Content-Type": files[i].type },
+          }).then((res) => {
+            if (!res.ok) throw new Error(`Upload failed (${res.status})`);
           }),
         ),
       );

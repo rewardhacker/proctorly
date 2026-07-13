@@ -76,9 +76,11 @@ export default async function ExamPage({
         />
         <div className="mt-6 flex items-center justify-between">
           <SubmitButton attemptId={attempt.id} label="Confirm Submission" />
-          <a href={`/exam/${attempt.id}`} className="text-sm text-gray-500 underline">
-            Back to exam
-          </a>
+          {attempt.hardEndAt && attempt.hardEndAt > new Date() && (
+            <a href={`/exam/${attempt.id}`} className="text-sm text-gray-500 underline">
+              Back to exam
+            </a>
+          )}
         </div>
       </main>
     );

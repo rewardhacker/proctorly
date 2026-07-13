@@ -77,7 +77,7 @@ export default async function StudentDashboard() {
           const attemptCount = paperAttempts.length;
 
           return (
-            <li key={paper.id} className="rounded border p-4" data-paper-id={paper.id} data-invite-paper-id={invite?.paperId} data-attempt-paper-ids={paperAttempts.map(a => a.paperId).join(",")}>
+            <li key={paper.id} className="rounded border p-4">
               <div className="flex items-start justify-between gap-2">
                 <div>
                   <p className="font-medium">{paper.title}</p>
@@ -92,6 +92,8 @@ export default async function StudentDashboard() {
                   </span>
                 )}
               </div>
+
+              <p className="text-xs text-gray-300">p:{paper.id} inv:{invite?.paperId ?? "—"} att:{paperAttempts.map(a=>a.paperId).join(",") || "—"}</p>
 
               {primary ? (
                 <>

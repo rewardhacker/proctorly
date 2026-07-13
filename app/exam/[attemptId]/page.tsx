@@ -61,6 +61,7 @@ export default async function ExamPage({
   }
 
   if (attempt.status === "IN_PROGRESS" && step === "upload") {
+    const scanAnswer = attempt.answers.find((a) => a.questionKey === "scan");
     return (
       <main className="mx-auto max-w-xl p-8">
         <h1 className="mb-2 text-xl font-semibold">{attempt.paper.title}</h1>
@@ -68,7 +69,11 @@ export default async function ExamPage({
         <p className="mb-4 text-sm text-gray-600">
           You can upload photos or scans of your written workings. This step is optional — skip it by clicking Confirm below.
         </p>
-        <ScanUpload attemptId={attempt.id} />
+        <ScanUpload
+          attemptId={attempt.id}
+          existingCount={scanAnswer?.scanFileKeys.length ?? 0}
+          uploadedAt={scanAnswer?.updatedAt.toISOString()}
+        />
         <div className="mt-6 flex items-center justify-between">
           <SubmitButton attemptId={attempt.id} label="Confirm Submission" />
           <a href={`/exam/${attempt.id}`} className="text-sm text-gray-500 underline">
@@ -139,6 +144,7 @@ export default async function ExamPage({
   }
 
   if (attempt.status === "UPLOAD_BUFFER") {
+    const scanAnswer = attempt.answers.find((a) => a.questionKey === "scan");
     return (
       <main className="mx-auto max-w-xl p-8">
         <h1 className="mb-2 text-xl font-semibold">{attempt.paper.title}</h1>
@@ -147,7 +153,11 @@ export default async function ExamPage({
           Time&apos;s up for typed answers. If you wrote your answers on
           paper, upload photos now before the buffer runs out.
         </p>
-        <ScanUpload attemptId={attempt.id} />
+        <ScanUpload
+          attemptId={attempt.id}
+          existingCount={scanAnswer?.scanFileKeys.length ?? 0}
+          uploadedAt={scanAnswer?.updatedAt.toISOString()}
+        />
         <div className="mt-4 flex items-center justify-between">
           <SubmitButton attemptId={attempt.id} label="Submit Now" />
           <ReportIssueButton attemptId={attempt.id} />

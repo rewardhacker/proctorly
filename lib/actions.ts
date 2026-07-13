@@ -561,7 +561,7 @@ export async function finalizeScanUpload(attemptId: string, keys: string[]) {
 
   await prisma.answer.upsert({
     where: { attemptId_questionKey: { attemptId, questionKey: "scan" } },
-    update: { scanFileKeys: [...(existing?.scanFileKeys ?? []), ...keys] },
+    update: { scanFileKeys: keys },
     create: { attemptId, questionKey: "scan", modality: "SCANNED_UPLOAD", scanFileKeys: keys },
   });
 

@@ -154,7 +154,7 @@ export default async function TuteesPage({
                 </p>
               </div>
               <div className="flex gap-2">
-                {invite.attempt && !invite.usedAt && (
+                {!invite.usedAt && !invite.revokedAt && (
                   <form action={revokeInvite}>
                     <input type="hidden" name="inviteId" value={invite.id} />
                     <ConfirmButton

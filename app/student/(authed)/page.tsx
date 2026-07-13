@@ -58,7 +58,6 @@ export default async function StudentDashboard() {
   return (
     <main className="mx-auto max-w-2xl p-8">
       <h1 className="mb-6 text-xl font-semibold">My Papers</h1>
-      <p className="text-xs text-gray-300 mb-2">build-check-ok</p>
 
       {papers.length === 0 && (
         <p className="text-gray-500">No papers assigned yet. Ask your tutor for an invite link.</p>
@@ -93,8 +92,6 @@ export default async function StudentDashboard() {
                   </span>
                 )}
               </div>
-
-              <p className="text-xs text-gray-300">p:{paper.id} inv:{invite?.paperId ?? "—"} att:{paperAttempts.map(a=>a.paperId).join(",") || "—"}</p>
 
               {primary ? (
                 <>

@@ -114,6 +114,13 @@ function StatItem({ target, suffix, thousands, label, active }: {
   );
 }
 
+function CountUpValue({ target, suffix, active, className, style }: {
+  target: number; suffix: string; active: boolean; className?: string; style?: React.CSSProperties;
+}) {
+  const count = useCountUp(target, active);
+  return <span className={className} style={style}>{count}{suffix}</span>;
+}
+
 export default function LandingPage() {
   const [statsRef, statsInView] = useInView();
   const [chartsRef, chartsInView] = useInView();
@@ -276,12 +283,12 @@ export default function LandingPage() {
           <div className="mt-8 grid grid-cols-2 gap-4">
             <div className="rounded-xl border p-4" style={{ background: "var(--background)" }}>
               <p className="text-xs uppercase tracking-wide opacity-50 mb-1">Calculator Papers</p>
-              <p className="font-[family-name:var(--font-arima-madurai)] text-3xl font-bold">74%</p>
+              <p className="font-[family-name:var(--font-arima-madurai)] text-3xl font-bold"><CountUpValue target={74} suffix="%" active={chartsInView} /></p>
               <p className="text-xs opacity-50 mt-1">avg. across 4 papers</p>
             </div>
             <div className="rounded-xl border p-4" style={{ background: "var(--background)" }}>
               <p className="text-xs uppercase tracking-wide opacity-50 mb-1">Non-Calculator Papers</p>
-              <p className="font-[family-name:var(--font-arima-madurai)] text-3xl font-bold" style={{ color: "var(--highlight)" }}>58%</p>
+              <p className="font-[family-name:var(--font-arima-madurai)] text-3xl font-bold" style={{ color: "var(--highlight)" }}><CountUpValue target={58} suffix="%" active={chartsInView} /></p>
               <p className="text-xs opacity-50 mt-1">avg. across 4 papers</p>
             </div>
           </div>

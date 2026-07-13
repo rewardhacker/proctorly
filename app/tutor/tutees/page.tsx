@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
-import { createTutee, createInvite, resetTuteePassword, deleteInvite, deleteTutee } from "@/lib/actions";
+import { createTutee, createInvite, resetTuteePassword, deleteInvite, deleteTutee, revokeInvite } from "@/lib/actions";
 import Notice from "@/components/Notice";
 import ConfirmButton from "@/components/ConfirmButton";
 import Link from "next/link";
@@ -153,19 +153,32 @@ export default async function TuteesPage({
                   {invite.usedAt ? " (redeemed)" : ""}
                 </p>
               </div>
-              <form action={deleteInvite}>
-                <input type="hidden" name="inviteId" value={invite.id} />
-                <ConfirmButton
-                  message={
-                    invite.attempt
-                      ? "Delete this invite? The linked submission will also be deleted."
-                      : "Delete this invite link?"
-                  }
-                  className="shrink-0 rounded border px-2 py-1 text-sm text-red-600 hover:bg-red-50"
-                >
-                  Delete
-                </ConfirmButton>
-              </form>
+              <div className="flex gap-2">
+                {invite.attempt && !invite.usedAt && (
+                  <form action={revokeInvite}>
+                    <input type="hidden" name="inviteId" value={invite.id} />
+                    <ConfirmButton
+                      message="Revoke this invite? The linked submission is preserved but the student can no longer access this link."
+                      className="shrink-0 rounded border px-2 py-1 text-sm text-orange-600 hover:bg-orange-50"
+                    >
+                      Revoke
+                    </ConfirmButton>
+                  </form>
+                )}
+                <form action={deleteInvite}>
+                  <input type="hidden" name="inviteId" value={invite.id} />
+                  <ConfirmButton
+                    message={
+                      invite.attempt
+                        ? "Delete this invite? The linked submission will also be deleted."
+                        : "Delete this invite link?"
+                    }
+                    className="shrink-0 rounded border px-2 py-1 text-sm text-red-600 hover:bg-red-50"
+                  >
+                    Delete
+                  </ConfirmButton>
+                </form>
+              </div>
             </li>
           ))}
           {invites.length === 0 && <p className="text-gray-500">No invite links yet.</p>}

@@ -593,6 +593,19 @@ export async function deleteInvite(formData: FormData) {
   redirect(`/tutor/tutees?success=${encodeURIComponent("Invite link deleted.")}`);
 }
 
+export async function revokeInvite(formData: FormData) {
+  const tutorId = await requireTutorId();
+  const inviteId = formData.get("inviteId") as string;
+
+  const invite = await prisma.inviteLink.findFirst({ where: { id: inviteId, tutorId } });
+  if (!invite) redirect(`/tutor/tutees?error=${encodeURIComponent("Invite not found.")}`);
+
+  await prisma.inviteLink.update({ where: { id: inviteId }, data: { revokedAt: new Date() } });
+
+  revalidatePath("/tutor/tutees");
+  redirect(`/tutor/tutees?success=${encodeURIComponent("Invite link revoked. Submissions are preserved.")}`);
+}
+
 export async function deleteTutee(formData: FormData) {
   const tutorId = await requireTutorId();
   const tuteeId = formData.get("tuteeId") as string;

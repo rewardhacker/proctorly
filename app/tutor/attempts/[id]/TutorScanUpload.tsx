@@ -44,8 +44,8 @@ export default function TutorScanUpload({ attemptId }: { attemptId: string }) {
       await finalizeTutorScanUpload(attemptId, uploads.map((u) => u.key));
       setStatus("done");
       if (inputRef.current) inputRef.current.value = "";
-    } catch {
-      setError("Upload failed – try again");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Upload failed – try again");
       setStatus("error");
     }
   }

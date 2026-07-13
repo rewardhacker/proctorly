@@ -19,7 +19,7 @@ export default async function TuteesPage({
     prisma.paper.findMany({ where: { tutorId }, orderBy: { createdAt: "desc" } }),
     prisma.inviteLink.findMany({
       where: { tutorId },
-      include: { tutee: true, paper: true, attempt: { select: { id: true } } },
+      include: { tutee: true, paper: true, attempt: { select: { id: true, status: true } } },
       orderBy: { createdAt: "desc" },
     }),
   ]);
@@ -150,7 +150,11 @@ export default async function TuteesPage({
                 </p>
                 <p className="break-all text-gray-600">
                   {`/invite/${invite.token}`}
-                  {invite.usedAt ? " (redeemed)" : ""}
+                  {invite.revokedAt
+                    ? " (revoked)"
+                    : invite.attempt
+                      ? ` (${invite.attempt.status === "PENDING" ? "not started" : invite.attempt.status === "IN_PROGRESS" ? "in progress" : invite.attempt.status === "SUBMITTED" ? "submitted" : invite.attempt.status === "GRADED" ? "graded" : "used"})`
+                      : ""}
                 </p>
               </div>
               <div className="flex gap-2">

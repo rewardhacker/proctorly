@@ -17,7 +17,7 @@ export default function PasswordInput({ name = "password", placeholder = "Passwo
         placeholder={placeholder}
         required={required}
         minLength={minLength}
-        className="w-full rounded border px-3 py-2 pr-16"
+        className="w-full rounded border px-3 py-2 pr-16 [&::-ms-reveal]:hidden [&::-webkit-credentials-auto-fill-button]:hidden"
       />
       <button
         type="button"

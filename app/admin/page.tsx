@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { prisma } from "@/lib/prisma";
 import { inviteTutor, adminResetTutorCredentials, adminResetTuteeCredentials } from "@/lib/actions";
 import Notice from "@/components/Notice";

@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { loadInvite } from "@/lib/redeemInvite";
 import { giveConsent } from "@/lib/actions";
 import Notice from "@/components/Notice";

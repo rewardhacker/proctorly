@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import NewPaperForm from "./NewPaperForm";
 
 export default function NewPaperPage() {

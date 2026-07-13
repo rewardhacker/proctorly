@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import type { JSONContent } from "@tiptap/react";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";

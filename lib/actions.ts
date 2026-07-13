@@ -91,6 +91,52 @@ export async function inviteTutor(formData: FormData) {
   redirect(`/admin?success=${encodeURIComponent(`Invite sent to ${email}.`)}`);
 }
 
+export async function adminResetTutorCredentials(formData: FormData) {
+  await requireAdmin();
+  const tutorId = formData.get("tutorId") as string;
+  const email = (formData.get("email") as string).trim().toLowerCase() || null;
+  const password = (formData.get("password") as string) || null;
+
+  if (!email && !password)
+    redirect(`/admin?error=${encodeURIComponent("Provide at least an email or password.")}`);
+
+  const data: { email?: string; passwordHash?: string } = {};
+  if (email) data.email = email;
+  if (password) data.passwordHash = await bcrypt.hash(password, 10);
+
+  try {
+    await prisma.tutor.update({ where: { id: tutorId }, data });
+  } catch (err) {
+    redirect(`/admin?error=${encodeURIComponent(friendlyMessage(err, "Could not update tutor credentials."))}`);
+  }
+
+  revalidatePath("/admin");
+  redirect(`/admin?success=${encodeURIComponent("Tutor credentials updated.")}`);
+}
+
+export async function adminResetTuteeCredentials(formData: FormData) {
+  await requireAdmin();
+  const tuteeId = formData.get("tuteeId") as string;
+  const email = (formData.get("email") as string).trim().toLowerCase() || null;
+  const password = (formData.get("password") as string) || null;
+
+  if (!email && !password)
+    redirect(`/admin?error=${encodeURIComponent("Provide at least an email or password.")}`);
+
+  const data: { email?: string; passwordHash?: string } = {};
+  if (email) data.email = email;
+  if (password) data.passwordHash = await bcrypt.hash(password, 10);
+
+  try {
+    await prisma.tutee.update({ where: { id: tuteeId }, data });
+  } catch (err) {
+    redirect(`/admin?error=${encodeURIComponent(friendlyMessage(err, "Could not update tutee credentials."))}`);
+  }
+
+  revalidatePath("/admin");
+  redirect(`/admin?success=${encodeURIComponent("Tutee credentials updated.")}`);
+}
+
 export async function completeTutorOnboarding(token: string, formData: FormData): Promise<{ error: string } | void> {
   const name = (formData.get("name") as string).trim();
   const password = formData.get("password") as string;

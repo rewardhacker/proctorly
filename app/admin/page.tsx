@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import { inviteTutor } from "@/lib/actions";
+import { inviteTutor, adminResetTutorCredentials, adminResetTuteeCredentials } from "@/lib/actions";
 import Notice from "@/components/Notice";
 
 export default async function AdminPage({
@@ -12,6 +12,11 @@ export default async function AdminPage({
   const tutors = await prisma.tutor.findMany({
     where: { isAdmin: false },
     orderBy: { createdAt: "asc" },
+  });
+
+  const tutees = await prisma.tutee.findMany({
+    orderBy: { createdAt: "asc" },
+    include: { createdByTutor: { select: { name: true } } },
   });
 
   const pendingInvites = await prisma.tutorInvite.findMany({
@@ -56,7 +61,7 @@ export default async function AdminPage({
         </section>
       )}
 
-      <section>
+      <section className="mb-8">
         <h2 className="mb-3 text-lg font-semibold">Tutors</h2>
         {tutors.length === 0 ? (
           <p className="text-sm text-gray-500">No tutors yet.</p>
@@ -71,6 +76,41 @@ export default async function AdminPage({
                     ? `Policy signed ${t.policyConsentedAt.toLocaleDateString()} (${t.policyVersion})`
                     : "Policy not yet signed"}
                 </p>
+                <details className="mt-2">
+                  <summary className="cursor-pointer text-xs text-blue-600">Reset credentials</summary>
+                  <form action={adminResetTutorCredentials} className="mt-2 flex flex-col gap-1">
+                    <input type="hidden" name="tutorId" value={t.id} />
+                    <input name="email" type="email" placeholder="New email (leave blank to keep)" className="rounded border px-2 py-1 text-xs" />
+                    <input name="password" type="password" placeholder="New password (leave blank to keep)" className="rounded border px-2 py-1 text-xs" />
+                    <button type="submit" className="self-start rounded bg-foreground px-3 py-1 text-xs text-white">Save</button>
+                  </form>
+                </details>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+
+      <section>
+        <h2 className="mb-3 text-lg font-semibold">Tutees</h2>
+        {tutees.length === 0 ? (
+          <p className="text-sm text-gray-500">No tutees yet.</p>
+        ) : (
+          <ul className="flex flex-col gap-2">
+            {tutees.map((t) => (
+              <li key={t.id} className="rounded border p-3 text-sm">
+                <p className="font-medium">{t.name}</p>
+                <p className="text-gray-500">{t.email}</p>
+                <p className="mt-1 text-xs text-gray-400">Tutor: {t.createdByTutor.name}</p>
+                <details className="mt-2">
+                  <summary className="cursor-pointer text-xs text-blue-600">Reset credentials</summary>
+                  <form action={adminResetTuteeCredentials} className="mt-2 flex flex-col gap-1">
+                    <input type="hidden" name="tuteeId" value={t.id} />
+                    <input name="email" type="email" placeholder="New email (leave blank to keep)" className="rounded border px-2 py-1 text-xs" />
+                    <input name="password" type="password" placeholder="New password (leave blank to keep)" className="rounded border px-2 py-1 text-xs" />
+                    <button type="submit" className="self-start rounded bg-foreground px-3 py-1 text-xs text-white">Save</button>
+                  </form>
+                </details>
               </li>
             ))}
           </ul>

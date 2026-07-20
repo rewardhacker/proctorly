@@ -15,11 +15,13 @@ export default function StudentPaperReview({
   studentAnnotationPages,
   tutorAnnotationPages,
   tutorHighlightPages = {},
+  storedRenderWidth = 600,
 }: {
   fileUrl: string;
   studentAnnotationPages: Pages;
   tutorAnnotationPages: Pages;
   tutorHighlightPages?: Pages;
+  storedRenderWidth?: number;
 }) {
   const [reactPdf, setReactPdf] = useState<ReactPdfModule | null>(null);
   const [pdfBlob, setPdfBlob] = useState<string | null>(null);
@@ -71,6 +73,8 @@ export default function StudentPaperReview({
     const ctx = tutorCanvasRef.current?.getContext("2d");
     if (!ctx) return;
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    // storedRenderWidth=1 means normalized [0,1] coords; otherwise absolute pixels at storedRenderWidth
+    const scale = storedRenderWidth === 1 ? RENDER_WIDTH : RENDER_WIDTH / storedRenderWidth;
     // Highlights first
     const highlights = tutorHighlightPages[String(page)] ?? [];
     if (highlights.length) {
@@ -83,8 +87,8 @@ export default function StudentPaperReview({
       for (const stroke of highlights) {
         if (stroke.length < 2) continue;
         ctx.beginPath();
-        ctx.moveTo(stroke[0][0], stroke[0][1]);
-        for (const [x, y] of stroke.slice(1)) ctx.lineTo(x, y);
+        ctx.moveTo(stroke[0][0] * scale, stroke[0][1] * scale);
+        for (const [x, y] of stroke.slice(1)) ctx.lineTo(x * scale, y * scale);
         ctx.stroke();
       }
       ctx.restore();
@@ -98,11 +102,11 @@ export default function StudentPaperReview({
     for (const stroke of strokes) {
       if (stroke.length < 2) continue;
       ctx.beginPath();
-      ctx.moveTo(stroke[0][0], stroke[0][1]);
-      for (const [x, y] of stroke.slice(1)) ctx.lineTo(x, y);
+      ctx.moveTo(stroke[0][0] * scale, stroke[0][1] * scale);
+      for (const [x, y] of stroke.slice(1)) ctx.lineTo(x * scale, y * scale);
       ctx.stroke();
     }
-  }, [page, tutorAnnotationPages, tutorHighlightPages, canvasHeight]);
+  }, [page, tutorAnnotationPages, tutorHighlightPages, canvasHeight, storedRenderWidth]);
 
   if (loadError) return <p className="text-sm text-red-600">{loadError}</p>;
   if (!reactPdf || !pdfBlob) return <p className="text-sm text-gray-500">Loading paper…</p>;

@@ -177,11 +177,13 @@ export default async function ExamPage({
     highlightPages?: Record<string, number[][][]>;
     scanPages?: Record<string, Record<string, number[][][]>>;
     scanHighlightPages?: Record<string, Record<string, number[][][]>>;
+    renderWidth?: number;
   } | null;
   const tutorAnnotationPages = tutorAnnotationJson?.pages ?? {};
   const tutorHighlightPages = tutorAnnotationJson?.highlightPages ?? {};
   const tutorScanAnnotationPages = tutorAnnotationJson?.scanPages ?? {};
   const tutorScanHighlightPages = tutorAnnotationJson?.scanHighlightPages ?? {};
+  const storedRenderWidth = tutorAnnotationJson?.renderWidth ?? 600;
   const scans = attempt.answers.find((a) => a.questionKey === "scan")?.scanFileKeys ?? [];
   const feedbackQuestions =
     (attempt.grade?.feedbackJson as { questions?: Record<string, { score: number; maxScore: number }> } | null)?.questions ?? {};
@@ -220,6 +222,7 @@ export default async function ExamPage({
         studentAnnotationPages={studentAnnotationPages as Record<string, [number, number][][]>}
         tutorAnnotationPages={attempt.grade ? tutorAnnotationPages as Record<string, [number, number][][]> : {}}
         tutorHighlightPages={attempt.grade ? tutorHighlightPages as Record<string, [number, number][][]> : {}}
+        storedRenderWidth={storedRenderWidth}
       />
 
       {scans.length > 0 && (
@@ -232,7 +235,8 @@ export default async function ExamPage({
                 fileUrl={`/api/files/${key}`}
                 studentAnnotationPages={{}}
                 tutorAnnotationPages={attempt.grade ? (tutorScanAnnotationPages[key] ?? {}) as Record<string, [number, number][][]> : {}}
-              tutorHighlightPages={attempt.grade ? (tutorScanHighlightPages[key] ?? {}) as Record<string, [number, number][][]> : {}}
+                tutorHighlightPages={attempt.grade ? (tutorScanHighlightPages[key] ?? {}) as Record<string, [number, number][][]> : {}}
+                storedRenderWidth={storedRenderWidth}
               />
             </div>
           ))}

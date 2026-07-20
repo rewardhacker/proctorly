@@ -51,11 +51,13 @@ export default async function GradeAttemptPage({
     highlightPages?: Record<string, number[][][]>;
     scanPages?: Record<string, Record<string, number[][][]>>;
     scanHighlightPages?: Record<string, Record<string, number[][][]>>;
+    renderWidth?: number;
   } | null;
   const tutorAnnotationPages = tutorAnnotationJson?.pages ?? {};
   const tutorHighlightPages = tutorAnnotationJson?.highlightPages ?? {};
   const tutorScanAnnotationPages = tutorAnnotationJson?.scanPages ?? {};
   const tutorScanHighlightPages = tutorAnnotationJson?.scanHighlightPages ?? {};
+  const storedRenderWidth = tutorAnnotationJson?.renderWidth ?? 600;
 
   const feedbackQuestions =
     (attempt.grade?.feedbackJson as { questions?: Record<string, { score: number; maxScore: number }> } | null)?.questions ?? {};
@@ -136,6 +138,7 @@ export default async function GradeAttemptPage({
         initialTutorHighlightPages={tutorHighlightPages as Record<string, [number, number][][]>}
         initialScanAnnotationPages={tutorScanAnnotationPages as Record<string, Record<string, [number, number][][]>>}
         initialScanHighlightPages={tutorScanHighlightPages as Record<string, Record<string, [number, number][][]>>}
+        storedRenderWidth={storedRenderWidth}
       />
 
       <TutorScanUpload attemptId={attempt.id} />

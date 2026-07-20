@@ -8,6 +8,9 @@ import Link from "next/link";
 import Notice from "@/components/Notice";
 import ConfirmButton from "@/components/ConfirmButton";
 
+const fmt = (d: Date | null) =>
+  d ? d.toLocaleString("en-GB", { dateStyle: "short", timeStyle: "short" }) : null;
+
 export default async function AttemptsPage({
   searchParams,
 }: {
@@ -43,6 +46,12 @@ export default async function AttemptsPage({
                     {flagged && <span className="text-yellow-600">&#9873; flagged</span>}
                   </p>
                   <p className="text-sm text-gray-600">Status: {a.status}</p>
+                  {a.submittedAt && (
+                    <p className="text-xs text-gray-400">Submitted: {fmt(a.submittedAt)}</p>
+                  )}
+                  {a.grade?.gradedAt && (
+                    <p className="text-xs text-gray-400">Graded: {fmt(a.grade.gradedAt)}</p>
+                  )}
                 </div>
                 <div className="flex shrink-0 gap-2">
                   <form action={resetAttempt}>

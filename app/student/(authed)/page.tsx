@@ -4,6 +4,9 @@ import { prisma } from "@/lib/prisma";
 import { getTuteeSession } from "@/lib/tuteeSession";
 import Link from "next/link";
 
+const fmt = (d: Date | null) =>
+  d ? d.toLocaleString("en-GB", { dateStyle: "short", timeStyle: "short" }) : null;
+
 function statusLabel(status: string) {
   switch (status) {
     case "PENDING": return "Not started";
@@ -96,6 +99,12 @@ export default async function StudentDashboard() {
               {primary ? (
                 <>
                   <p className="mt-1 text-sm text-gray-500">{statusLabel(primary.status)}</p>
+                  {primary.submittedAt && (
+                    <p className="text-xs text-gray-400">Submitted: {fmt(primary.submittedAt)}</p>
+                  )}
+                  {primary.grade?.gradedAt && (
+                    <p className="text-xs text-gray-400">Graded: {fmt(primary.grade.gradedAt)}</p>
+                  )}
                   {(primary.status === "IN_PROGRESS" || primary.status === "PENDING") && (
                     <p className="text-sm text-gray-400">
                       {answeredCount} of {total} question{total === 1 ? "" : "s"} answered

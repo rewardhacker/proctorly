@@ -73,11 +73,20 @@ export default async function GradeAttemptPage({
       <h1 className="mb-1 text-xl font-semibold">{attempt.paper.title}</h1>
       <p className="mb-1 text-sm text-gray-600">{attempt.tutee.name}</p>
       {durationLabel && (
-        <p className="mb-4 text-sm text-gray-500">
+        <p className="mb-1 text-sm text-gray-500">
           Time taken: <span className="font-medium">{durationLabel}</span>
           {attempt.autoSubmitted && " (auto-submitted)"}
         </p>
       )}
+      {attempt.grade?.gradedAt && (
+        <p className="mb-4 text-sm text-gray-500">
+          Graded:{" "}
+          <span className="font-medium">
+            {attempt.grade.gradedAt.toLocaleString("en-GB", { dateStyle: "short", timeStyle: "short" })}
+          </span>
+        </p>
+      )}
+      {!attempt.grade?.gradedAt && durationLabel && <div className="mb-4" />}
       <Notice error={error} />
 
       <div className={`mb-6 rounded border p-3 text-sm ${flagStatus.flagged ? "border-yellow-400 bg-yellow-50" : "border-gray-200"}`}>

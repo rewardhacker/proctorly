@@ -225,9 +225,9 @@ export default async function ExamPage({
       {scans.length > 0 && (
         <>
           <h2 className="mb-2 font-medium">Your Uploaded Scans</h2>
-          {scans.map((key) => (
+          {scans.map((key, i) => (
             <div key={key} className="mb-4">
-              <p className="mb-1 text-xs text-gray-500">{key.split("/").pop()}</p>
+              <p className="mb-1 text-xs text-gray-500">Scan {i + 1}</p>
               <StudentPaperReviewClient
                 fileUrl={`/api/files/${key}`}
                 studentAnnotationPages={{}}

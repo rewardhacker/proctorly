@@ -228,6 +228,10 @@ export async function updatePaper(data: {
   paperVariant: string | null;
   defaultDurationMins: number;
   numQuestions: number;
+  paperFileKey?: string;
+  paperFileSize?: number;
+  markSchemeFileKey?: string;
+  markSchemeFileSize?: number;
 }): Promise<{ error: string } | { ok: true }> {
   const tutorId = await requireTutorId();
 
@@ -243,6 +247,12 @@ export async function updatePaper(data: {
   } catch (err) {
     return { error: friendlyMessage(err, "Could not update paper. Please try again.") };
   }
+
+  // Delete replaced S3 objects after the DB is committed (best-effort)
+  const toDelete: string[] = [];
+  if (data.paperFileKey && data.paperFileKey !== paper.paperFileKey) toDelete.push(paper.paperFileKey);
+  if (data.markSchemeFileKey && data.markSchemeFileKey !== paper.markSchemeFileKey) toDelete.push(paper.markSchemeFileKey);
+  if (toDelete.length) void Promise.all(toDelete.map((k) => storage.delete(k))).catch(() => {});
 
   revalidatePath("/tutor/papers");
   return { ok: true };

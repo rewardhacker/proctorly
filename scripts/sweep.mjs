@@ -88,6 +88,17 @@ async function main() {
   console.log(JSON.stringify({ swept: overdue.length }));
 }
 
-main()
+async function withRetry(fn, retries = 3, delayMs = 5000) {
+  for (let i = 0; i < retries; i++) {
+    try { return await fn(); }
+    catch (e) {
+      if (i === retries - 1) throw e;
+      console.error(`Sweep attempt ${i + 1} failed, retrying in ${delayMs}ms:`, e.message);
+      await new Promise((r) => setTimeout(r, delayMs));
+    }
+  }
+}
+
+withRetry(main)
   .catch((e) => { console.error(e); process.exit(1); })
   .finally(() => prisma.$disconnect());

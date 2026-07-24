@@ -40,15 +40,23 @@ export default async function PapersPage({
                 {p.defaultDurationMins} min{p.subject ? ` · ${p.subject}` : ""} · {p._count.attempts} submission{p._count.attempts === 1 ? "" : "s"}
               </p>
             </div>
-            <form action={deletePaper}>
-              <input type="hidden" name="paperId" value={p.id} />
-              <ConfirmButton
-                message={`Delete "${p.title}" and all its submissions? This cannot be undone.`}
-                className="rounded border px-2 py-1 text-sm text-red-600 hover:bg-red-50"
+            <div className="flex items-center gap-2">
+              <Link
+                href={`/tutor/papers/${p.id}/edit`}
+                className="rounded border px-2 py-1 text-sm hover:bg-gray-50"
               >
-                Delete
-              </ConfirmButton>
-            </form>
+                Edit
+              </Link>
+              <form action={deletePaper}>
+                <input type="hidden" name="paperId" value={p.id} />
+                <ConfirmButton
+                  message={`Delete "${p.title}" and all its submissions? This cannot be undone.`}
+                  className="rounded border px-2 py-1 text-sm text-red-600 hover:bg-red-50"
+                >
+                  Delete
+                </ConfirmButton>
+              </form>
+            </div>
           </li>
         ))}
         {papers.length === 0 && <p className="text-gray-500">No papers yet.</p>}

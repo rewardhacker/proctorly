@@ -208,10 +208,40 @@ export async function finalizeCreatePaper(data: {
 }): Promise<{ error: string } | { ok: true }> {
   const tutorId = await requireTutorId();
 
+  const existing = await prisma.paper.findFirst({ where: { tutorId, title: data.title } });
+  if (existing) return { error: `A paper named "${data.title}" already exists.` };
+
   try {
     await prisma.paper.create({ data: { tutorId, ...data } });
   } catch (err) {
     return { error: friendlyMessage(err, "Could not save paper. Please try again.") };
+  }
+
+  revalidatePath("/tutor/papers");
+  return { ok: true };
+}
+
+export async function updatePaper(data: {
+  id: string;
+  title: string;
+  subject: string | null;
+  paperVariant: string | null;
+  defaultDurationMins: number;
+  numQuestions: number;
+}): Promise<{ error: string } | { ok: true }> {
+  const tutorId = await requireTutorId();
+
+  const paper = await prisma.paper.findFirst({ where: { id: data.id, tutorId } });
+  if (!paper) return { error: "Paper not found." };
+
+  const duplicate = await prisma.paper.findFirst({ where: { tutorId, title: data.title, NOT: { id: data.id } } });
+  if (duplicate) return { error: `A paper named "${data.title}" already exists.` };
+
+  const { id, ...fields } = data;
+  try {
+    await prisma.paper.update({ where: { id }, data: fields });
+  } catch (err) {
+    return { error: friendlyMessage(err, "Could not update paper. Please try again.") };
   }
 
   revalidatePath("/tutor/papers");
